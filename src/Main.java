@@ -36,7 +36,7 @@ public class Main {
                     String phone = scanner.next();
 
                     if (nextEmpty < contacts.length) {
-                        contacts[nextEmpty] = name + " " + surname + " | Address: " + address + " | Phone: " + phone;
+                        contacts[nextEmpty] = " | Name: " + name + " | Surname: " + surname + " | Address: " + address + " | Phone: " + phone;
                         nextEmpty++;
                         System.out.println("Contact added successfully!\n");
                     } else {
@@ -65,7 +65,28 @@ public class Main {
 
                 case 3:
                     System.out.println("\n--- DELETE CONTACT ---");
-                    System.out.println("Functionality to delete contact is not yet implemented.\n");
+                    if (nextEmpty == 0) {
+                        System.out.println("No contacts available to delete.\n");
+                    } else {
+                        System.out.println("\n--- LIST OF ALL CONTACTS ---");
+                        for (int i = 0; i < nextEmpty; i++) {
+                            System.out.println((i + 1) + ". " + contacts[i]);
+                        }
+
+                        System.out.print("Enter the index of the contact to delete (1 to " + nextEmpty + "): ");
+                        int index = scanner.nextInt() - 1;
+
+                        if (index < 0 || index >= nextEmpty) {
+                            System.out.println("Invalid index. Please try again.\n");
+                        } else {
+                            for (int i = index; i < nextEmpty - 1; i++) {
+                                contacts[i] = contacts[i + 1];
+                            }
+                            contacts[nextEmpty - 1] = null;
+                            nextEmpty--;
+                            System.out.println("Contact deleted successfully.\n");
+                        }
+                    }
                     break;
 
                 case 4:
