@@ -1,9 +1,17 @@
+import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        run();
+
+
+    }
+
+    public static void run() {
         Scanner scanner = new Scanner(System.in);
         String[] contacts = new String[3];
         int nextEmpty = 0;
@@ -14,26 +22,37 @@ public class Main {
             switch (command) {
                 case 1:
                     System.out.println("Create Contact");
-                    System.out.println("Enter your Name:");
+                    System.out.println("Enter your name:");
                     String name = scanner.next();
-                    System.out.println("Enter your Surname:");
+                    System.out.println("Enter your surname:");
                     String surname = scanner.next();
                     System.out.println("Enter your address:");
                     String address = scanner.next();
-                    System.out.println("Enter your Phone:");
+                    System.out.println("Enter your phone:");
                     String phone = scanner.next();
-
-
                     if (nextEmpty != contacts.length) {
                         contacts[nextEmpty] = name + " " + surname + " " + address + " " + phone;
                         nextEmpty++;
-                        System.out.println("You successfully added the note");
+                        System.out.println("You successfully added the contact");
                     } else {
                         System.err.println("Memory Full");
                     }
                     break;
                 case 2:
-                    System.out.println("Search Contact");
+                    System.out.println("Search Contact by");
+                    String keyword = scanner.next();
+
+                    String[] result = Arrays.stream(contacts)
+                            .filter(line -> line != null && line.contains(keyword))
+                            .toArray(String[]::new);
+
+                    if (result.length == 0) {
+                        System.out.println("Контакт не найден.");
+                    } else {
+                        for (String line : result) {
+                            System.out.println(line);
+                        }
+                    }
                     break;
                 case 3:
                     System.out.println("Delete Contact");
@@ -48,10 +67,7 @@ public class Main {
                     break;
             }
         } while (command != 5);
-
-    }
-
-    public void checkString(String name, String surname, String phone, String address) {
-
     }
 }
+
+
