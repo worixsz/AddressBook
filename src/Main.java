@@ -1,46 +1,52 @@
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
         run();
-
-
     }
 
     public static void run() {
         Scanner scanner = new Scanner(System.in);
         String[] contacts = new String[3];
         int nextEmpty = 0;
-        int command = 4;
+        int command;
+
         do {
-            System.out.println("1.Create Contact\n2.Search Contact\n3.Delete Contact\n4.List All Contacts\n5.Exit\n");
+            System.out.println("\n======= CONTACT MANAGEMENT SYSTEM =======");
+            System.out.println("1. Create Contact");
+            System.out.println("2. Search Contact");
+            System.out.println("3. Delete Contact");
+            System.out.println("4. List All Contacts");
+            System.out.println("5. Exit");
+            System.out.print("Choose an option: ");
             command = scanner.nextInt();
+
             switch (command) {
                 case 1:
-                    System.out.println("Create Contact");
-                    System.out.println("Enter your name:");
+                    System.out.println("\n--- CREATE NEW CONTACT ---");
+                    System.out.print("Enter your name: ");
                     String name = scanner.next();
-                    System.out.println("Enter your surname:");
+                    System.out.print("Enter your surname: ");
                     String surname = scanner.next();
-                    System.out.println("Enter your address:");
+                    System.out.print("Enter your address: ");
                     String address = scanner.next();
-                    System.out.println("Enter your phone:");
+                    System.out.print("Enter your phone: ");
                     String phone = scanner.next();
-                    if (nextEmpty != contacts.length) {
-                        contacts[nextEmpty] = name + " " + surname + " " + address + " " + phone;
+
+                    if (nextEmpty < contacts.length) {
+                        contacts[nextEmpty] = name + " " + surname + " | Address: " + address + " | Phone: " + phone;
                         nextEmpty++;
-                        System.out.println("You successfully added the contact");
+                        System.out.println("Contact added successfully!\n");
                     } else {
-                        System.err.println("Memory Full");
+                        System.err.println("Memory full. Cannot add more contacts.\n");
                     }
                     break;
+
                 case 2:
-                    System.out.println("You can search contact by: 'name' 'surname' 'address 'phone".toUpperCase());
-                    System.out.println("Enter the contact:");
+                    System.out.println("\n--- SEARCH CONTACT ---");
+                    System.out.print("Enter search keyword (name, surname, address, or phone): ");
                     String keyword = scanner.next();
 
                     String[] result = Arrays.stream(contacts)
@@ -48,27 +54,39 @@ public class Main {
                             .toArray(String[]::new);
 
                     if (result.length == 0) {
-                        System.out.println("The contact not found");
+                        System.out.println("No contacts found for keyword: " + keyword + "\n");
                     } else {
+                        System.out.println("Contacts found:");
                         for (String line : result) {
-                            System.out.println(line);
+                            System.out.println("- " + line);
                         }
                     }
                     break;
+
                 case 3:
-                    System.out.println("Delete Contact");
+                    System.out.println("\n--- DELETE CONTACT ---");
+                    System.out.println("Functionality to delete contact is not yet implemented.\n");
                     break;
+
                 case 4:
-                    for (String contact : contacts) {
-                        System.out.println(contact);
+                    System.out.println("\n--- LIST OF ALL CONTACTS ---");
+                    if (nextEmpty == 0) {
+                        System.out.println("No contacts available.\n");
+                    } else {
+                        for (int i = 0; i < nextEmpty; i++) {
+                            System.out.println((i + 1) + ". " + contacts[i]);
+                        }
                     }
                     break;
+
+                case 5:
+                    System.out.println("Exiting Contact Management System. Goodbye!");
+                    break;
+
                 default:
-                    System.err.println("Invalid command, Command should be in range 1,2,3,4");
+                    System.err.println("Invalid command. Please select a number between 1 and 5.\n");
                     break;
             }
         } while (command != 5);
     }
 }
-
-
