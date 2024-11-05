@@ -39,7 +39,8 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println("Search Contact by");
+                    System.out.println("You can search contact by: 'name' 'surname' 'address 'phone".toUpperCase());
+                    System.out.println("Enter the contact:");
                     String keyword = scanner.next();
 
                     String[] result = Arrays.stream(contacts)
@@ -47,7 +48,7 @@ public class Main {
                             .toArray(String[]::new);
 
                     if (result.length == 0) {
-                        System.out.println("Контакт не найден.");
+                        System.out.println("The contact not found");
                     } else {
                         for (String line : result) {
                             System.out.println(line);
