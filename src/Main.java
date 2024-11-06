@@ -35,11 +35,11 @@ public class Main {
                     String phone = scanner.next();
 
                     if (nextEmpty < contacts.length) {
-                        contacts[nextEmpty] = String.format(" | Name: %s | Surname: %s | Address: %s | Phone: %s", name, surname, address, phone);
+                        contacts[nextEmpty] = " | Name: " + name + " | Surname: " + surname + " | Address: " + address + " | Phone: " + phone;
                         nextEmpty++;
                         System.out.println("✅ Contact added successfully!\n");
                     } else {
-                        System.err.println("❗ Memory full. Cannot add more contacts.\n");
+                        System.err.println("❗Memory full. Cannot add more contacts.\n");
                     }
                     break;
 
@@ -50,23 +50,42 @@ public class Main {
                     System.out.println("2. By Surname");
                     System.out.println("3. By Address");
                     System.out.println("4. By Phone");
-                    int enter = scanner.nextInt();
                     System.out.print("Please enter the corresponding number (1-4): ");
+                    int enter = scanner.nextInt();
 
-                    System.out.print("Enter phone number to search: ");
-                    String search = scanner.next();
-                    boolean contactFound = false;
+                    switch (enter) {
+                        case 1:
+                            System.out.print("Enter name to search: ");
+                            String searchOfName = scanner.next();
+                            boolean contactOfNameFound = false;
 
-                    for (String contact : contacts) {
-                        if (contact != null && contact.contains(search)) {
-                            System.out.println("🔍 Contact Found: " + contact);
-                            contactFound = true;
-                        }
+                            for (String contact : contacts) {
+                                if (contact != null) {
+                                    String[] contactSplitted = contact.split(" ");
+                                    if (contactSplitted[3].startsWith(searchOfName)) {
+                                        System.out.println("🔍 Contact Found: " + contact);
+                                        contactOfNameFound = true;
+                                    }
+                                }
+                            }
+                            if (!contactOfNameFound) {
+                                System.out.println("❗No contact with such phone number!");
+                            }
+
+                            break;
+//                        case 2:
+
+//                            break;
+//                        case 3:
+//                            break;
+//                        case 4:
+//                            break;
+                        default:
                     }
-                    if (!contactFound) {
-                        System.out.println("❌ No contact with such phone number!");
-                    }
+
+
                     break;
+
 
                 case 3:
                     System.out.println("\n--- DELETE CONTACT ---");
