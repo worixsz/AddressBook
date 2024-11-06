@@ -69,7 +69,7 @@ public class Main {
                                 }
                             }
                             if (!contactOfNameFound) {
-                                System.out.println("❗No contact with such phone number!");
+                                System.out.println("❗No contact with such name!");
                             }
 
                             break;
@@ -88,7 +88,7 @@ public class Main {
                                 }
                             }
                             if (!contactOfSurnameFound) {
-                                System.out.println("❗No contact with such phone number!");
+                                System.out.println("❗No contact with such surname!");
                             }
 
                             break;
