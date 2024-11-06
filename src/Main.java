@@ -92,8 +92,26 @@ public class Main {
                             }
 
                             break;
-//                        case 3:
-//                            break;
+                        case 3:
+
+                            System.out.print("Enter address to search: ");
+                            String searchOfAddress = scanner.next();
+                            boolean contactOfAddressFound = false;
+
+                            for (String contact : contacts) {
+                                if (contact != null) {
+                                    String[] contactSplitted = contact.split(" ");
+                                    if (contactSplitted[9].startsWith(searchOfAddress)) {
+                                        System.out.println("🔍 Contact Found: " + contact);
+                                        contactOfAddressFound = true;
+                                    }
+                                }
+                            }
+                            if (!contactOfAddressFound) {
+                                System.out.println("❗No contact with such address!");
+                            }
+
+                            break;
 //                        case 4:
 //                            break;
                         default:
