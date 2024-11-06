@@ -112,11 +112,28 @@ public class Main {
                             }
 
                             break;
-//                        case 4:
-//                            break;
-                        default:
-                    }
+                        case 4:
+                            System.out.print("Enter phone number to search: ");
+                            String searchOfNumber = scanner.next();
+                            boolean contactOfNumberFound = false;
 
+                            for (String contact : contacts) {
+                                if (contact != null) {
+                                    String[] contactSplitted = contact.split(" ");
+                                    if (contactSplitted[12].startsWith(searchOfNumber)) {
+                                        System.out.println("🔍 Contact Found: " + contact);
+                                        contactOfNumberFound = true;
+                                    }
+                                }
+                            }
+                            if (!contactOfNumberFound) {
+                                System.out.println("❗No contact with such phone number!");
+                            }
+                            break;
+                        default:
+                            System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+                            break;
+                    }
 
                     break;
 
