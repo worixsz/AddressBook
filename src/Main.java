@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -36,37 +35,43 @@ public class Main {
                     String phone = scanner.next();
 
                     if (nextEmpty < contacts.length) {
-                        contacts[nextEmpty] = " | Name: " + name + " | Surname: " + surname + " | Address: " + address + " | Phone: " + phone;
+                        contacts[nextEmpty] = String.format(" | Name: %s | Surname: %s | Address: %s | Phone: %s", name, surname, address, phone);
                         nextEmpty++;
-                        System.out.println("Contact added successfully!\n");
+                        System.out.println("✅ Contact added successfully!\n");
                     } else {
-                        System.err.println("Memory full. Cannot add more contacts.\n");
+                        System.err.println("❗ Memory full. Cannot add more contacts.\n");
                     }
                     break;
 
                 case 2:
                     System.out.println("\n--- SEARCH CONTACT ---");
-                    System.out.print("Search Contact by phone: ");
+                    System.out.println("How would you like to search for a contact?");
+                    System.out.println("1. By Name");
+                    System.out.println("2. By Surname");
+                    System.out.println("3. By Address");
+                    System.out.println("4. By Phone");
+                    int enter = scanner.nextInt();
+                    System.out.print("Please enter the corresponding number (1-4): ");
+
+                    System.out.print("Enter phone number to search: ");
                     String search = scanner.next();
                     boolean contactFound = false;
+
                     for (String contact : contacts) {
-                        if (contact != null) {
-                            String[] contactSplitted = contact.split(" ");
-                            if (contactSplitted[9].startsWith(search)) {
-                                System.out.println("Contact Found: " + contact);
-                                contactFound = true;
-                            }
+                        if (contact != null && contact.contains(search)) {
+                            System.out.println("🔍 Contact Found: " + contact);
+                            contactFound = true;
                         }
                     }
                     if (!contactFound) {
-                        System.out.println("No contact with such phone number!");
+                        System.out.println("❌ No contact with such phone number!");
                     }
                     break;
 
                 case 3:
                     System.out.println("\n--- DELETE CONTACT ---");
                     if (nextEmpty == 0) {
-                        System.out.println("No contacts available to delete.\n");
+                        System.out.println("❌ No contacts available to delete.\n");
                     } else {
                         System.out.println("\n--- LIST OF ALL CONTACTS ---");
                         for (int i = 0; i < nextEmpty; i++) {
@@ -77,14 +82,14 @@ public class Main {
                         int index = scanner.nextInt() - 1;
 
                         if (index < 0 || index >= nextEmpty) {
-                            System.out.println("Invalid index. Please try again.\n");
+                            System.out.println("❌ Invalid index. Please try again.\n");
                         } else {
                             for (int i = index; i < nextEmpty - 1; i++) {
                                 contacts[i] = contacts[i + 1];
                             }
                             contacts[nextEmpty - 1] = null;
                             nextEmpty--;
-                            System.out.println("Contact deleted successfully.\n");
+                            System.out.println("🗑️ Contact deleted successfully.\n");
                         }
                     }
                     break;
@@ -92,7 +97,7 @@ public class Main {
                 case 4:
                     System.out.println("\n--- LIST OF ALL CONTACTS ---");
                     if (nextEmpty == 0) {
-                        System.out.println("No contacts available.\n");
+                        System.out.println("❌ No contacts available.\n");
                     } else {
                         for (int i = 0; i < nextEmpty; i++) {
                             System.out.println((i + 1) + ". " + contacts[i]);
@@ -101,15 +106,13 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("Exiting Contact Management System. Goodbye!");
+                    System.out.println("👋 Exiting Contact Management System. Goodbye!");
                     break;
 
                 default:
-                    System.err.println("Invalid command. Please select a number between 1 and 5.\n");
+                    System.err.println("❗ Invalid command. Please select a number between 1 and 5.\n");
                     break;
             }
         } while (command != 5);
     }
-
-
 }
