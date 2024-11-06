@@ -46,20 +46,20 @@ public class Main {
 
                 case 2:
                     System.out.println("\n--- SEARCH CONTACT ---");
-                    System.out.print("Enter search keyword (name, surname, address, or phone): ");
-                    String keyword = scanner.next();
-
-                    String[] result = Arrays.stream(contacts)
-                            .filter(line -> line != null && line.contains(keyword))
-                            .toArray(String[]::new);
-
-                    if (result.length == 0) {
-                        System.out.println("No contacts found for keyword: " + keyword + "\n");
-                    } else {
-                        System.out.println("Contacts found:");
-                        for (String line : result) {
-                            System.out.println("- " + line);
+                    System.out.print("Search Contact by phone: ");
+                    String search = scanner.next();
+                    boolean contactFound = false;
+                    for (String contact : contacts) {
+                        if (contact != null) {
+                            String[] contactSplitted = contact.split(" ");
+                            if (contactSplitted[9].startsWith(search)) {
+                                System.out.println("Contact Found: " + contact);
+                                contactFound = true;
+                            }
                         }
+                    }
+                    if (!contactFound) {
+                        System.out.println("No contact with such phone number!");
                     }
                     break;
 
@@ -110,4 +110,6 @@ public class Main {
             }
         } while (command != 5);
     }
+
+
 }
