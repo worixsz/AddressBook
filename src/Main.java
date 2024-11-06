@@ -73,9 +73,25 @@ public class Main {
                             }
 
                             break;
-//                        case 2:
+                        case 2:
+                            System.out.print("Enter surname to search: ");
+                            String searchOfSurname = scanner.next();
+                            boolean contactOfSurnameFound = false;
 
-//                            break;
+                            for (String contact : contacts) {
+                                if (contact != null) {
+                                    String[] contactSplitted = contact.split(" ");
+                                    if (contactSplitted[6].startsWith(searchOfSurname)) {
+                                        System.out.println("🔍 Contact Found: " + contact);
+                                        contactOfSurnameFound = true;
+                                    }
+                                }
+                            }
+                            if (!contactOfSurnameFound) {
+                                System.out.println("❗No contact with such phone number!");
+                            }
+
+                            break;
 //                        case 3:
 //                            break;
 //                        case 4:
