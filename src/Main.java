@@ -1,12 +1,11 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        run();
-    }
+    public static void main(String[] args) throws IOException {
 
-    public static void run() {
         Scanner scanner = new Scanner(System.in);
         String[] contacts = new String[3];
         int nextEmpty = 0;
@@ -37,7 +36,14 @@ public class Main {
                     if (nextEmpty < contacts.length) {
                         contacts[nextEmpty] = " | Name: " + name + " | Surname: " + surname + " | Address: " + address + " | Phone: " + phone;
                         nextEmpty++;
+                        FileWriter writer = new FileWriter("contact.txt", true);
+                        for (int i = 0; i < nextEmpty; i++) {
+                            writer.write(contacts[i] + "\n");
+                            writer.close();
+                        }
                         System.out.println("✅ Contact added successfully!\n");
+
+
                     } else {
                         System.err.println("❗Memory full. Cannot add more contacts.\n");
                     }
