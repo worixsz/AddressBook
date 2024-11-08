@@ -4,9 +4,13 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    static final String DELIMITER = "; ";
 
-        Scanner scanner = new Scanner(System.in);
+    static final Scanner SC = new Scanner(System.in);
+
+
+    public static void main(String[] args) throws IOException {
+        SearchActionMove searchAction = new SearchActionMove();
         String[] contacts = new String[3];
         int nextEmpty = 0;
         int command;
@@ -19,27 +23,28 @@ public class Main {
             System.out.println("4. List All Contacts");
             System.out.println("5. Exit");
             System.out.print("Choose an option: ");
-            command = scanner.nextInt();
+            command = SC.nextInt();
 
             switch (command) {
                 case 1:
                     System.out.println("\n--- CREATE NEW CONTACT ---");
                     System.out.print("Enter your name: ");
-                    String name = scanner.next();
+                    String name = SC.next();
                     System.out.print("Enter your surname: ");
-                    String surname = scanner.next();
+                    String surname = SC.next();
                     System.out.print("Enter your address: ");
-                    String address = scanner.next();
+                    String address = SC.next();
                     System.out.print("Enter your phone: ");
-                    String phone = scanner.next();
+                    String phone = SC.next();
 
                     if (nextEmpty < contacts.length) {
-                        contacts[nextEmpty] = " | Name: " + name + " | Surname: " + surname + " | Address: " + address + " | Phone: " + phone;
+                        contacts[nextEmpty] = name + DELIMITER + surname + DELIMITER + address + DELIMITER + phone;
                         nextEmpty++;
-                        FileWriter writer = new FileWriter("contact.txt", true);
                         for (int i = 0; i < nextEmpty; i++) {
-                            writer.write(contacts[i] + "\n");
-                            writer.close();
+                            FileWriter writerAdd = new FileWriter("contact.txt", true);
+                            writerAdd.write(contacts[i] + "\n");
+                            writerAdd.close();
+
                         }
                         System.out.println("✅ Contact added successfully!\n");
 
@@ -57,84 +62,29 @@ public class Main {
                     System.out.println("3. By Address");
                     System.out.println("4. By Phone");
                     System.out.print("Please enter the corresponding number (1-4): ");
-                    int enter = scanner.nextInt();
+                    int enter = SC.nextInt();
 
                     switch (enter) {
                         case 1:
                             System.out.print("Enter name to search: ");
-                            String searchOfName = scanner.next();
-                            boolean contactOfNameFound = false;
-
-                            for (String contact : contacts) {
-                                if (contact != null) {
-                                    String[] contactSplitted = contact.split(" ");
-                                    if (contactSplitted[3].startsWith(searchOfName)) {
-                                        System.out.println("🔍 Contact Found: " + contact);
-                                        contactOfNameFound = true;
-                                    }
-                                }
-                            }
-                            if (!contactOfNameFound) {
-                                System.out.println("❗No contact with such name!");
-                            }
-
+                            String searchOfName = SC.next();
+                            searchAction.findContactIndexByName(contacts, searchOfName);
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");
-                            String searchOfSurname = scanner.next();
-                            boolean contactOfSurnameFound = false;
-
-                            for (String contact : contacts) {
-                                if (contact != null) {
-                                    String[] contactSplitted = contact.split(" ");
-                                    if (contactSplitted[6].startsWith(searchOfSurname)) {
-                                        System.out.println("🔍 Contact Found: " + contact);
-                                        contactOfSurnameFound = true;
-                                    }
-                                }
-                            }
-                            if (!contactOfSurnameFound) {
-                                System.out.println("❗No contact with such surname!");
-                            }
-
+                            String searchOfSurname = SC.next();
+                            searchAction.findContactIndexBySurname(contacts, searchOfSurname);
                             break;
                         case 3:
 
                             System.out.print("Enter address to search: ");
-                            String searchOfAddress = scanner.next();
-                            boolean contactOfAddressFound = false;
-
-                            for (String contact : contacts) {
-                                if (contact != null) {
-                                    String[] contactSplitted = contact.split(" ");
-                                    if (contactSplitted[9].startsWith(searchOfAddress)) {
-                                        System.out.println("🔍 Contact Found: " + contact);
-                                        contactOfAddressFound = true;
-                                    }
-                                }
-                            }
-                            if (!contactOfAddressFound) {
-                                System.out.println("❗No contact with such address!");
-                            }
-
+                            String searchOfAddress = SC.next();
+                            searchAction.findContactIndexByAddress(contacts, searchOfAddress);
                             break;
                         case 4:
                             System.out.print("Enter phone number to search: ");
-                            String searchOfNumber = scanner.next();
-                            boolean contactOfNumberFound = false;
-
-                            for (String contact : contacts) {
-                                if (contact != null) {
-                                    String[] contactSplitted = contact.split(" ");
-                                    if (contactSplitted[12].startsWith(searchOfNumber)) {
-                                        System.out.println("🔍 Contact Found: " + contact);
-                                        contactOfNumberFound = true;
-                                    }
-                                }
-                            }
-                            if (!contactOfNumberFound) {
-                                System.out.println("❗No contact with such phone number!");
-                            }
+                            String searchOfNumber = SC.next();
+                            searchAction.findContactIndexByPhone(contacts, searchOfNumber);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
@@ -155,7 +105,7 @@ public class Main {
                         }
 
                         System.out.print("Enter the index of the contact to delete (1 to " + nextEmpty + "): ");
-                        int index = scanner.nextInt() - 1;
+                        int index = SC.nextInt() - 1;
 
                         if (index < 0 || index >= nextEmpty) {
                             System.out.println("❌ Invalid index. Please try again.\n");
