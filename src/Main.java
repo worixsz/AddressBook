@@ -110,14 +110,11 @@ public class Main {
                         contacts[nextEmpty - 1] = null;
                         nextEmpty--;
                         System.out.println("🗑️ Contact deleted successfully.\n");
-
                     }
                     break;
-
                 case 4:
                     actionMove.showContact(nextEmpty, contacts);
                     break;
-
                 case 5:
                     System.out.println("Update Contact");
                     System.out.println("Enter phone to search: ");
@@ -140,7 +137,7 @@ public class Main {
                     contacts[updateIndex] = newName + DELIMITER + newSurname + DELIMITER + newADDRESS + DELIMITER + newPhone;
                     System.out.println("Contact Updated!");
                     break;
-                case 56:
+                case 6:
                     System.out.println("👋 Exiting Contact Management System. Goodbye!");
                     break;
                 default:
