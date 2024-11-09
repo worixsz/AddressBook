@@ -70,26 +70,26 @@ public class Main {
                             System.out.print("Enter name to search: ");
 
                             String searchOfName = SC.next();
-                            int d = actionMove.findContactIndexByName(contacts, searchOfName);
-                            actionMove.checkContact(d, contacts);
+                            int indexByName = actionMove.findContactIndexByName(contacts, searchOfName);
+                            actionMove.checkContact(indexByName, contacts);
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");
                             String searchOfSurname = SC.next();
-                            int a = actionMove.findContactIndexBySurname(contacts, searchOfSurname);
-                            actionMove.checkContact(a, contacts);
+                            int indexBySurname = actionMove.findContactIndexBySurname(contacts, searchOfSurname);
+                            actionMove.checkContact(indexBySurname, contacts);
                             break;
                         case 3:
                             System.out.print("Enter address to search: ");
                             String searchOfAddress = SC.next();
-                            int b = actionMove.findContactIndexByAddress(contacts, searchOfAddress);
-                            actionMove.checkContact(b, contacts);
+                            int indexByAddress = actionMove.findContactIndexByAddress(contacts, searchOfAddress);
+                            actionMove.checkContact(indexByAddress, contacts);
                             break;
                         case 4:
                             System.out.print("Enter phone number to search: ");
                             String searchOfNumber = SC.next();
-                            int c = actionMove.findContactIndexByPhone(contacts, searchOfNumber);
-                            actionMove.checkContact(c, contacts);
+                            int indexByPhone = actionMove.findContactIndexByPhone(contacts, searchOfNumber);
+                            actionMove.checkContact(indexByPhone, contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");

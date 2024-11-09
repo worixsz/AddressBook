@@ -75,15 +75,11 @@ public class ContactActionMove implements ActionContact {
     }
 
     @Override
-    public boolean checkContact(int index, String[] contact) {
-
+    public void checkContact(int index, String[] contact) {
         if (index != -1) {
             System.out.println("🔍 Contact Found: " + contact[index]);
-            return true;
         } else {
             System.out.println("❗No contact with such data!");
-            return false;
-
         }
     }
 
