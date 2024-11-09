@@ -12,18 +12,12 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[0].equals(searchString)) {
-                    System.out.println("🔍 Contact Found: " + contact);
                     foundIndex = i;
                     break;
                 }
-            } else {
-                System.out.println("❗No contact with such surname!");
-                break;
             }
         }
-
         return foundIndex;
-
     }
 
     @Override
@@ -36,18 +30,12 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[1].equals(searchOfSurname)) {
-                    System.out.println("🔍 Contact Found: " + contact);
                     foundIndex = i;
                     break;
                 }
-            } else {
-                System.out.println("❗No contact with such surname!");
-                break;
             }
         }
-
         return foundIndex;
-
     }
 
     @Override
@@ -59,13 +47,9 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[2].equals(searchOfAddress)) {
-                    System.out.println("🔍 Contact Found: " + contact);
                     foundIndex = i;
                     break;
                 }
-            } else {
-                System.out.println("❗No contact with such address!");
-                break;
             }
         }
 
@@ -82,17 +66,25 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[3].equals(searchOfNumber)) {
-                    System.out.println("🔍 Contact Found: " + contact);
                     foundIndex = i;
                     break;
                 }
-            } else {
-                System.out.println("❗No contact with such phone number!");
-                break;
             }
         }
-
         return foundIndex;
-
     }
+
+    @Override
+    public boolean checkContact(int index, String[] contact) {
+
+        if (index != -1) {
+            System.out.println("🔍 Contact Found: " + contact[index]);
+            return true;
+        } else {
+            System.out.println("❗No contact with such data!");
+            return false;
+
+        }
+    }
+
 }

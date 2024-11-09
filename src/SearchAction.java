@@ -10,5 +10,7 @@ public interface SearchAction {
 
     public int findContactIndexByPhone(String[] contacts, String searchString);
 
+    public boolean checkContact(int index,String[] contact);
+
 
 }
