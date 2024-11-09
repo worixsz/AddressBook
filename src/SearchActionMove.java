@@ -4,80 +4,95 @@ public class SearchActionMove implements SearchAction {
 
 
     @Override
-    public void findContactIndexByName(String[] contacts, String searchName) {
-        boolean contactOfNameFound = false;
+    public int findContactIndexByName(String[] contacts, String searchString) {
+        int foundIndex = -1;
 
-        for (String contact : contacts) {
+        for (int i = 0; i < contacts.length; i++) {
+            String contact = contacts[i];
             if (contact != null) {
                 String[] contactSplitted = contact.split(DELIMITER);
-                if (contactSplitted[0].startsWith(searchName)) {
+                if (contactSplitted[0].equals(searchString)) {
                     System.out.println("🔍 Contact Found: " + contact);
-                    contactOfNameFound = true;
+                    foundIndex = i;
+                    break;
                 }
+            } else {
+                System.out.println("❗No contact with such surname!");
+                break;
             }
         }
-        if (!contactOfNameFound) {
-            System.out.println("❗No contact with such name!");
-        }
-    }
 
-    @Override
-    public void findContactIndexBySurname(String[] contacts, String searchOfSurname) {
-
-        boolean contactOfSurnameFound = false;
-
-        for (String contact : contacts) {
-            if (contact != null) {
-                String[] contactSplitted = contact.split(DELIMITER);
-                if (contactSplitted[1].startsWith(searchOfSurname)) {
-                    System.out.println("🔍 Contact Found: " + contact);
-                    contactOfSurnameFound = true;
-                }
-            }
-        }
-        if (!contactOfSurnameFound) {
-            System.out.println("❗No contact with such surname!");
-        }
+        return foundIndex;
 
     }
 
     @Override
-    public void findContactIndexByAddress(String[] contacts, String searchOfAddress) {
+    public int findContactIndexBySurname(String[] contacts, String searchOfSurname) {
 
-        boolean contactOfAddressFound = false;
+        int foundIndex = -1;
 
-        for (String contact : contacts) {
+        for (int i = 0; i < contacts.length; i++) {
+            String contact = contacts[i];
             if (contact != null) {
                 String[] contactSplitted = contact.split(DELIMITER);
-                if (contactSplitted[2].startsWith(searchOfAddress)) {
+                if (contactSplitted[1].equals(searchOfSurname)) {
                     System.out.println("🔍 Contact Found: " + contact);
-                    contactOfAddressFound = true;
+                    foundIndex = i;
+                    break;
                 }
+            } else {
+                System.out.println("❗No contact with such surname!");
+                break;
             }
         }
-        if (!contactOfAddressFound) {
-            System.out.println("❗No contact with such address!");
-        }
+
+        return foundIndex;
 
     }
 
     @Override
-    public void findContactIndexByPhone(String[] contacts, String searchOfNumber) {
+    public int findContactIndexByAddress(String[] contacts, String searchOfAddress) {
+        int foundIndex = -1;
 
-        boolean contactOfAddressFound = false;
-
-        for (String contact : contacts) {
+        for (int i = 0; i < contacts.length; i++) {
+            String contact = contacts[i];
             if (contact != null) {
                 String[] contactSplitted = contact.split(DELIMITER);
-                if (contactSplitted[3].startsWith(searchOfNumber)) {
+                if (contactSplitted[2].equals(searchOfAddress)) {
                     System.out.println("🔍 Contact Found: " + contact);
-                    contactOfAddressFound = true;
+                    foundIndex = i;
+                    break;
                 }
+            } else {
+                System.out.println("❗No contact with such address!");
+                break;
             }
         }
-        if (!contactOfAddressFound) {
-            System.out.println("❗No contact with such number!");
+
+        return foundIndex;
+    }
+
+    @Override
+    public int findContactIndexByPhone(String[] contacts, String searchOfNumber) {
+
+        int foundIndex = -1;
+
+        for (int i = 0; i < contacts.length; i++) {
+            String contact = contacts[i];
+            if (contact != null) {
+                String[] contactSplitted = contact.split(DELIMITER);
+                if (contactSplitted[3].equals(searchOfNumber)) {
+                    System.out.println("🔍 Contact Found: " + contact);
+                    foundIndex = i;
+                    break;
+                }
+            } else {
+                System.out.println("❗No contact with such phone number!");
+                break;
+            }
         }
+
+        return foundIndex;
 
     }
 }

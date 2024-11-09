@@ -34,7 +34,7 @@ public class Main {
                     String surname = SC.next();
                     System.out.print("Enter your address: ");
                     String address = SC.next();
-                    System.out.print("Enter your phone: ");
+                    System.out.print("Enter your phone number: ");
                     String phone = SC.next();
 
                     if (nextEmpty < contacts.length) {
@@ -60,7 +60,7 @@ public class Main {
                     System.out.println("1. By Name");
                     System.out.println("2. By Surname");
                     System.out.println("3. By Address");
-                    System.out.println("4. By Phone");
+                    System.out.println("4. By Phone number");
                     System.out.print("Please enter the corresponding number (1-4): ");
                     int enter = SC.nextInt();
 
