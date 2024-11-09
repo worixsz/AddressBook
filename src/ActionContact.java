@@ -1,4 +1,4 @@
-public interface SearchAction {
+public interface ActionContact {
 
     public int findContactIndexByName(String[] contacts, String searchString);
 
@@ -11,6 +11,8 @@ public interface SearchAction {
     public int findContactIndexByPhone(String[] contacts, String searchString);
 
     public boolean checkContact(int index,String[] contact);
+
+    public void showContact(int index, String[] contacts);
 
 
 }

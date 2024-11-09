@@ -1,4 +1,4 @@
-public class SearchActionMove implements SearchAction {
+public class ContactActionMove implements ActionContact {
 
     static final String DELIMITER = "; ";
 
@@ -84,6 +84,19 @@ public class SearchActionMove implements SearchAction {
             System.out.println("❗No contact with such data!");
             return false;
 
+        }
+    }
+
+    @Override
+    public void showContact(int index, String[] contacts) {
+        System.out.println("\n--- LIST OF ALL CONTACTS ---");
+        if (index == 0) {
+            System.out.println("❌ No contacts available.\n");
+        } else {
+            for (int i = 0; i < index; i++) {
+                System.out.println((i + 1) + ". " + contacts[i]);
+
+            }
         }
     }
 
