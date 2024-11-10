@@ -10,8 +10,9 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        ContactActionMove actionMove = new ContactActionMove();
-        String[] contacts = new String[3];
+        UpdateActionMove actionMove = new UpdateActionMove();
+        SearchActionMove searchMove = new SearchActionMove();
+        String[] contacts = new String[5];
         int nextEmpty = 0;
         int command;
 
@@ -69,25 +70,25 @@ public class Main {
                         case 1:
                             System.out.print("Enter name to search: ");
                             String searchOfName = SC.next();
-                            int indexByName = actionMove.findContactIndexByName(contacts, searchOfName);
+                            int indexByName = searchMove.searchContactIndexByName(contacts, searchOfName);
                             actionMove.checkContact(indexByName, contacts);
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");
                             String searchOfSurname = SC.next();
-                            int indexBySurname = actionMove.findContactIndexBySurname(contacts, searchOfSurname);
+                            int indexBySurname = searchMove.searchContactIndexBySurname(contacts, searchOfSurname);
                             actionMove.checkContact(indexBySurname, contacts);
                             break;
                         case 3:
                             System.out.print("Enter address to search: ");
                             String searchOfAddress = SC.next();
-                            int indexByAddress = actionMove.findContactIndexByAddress(contacts, searchOfAddress);
+                            int indexByAddress = searchMove.searchContactIndexByAddress(contacts, searchOfAddress);
                             actionMove.checkContact(indexByAddress, contacts);
                             break;
                         case 4:
                             System.out.print("Enter phone number to search: ");
                             String searchOfNumber = SC.next();
-                            int indexByPhone = actionMove.findContactIndexByPhone(contacts, searchOfNumber);
+                            int indexByPhone = searchMove.searchContactIndexByPhone(contacts, searchOfNumber);
                             actionMove.checkContact(indexByPhone, contacts);
                             break;
                         default:
@@ -125,7 +126,9 @@ public class Main {
                     int enterUpdate = SC.nextInt();
                     switch (enterUpdate) {
                         case 1:
-                            actionMove.updateContactIndexByName(nextEmpty, contacts);
+                            System.out.print("Enter name to search: ");
+                            String searchOfName = SC.next();
+                            actionMove.updateContactIndexByName(searchOfName, contacts);
                             break;
                         case 2:
                             actionMove.updateContactIndexBySurname(nextEmpty, contacts);
