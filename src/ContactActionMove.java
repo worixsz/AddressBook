@@ -73,12 +73,17 @@ public class ContactActionMove implements ActionContact {
 
 
     @Override
-    public void updateContactIndexByName(String index, String[] contacts) {
-
+    public void updateContactIndexByName(String indexOfContact, String[] contacts) {
         Scanner SC = new Scanner(System.in);
-        int updateIndex = findContactIndexByName(contacts, index);
+        int updateIndex = findContactIndexByName(contacts, indexOfContact);
+        updateIndex++;
+        checkContact(updateIndex, contacts);
+        System.out.print("Enter the index of the contact to update  (1 to" + updateIndex + "): \n");
+        int index = SC.nextInt() - 1;
+        for (int i = index; i < indexOfContact.length() - 1; i++) {
+            contacts[i] = contacts[i + 1];
+        }
         if (updateIndex != -1) {
-            checkContact(updateIndex, contacts);
             System.out.print("Enter the new name:");
             String newName = SC.next();
             System.out.print("Enter the new surname:");
@@ -87,7 +92,7 @@ public class ContactActionMove implements ActionContact {
             String newADDRESS = SC.next();
             System.out.print("Enter the new phone number:");
             String newPhone = SC.next();
-            contacts[updateIndex] = newName + DELIMITER + newSurname + DELIMITER + newADDRESS + DELIMITER + newPhone;
+            contacts[index] = newName + DELIMITER + newSurname + DELIMITER + newADDRESS + DELIMITER + newPhone;
             System.out.println("✅ Contact Updated!");
         } else {
             System.out.println("❗No contact with such name!");
@@ -176,6 +181,7 @@ public class ContactActionMove implements ActionContact {
 
             } else {
                 System.out.println("❗No contact with such data!");
+                break;
             }
         }
 

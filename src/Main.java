@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         ContactActionMove actionMove = new ContactActionMove();
-        String[] contacts = new String[3];
+        String[] contacts = new String[5];
         int nextEmpty = 0;
         int command;
 
