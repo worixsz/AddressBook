@@ -15,7 +15,6 @@ public class ContactActionMove implements ActionContact {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[0].equals(searchString)) {
                     foundIndex = i;
-                    break;
                 }
             }
         }
@@ -24,7 +23,6 @@ public class ContactActionMove implements ActionContact {
 
     @Override
     public int findContactIndexBySurname(String[] contacts, String searchOfSurname) {
-
         int foundIndex = -1;
 
         for (int i = 0; i < contacts.length; i++) {
@@ -33,7 +31,6 @@ public class ContactActionMove implements ActionContact {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[1].equals(searchOfSurname)) {
                     foundIndex = i;
-                    break;
                 }
             }
         }
@@ -50,7 +47,6 @@ public class ContactActionMove implements ActionContact {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[2].equals(searchOfAddress)) {
                     foundIndex = i;
-                    break;
                 }
             }
         }
@@ -69,34 +65,12 @@ public class ContactActionMove implements ActionContact {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[3].equals(searchOfNumber)) {
                     foundIndex = i;
-                    break;
                 }
             }
         }
         return foundIndex;
     }
 
-    @Override
-    public void checkContact(int index, String[] contact) {
-        if (index != -1) {
-            System.out.println("🔍 Contact Found: " + contact[index]);
-        } else {
-            System.out.println("❗No contact with such data!");
-        }
-    }
-
-    @Override
-    public void showContact(int index, String[] contacts) {
-        System.out.println("\n--- LIST OF ALL CONTACTS ---");
-        if (index == 0) {
-            System.out.println("❌ No contacts available.\n");
-        } else {
-            for (int i = 0; i < index; i++) {
-                System.out.println((i + 1) + ". " + contacts[i]);
-
-            }
-        }
-    }
 
     @Override
     public void updateContactIndexByName(int index, String[] contacts) {
@@ -115,11 +89,10 @@ public class ContactActionMove implements ActionContact {
             System.out.print("Enter the new phone number:");
             String newPhone = SC.next();
             contacts[updateIndex] = newName + DELIMITER + newSurname + DELIMITER + newADDRESS + DELIMITER + newPhone;
-            System.out.println("✅Contact Updated!");
+            System.out.println("✅ Contact Updated!");
         } else {
             System.out.println("❗No contact with such name!");
         }
-
     }
 
     @Override
@@ -129,7 +102,7 @@ public class ContactActionMove implements ActionContact {
         String updateBySurname = SC.next();
         int updateIndex = findContactIndexBySurname(contacts, updateBySurname);
         if (updateIndex != -1) {
-            System.out.println("🔍 Contact Found: " + contacts[updateIndex]);
+            checkContact(index, contacts);
             System.out.print("Enter the new name: ");
             String newName = SC.next();
             System.out.print("Enter the new surname: ");
@@ -139,7 +112,7 @@ public class ContactActionMove implements ActionContact {
             System.out.print("Enter the new phone number: ");
             String newPhone = SC.next();
             contacts[updateIndex] = newName + DELIMITER + newSurname + DELIMITER + newADDRESS + DELIMITER + newPhone;
-            System.out.println("✅Contact Updated!");
+            System.out.println("✅ Contact Updated!");
         } else {
             System.out.println("❗No contact with such name!");
         }
@@ -163,7 +136,7 @@ public class ContactActionMove implements ActionContact {
             System.out.print("Enter the new phone number:");
             String newPhone = SC.next();
             contacts[updateIndex] = newName + DELIMITER + newSurname + DELIMITER + newADDRESS + DELIMITER + newPhone;
-            System.out.println("✅Contact Updated!");
+            System.out.println("✅ Contact Updated!");
         } else {
             System.out.println("❗No contact with such name!");
         }
@@ -187,11 +160,39 @@ public class ContactActionMove implements ActionContact {
             System.out.print("Enter the new phone number:");
             String newPhone = SC.next();
             contacts[updateIndex] = newName + DELIMITER + newSurname + DELIMITER + newADDRESS + DELIMITER + newPhone;
-            System.out.println("✅Contact Updated!");
+            System.out.println("✅ Contact Updated!");
         } else {
             System.out.println("❗No contact with such name!");
         }
     }
 
+    @Override
+    public void checkContact(int index, String[] contact) {
+        for (String contacts : contact) {
+            if (contacts == null || contacts.trim().isEmpty()) {
+                continue;
+            }
+            if (index != -1) {
+                System.out.println("🔍 Contact Found: " + contacts);
 
+            } else {
+                System.out.println("❗No contact with such data!");
+            }
+        }
+
+
+    }
+
+    @Override
+    public void showContact(int index, String[] contacts) {
+        System.out.println("\n--- LIST OF ALL CONTACTS ---");
+        if (index == 0) {
+            System.out.println("❌ No contacts available.\n");
+        } else {
+            for (int i = 0; i < index; i++) {
+                System.out.println((i + 1) + ". " + contacts[i]);
+
+            }
+        }
+    }
 }
