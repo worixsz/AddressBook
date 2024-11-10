@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
-        CheckActionMove checkActionMove = new CheckActionMove();
+        CheckActionMove checkMove = new CheckActionMove();
         String[] contacts = new String[5];
         int nextEmpty = 0;
         int command;
@@ -68,21 +68,26 @@ public class Main {
                             System.out.print("Enter name to search: ");
                             String searchOfName = SC.next();
                             searchMove.searchContactByName(contacts, searchOfName);
+                            checkMove.checkContact(nextEmpty, contacts);
+
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");
                             String searchOfSurname = SC.next();
                             searchMove.searchContactBySurname(contacts, searchOfSurname);
+                            checkMove.checkContact(nextEmpty, contacts);
                             break;
                         case 3:
                             System.out.print("Enter address to search: ");
                             String searchOfAddress = SC.next();
                             searchMove.searchContactByAddress(contacts, searchOfAddress);
+                            checkMove.checkContact(nextEmpty, contacts);
                             break;
                         case 4:
                             System.out.print("Enter phone number to search: ");
                             String searchOfNumber = SC.next();
                             searchMove.searchContactByPhone(contacts, searchOfNumber);
+                            checkMove.checkContact(nextEmpty, contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
@@ -94,7 +99,7 @@ public class Main {
                     if (nextEmpty == 0) {
                         System.out.println("❌ No contacts available to delete.\n");
                     } else {
-                        checkActionMove.showContact(nextEmpty, contacts);
+                        checkMove.showContact(nextEmpty, contacts);
                         System.out.print("Enter the index of the contact to delete (1 to " + nextEmpty + "): ");
                         int index = SC.nextInt() - 1;
                         for (int i = index; i < nextEmpty - 1; i++) {
@@ -106,7 +111,7 @@ public class Main {
                     }
                     break;
                 case 4:
-                    checkActionMove.showContact(nextEmpty, contacts);
+                    checkMove.showContact(nextEmpty, contacts);
                     break;
                 case 5:
                     System.out.println("\n--- UPDATE CONTACT ---");

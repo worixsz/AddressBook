@@ -32,4 +32,16 @@ public class CheckActionMove implements CheckAction {
         }
         return index;
     }
+
+    @Override
+    public void checkContact(int index, String[] contacts) {
+        if (index >= 0 && index < contacts.length) {
+            String contact = contacts[index];
+            if (contact == null || contact.trim().isEmpty()) {
+                System.out.println("❗No contact with such data!");
+            }
+        }
+    }
+
+
 }
