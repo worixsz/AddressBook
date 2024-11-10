@@ -12,7 +12,7 @@ public interface ActionContact {
 
     void showContact(int index, String[] contacts);
 
-    int updateContactIndexByName(String index, String[] contacts);
+    void updateContactIndexByName(String index, String[] contacts);
 
     void updateContactIndexBySurname(int index, String[] contacts);
 

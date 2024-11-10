@@ -73,7 +73,7 @@ public class ContactActionMove implements ActionContact {
 
 
     @Override
-    public int updateContactIndexByName(String index, String[] contacts) {
+    public void updateContactIndexByName(String index, String[] contacts) {
 
         Scanner SC = new Scanner(System.in);
         int updateIndex = findContactIndexByName(contacts, index);
@@ -92,7 +92,6 @@ public class ContactActionMove implements ActionContact {
         } else {
             System.out.println("❗No contact with such name!");
         }
-        return updateIndex;
     }
 
     @Override
