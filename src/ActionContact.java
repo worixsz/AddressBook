@@ -1,18 +1,24 @@
 public interface ActionContact {
 
-    public int findContactIndexByName(String[] contacts, String searchString);
+    int findContactIndexByName(String[] contacts, String searchString);
 
+    int findContactIndexBySurname(String[] contacts, String searchString);
 
-    public int findContactIndexBySurname(String[] contacts, String searchString);
+    int findContactIndexByAddress(String[] contacts, String searchString);
 
+    int findContactIndexByPhone(String[] contacts, String searchString);
 
-    public int findContactIndexByAddress(String[] contacts, String searchString);
+    void checkContact(int index, String[] contact);
 
-    public int findContactIndexByPhone(String[] contacts, String searchString);
+    void showContact(int index, String[] contacts);
 
-    public boolean checkContact(int index,String[] contact);
+    void updateContactIndexByName(int index, String[] contacts);
 
-    public void showContact(int index, String[] contacts);
+    void updateContactIndexBySurname(int index, String[] contacts);
+
+    void updateContactIndexByAddress(int index, String[] contacts);
+
+    void updateContactIndexByPhone(int index, String[] contacts);
 
 
 }
