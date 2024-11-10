@@ -1,10 +1,4 @@
-public interface UpdateContact {
-
-
-
-    void checkContact(int index, String[] contact);
-
-    void showContact(int index, String[] contacts);
+public interface UpdateAction {
 
     void updateContactIndexByName(String index, String[] contacts);
 

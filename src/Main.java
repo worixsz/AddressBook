@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
+        CheckActionMove checkActionMove = new CheckActionMove();
         String[] contacts = new String[5];
         int nextEmpty = 0;
         int command;
@@ -71,25 +72,25 @@ public class Main {
                             System.out.print("Enter name to search: ");
                             String searchOfName = SC.next();
                             int indexByName = searchMove.searchContactIndexByName(contacts, searchOfName);
-                            actionMove.checkContact(indexByName, contacts);
+                            checkActionMove.checkContact(indexByName, contacts);
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");
                             String searchOfSurname = SC.next();
                             int indexBySurname = searchMove.searchContactIndexBySurname(contacts, searchOfSurname);
-                            actionMove.checkContact(indexBySurname, contacts);
+                            checkActionMove.checkContact(indexBySurname, contacts);
                             break;
                         case 3:
                             System.out.print("Enter address to search: ");
                             String searchOfAddress = SC.next();
                             int indexByAddress = searchMove.searchContactIndexByAddress(contacts, searchOfAddress);
-                            actionMove.checkContact(indexByAddress, contacts);
+                            checkActionMove.checkContact(indexByAddress, contacts);
                             break;
                         case 4:
                             System.out.print("Enter phone number to search: ");
                             String searchOfNumber = SC.next();
                             int indexByPhone = searchMove.searchContactIndexByPhone(contacts, searchOfNumber);
-                            actionMove.checkContact(indexByPhone, contacts);
+                            checkActionMove.checkContact(indexByPhone, contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
@@ -101,7 +102,7 @@ public class Main {
                     if (nextEmpty == 0) {
                         System.out.println("❌ No contacts available to delete.\n");
                     } else {
-                        actionMove.showContact(nextEmpty, contacts);
+                        checkActionMove.showContact(nextEmpty, contacts);
                         System.out.print("Enter the index of the contact to delete (1 to " + nextEmpty + "): ");
                         int index = SC.nextInt() - 1;
                         for (int i = index; i < nextEmpty - 1; i++) {
@@ -113,7 +114,7 @@ public class Main {
                     }
                     break;
                 case 4:
-                    actionMove.showContact(nextEmpty, contacts);
+                    checkActionMove.showContact(nextEmpty, contacts);
                     break;
                 case 5:
                     System.out.println("\n--- UPDATE CONTACT ---");
