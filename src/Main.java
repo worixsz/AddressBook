@@ -129,16 +129,16 @@ public class Main {
                         case 1:
                             System.out.print("Enter name to search: ");
                             String searchOfName = SC.next();
-                            actionMove.updateContactIndexByName(searchOfName, contacts);
+                            actionMove.updateContactByName(searchOfName, contacts);
                             break;
                         case 2:
-                            actionMove.updateContactIndexBySurname(nextEmpty, contacts);
+                            actionMove.updateContactBySurname(nextEmpty, contacts);
                             break;
                         case 3:
-                            actionMove.updateContactIndexByAddress(nextEmpty, contacts);
+                            actionMove.updateContactByAddress(nextEmpty, contacts);
                             break;
                         case 4:
-                            actionMove.updateContactIndexByPhone(nextEmpty, contacts);
+                            actionMove.updateContactByPhone(nextEmpty, contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");

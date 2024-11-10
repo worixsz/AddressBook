@@ -10,7 +10,7 @@ public class UpdateActionMove implements UpdateAction {
 
 
     @Override
-    public void updateContactIndexByName(String indexOfContact, String[] contacts) {
+    public void updateContactByName(String indexOfContact, String[] contacts) {
         Scanner SC = new Scanner(System.in);
         int updateIndex = search.searchContactByName(contacts, indexOfContact);
         if (updateIndex != -1) {
@@ -34,7 +34,7 @@ public class UpdateActionMove implements UpdateAction {
     }
 
     @Override
-    public void updateContactIndexBySurname(int index, String[] contacts) {
+    public void updateContactBySurname(int index, String[] contacts) {
         Scanner SC = new Scanner(System.in);
         System.out.print("Enter surname to search: ");
         String updateBySurname = SC.next();
@@ -58,7 +58,7 @@ public class UpdateActionMove implements UpdateAction {
     }
 
     @Override
-    public void updateContactIndexByAddress(int index, String[] contacts) {
+    public void updateContactByAddress(int index, String[] contacts) {
         Scanner SC = new Scanner(System.in);
         System.out.print("Enter address to search: ");
         String updateByAddress = SC.next();
@@ -82,7 +82,7 @@ public class UpdateActionMove implements UpdateAction {
     }
 
     @Override
-    public void updateContactIndexByPhone(int index, String[] contacts) {
+    public void updateContactByPhone(int index, String[] contacts) {
         Scanner SC = new Scanner(System.in);
         System.out.print("Enter phone number to search: ");
         String updateByPhone = SC.next();
