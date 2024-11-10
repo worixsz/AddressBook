@@ -12,7 +12,7 @@ public class UpdateActionMove implements UpdateAction {
     @Override
     public void updateContactIndexByName(String indexOfContact, String[] contacts) {
         Scanner SC = new Scanner(System.in);
-        int updateIndex = search.searchContactIndexByName(contacts, indexOfContact);
+        int updateIndex = search.searchContactByName(contacts, indexOfContact);
         if (updateIndex != -1) {
             updateIndex++;
             check.checkContact(updateIndex, contacts);
@@ -38,7 +38,7 @@ public class UpdateActionMove implements UpdateAction {
         Scanner SC = new Scanner(System.in);
         System.out.print("Enter surname to search: ");
         String updateBySurname = SC.next();
-        int updateIndex = search.searchContactIndexBySurname(contacts, updateBySurname);
+        int updateIndex = search.searchContactBySurname(contacts, updateBySurname);
         if (updateIndex != -1) {
             check.checkContact(index, contacts);
             System.out.print("Enter the new name: ");
@@ -62,7 +62,7 @@ public class UpdateActionMove implements UpdateAction {
         Scanner SC = new Scanner(System.in);
         System.out.print("Enter address to search: ");
         String updateByAddress = SC.next();
-        int updateIndex = search.searchContactIndexByAddress(contacts, updateByAddress);
+        int updateIndex = search.searchContactByAddress(contacts, updateByAddress);
         if (updateIndex != -1) {
             System.out.println("🔍 Contact Found: " + contacts[updateIndex]);
             System.out.print("Enter the new name:");
@@ -86,7 +86,7 @@ public class UpdateActionMove implements UpdateAction {
         Scanner SC = new Scanner(System.in);
         System.out.print("Enter phone number to search: ");
         String updateByPhone = SC.next();
-        int updateIndex = search.searchContactIndexByName(contacts, updateByPhone);
+        int updateIndex = search.searchContactByName(contacts, updateByPhone);
         if (updateIndex != -1) {
             System.out.println("🔍 Contact Found: " + contacts[updateIndex]);
             System.out.print("Enter the new name:");

@@ -71,25 +71,25 @@ public class Main {
                         case 1:
                             System.out.print("Enter name to search: ");
                             String searchOfName = SC.next();
-                            int indexByName = searchMove.searchContactIndexByName(contacts, searchOfName);
+                            int indexByName = searchMove.searchContactByName(contacts, searchOfName);
                             checkActionMove.checkContact(indexByName, contacts);
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");
                             String searchOfSurname = SC.next();
-                            int indexBySurname = searchMove.searchContactIndexBySurname(contacts, searchOfSurname);
+                            int indexBySurname = searchMove.searchContactBySurname(contacts, searchOfSurname);
                             checkActionMove.checkContact(indexBySurname, contacts);
                             break;
                         case 3:
                             System.out.print("Enter address to search: ");
                             String searchOfAddress = SC.next();
-                            int indexByAddress = searchMove.searchContactIndexByAddress(contacts, searchOfAddress);
+                            int indexByAddress = searchMove.searchContactByAddress(contacts, searchOfAddress);
                             checkActionMove.checkContact(indexByAddress, contacts);
                             break;
                         case 4:
                             System.out.print("Enter phone number to search: ");
                             String searchOfNumber = SC.next();
-                            int indexByPhone = searchMove.searchContactIndexByPhone(contacts, searchOfNumber);
+                            int indexByPhone = searchMove.searchContactByPhone(contacts, searchOfNumber);
                             checkActionMove.checkContact(indexByPhone, contacts);
                             break;
                         default:

@@ -1,10 +1,10 @@
 public interface SearchAction {
 
-    int searchContactIndexByName(String[] contacts, String searchString);
+    int searchContactByName(String[] contacts, String searchString);
 
-    int searchContactIndexBySurname(String[] contacts, String searchString);
+    int searchContactBySurname(String[] contacts, String searchString);
 
-    int searchContactIndexByAddress(String[] contacts, String searchString);
+    int searchContactByAddress(String[] contacts, String searchString);
 
-    int searchContactIndexByPhone(String[] contacts, String searchString);
+    int searchContactByPhone(String[] contacts, String searchString);
 }

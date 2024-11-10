@@ -4,7 +4,7 @@ public class SearchActionMove implements SearchAction {
 
 
     @Override
-    public int searchContactIndexByName(String[] contacts, String searchString) {
+    public int searchContactByName(String[] contacts, String searchString) {
         int foundIndex = -1;
 
         for (int i = 0; i < contacts.length; i++) {
@@ -21,7 +21,7 @@ public class SearchActionMove implements SearchAction {
     }
 
     @Override
-    public int searchContactIndexBySurname(String[] contacts, String searchOfSurname) {
+    public int searchContactBySurname(String[] contacts, String searchOfSurname) {
         int foundIndex = -1;
 
         for (int i = 0; i < contacts.length; i++) {
@@ -37,7 +37,7 @@ public class SearchActionMove implements SearchAction {
     }
 
     @Override
-    public int searchContactIndexByAddress(String[] contacts, String searchOfAddress) {
+    public int searchContactByAddress(String[] contacts, String searchOfAddress) {
         int foundIndex = -1;
 
         for (int i = 0; i < contacts.length; i++) {
@@ -54,7 +54,7 @@ public class SearchActionMove implements SearchAction {
     }
 
     @Override
-    public int searchContactIndexByPhone(String[] contacts, String searchOfNumber) {
+    public int searchContactByPhone(String[] contacts, String searchOfNumber) {
 
         int foundIndex = -1;
 
