@@ -1,5 +1,4 @@
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +8,7 @@ public class Main {
     static final Scanner SC = new Scanner(System.in);
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
         CheckActionMove checkActionMove = new CheckActionMove();
@@ -43,12 +42,6 @@ public class Main {
                     if (nextEmpty < contacts.length) {
                         contacts[nextEmpty] = name + DELIMITER + surname + DELIMITER + address + DELIMITER + phone;
                         nextEmpty++;
-                        for (int i = 0; i < nextEmpty; i++) {
-                            FileWriter writerAdd = new FileWriter("contact.txt", true);
-                            writerAdd.write(contacts[i] + "\n");
-                            writerAdd.close();
-
-                        }
                         System.out.println("✅ Contact added successfully!\n");
 
 
