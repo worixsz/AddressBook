@@ -1,3 +1,5 @@
+package interfaces;
+
 public interface SearchAction {
 
     int searchContactByName(String[] contacts, String searchString);

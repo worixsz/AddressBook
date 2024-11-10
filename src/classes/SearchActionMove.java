@@ -1,7 +1,13 @@
+package classes;
+
+import interfaces.SearchAction;
+
 public class SearchActionMove implements SearchAction {
 
     static final String DELIMITER = "; ";
 
+    public SearchActionMove() {
+    }
 
     @Override
     public int searchContactByName(String[] contacts, String searchString) {
@@ -13,6 +19,8 @@ public class SearchActionMove implements SearchAction {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[0].equals(searchString)) {
                     foundIndex = i;
+                    System.out.println("🔍 Contact Found: " + contact);
+
                 }
             }
         }
@@ -29,6 +37,7 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[1].equals(searchOfSurname)) {
+                    System.out.println("🔍 Contact Found: " + contacts[i]);
                     foundIndex = i;
                 }
             }
@@ -45,6 +54,7 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[2].equals(searchOfAddress)) {
+                    System.out.println("🔍 Contact Found: " + contacts[i]);
                     foundIndex = i;
                 }
             }
@@ -63,6 +73,7 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 String[] contactSplitted = contact.split(DELIMITER);
                 if (contactSplitted[3].equals(searchOfNumber)) {
+                    System.out.println("🔍 Contact Found: " + contacts[i]);
                     foundIndex = i;
                 }
             }

@@ -1,6 +1,6 @@
-public interface CheckAction {
+package interfaces;
 
-    void checkContact(int index, String[] contact);
+public interface CheckAction {
 
     void showContact(int index, String[] contacts);
 

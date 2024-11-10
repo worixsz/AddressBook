@@ -1,3 +1,6 @@
+import classes.CheckActionMove;
+import classes.SearchActionMove;
+import classes.UpdateActionMove;
 
 import java.util.Scanner;
 
@@ -8,7 +11,7 @@ public class Main {
     static final Scanner SC = new Scanner(System.in);
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
         CheckActionMove checkActionMove = new CheckActionMove();
@@ -64,26 +67,22 @@ public class Main {
                         case 1:
                             System.out.print("Enter name to search: ");
                             String searchOfName = SC.next();
-                            int indexByName = searchMove.searchContactByName(contacts, searchOfName);
-                            checkActionMove.checkContact(indexByName, contacts);
+                            searchMove.searchContactByName(contacts, searchOfName);
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");
                             String searchOfSurname = SC.next();
-                            int indexBySurname = searchMove.searchContactBySurname(contacts, searchOfSurname);
-                            checkActionMove.checkContact(indexBySurname, contacts);
+                            searchMove.searchContactBySurname(contacts, searchOfSurname);
                             break;
                         case 3:
                             System.out.print("Enter address to search: ");
                             String searchOfAddress = SC.next();
-                            int indexByAddress = searchMove.searchContactByAddress(contacts, searchOfAddress);
-                            checkActionMove.checkContact(indexByAddress, contacts);
+                            searchMove.searchContactByAddress(contacts, searchOfAddress);
                             break;
                         case 4:
                             System.out.print("Enter phone number to search: ");
                             String searchOfNumber = SC.next();
-                            int indexByPhone = searchMove.searchContactByPhone(contacts, searchOfNumber);
-                            checkActionMove.checkContact(indexByPhone, contacts);
+                            searchMove.searchContactByPhone(contacts, searchOfNumber);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
@@ -125,13 +124,19 @@ public class Main {
                             actionMove.updateContactByName(searchOfName, contacts);
                             break;
                         case 2:
-                            actionMove.updateContactBySurname(nextEmpty, contacts);
+                            System.out.print("Enter surname to search: ");
+                            String searchOfSurname = SC.next();
+                            actionMove.updateContactBySurname(searchOfSurname, contacts);
                             break;
                         case 3:
-                            actionMove.updateContactByAddress(nextEmpty, contacts);
+                            System.out.print("Enter address to search: ");
+                            String searchOfAddress = SC.next();
+                            actionMove.updateContactByAddress(searchOfAddress, contacts);
                             break;
                         case 4:
-                            actionMove.updateContactByPhone(nextEmpty, contacts);
+                            System.out.print("Enter phone number to search: ");
+                            String searchOfNumber = SC.next();
+                            actionMove.updateContactByPhone(searchOfNumber, contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");

@@ -1,22 +1,13 @@
+package classes;
+
+import interfaces.CheckAction;
+
 import java.util.Scanner;
 
 public class CheckActionMove implements CheckAction {
 
+    public CheckActionMove() {
 
-    @Override
-    public void checkContact(int index, String[] contact) {
-        for (String contacts : contact) {
-            if (contacts == null || contacts.trim().isEmpty()) {
-                continue;
-            }
-            if (index != -1) {
-                System.out.println("🔍 Contact Found: " + contacts);
-
-            } else {
-                System.out.println("❗No contact with such data!");
-                break;
-            }
-        }
     }
 
     @Override
