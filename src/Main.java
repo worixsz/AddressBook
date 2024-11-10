@@ -68,7 +68,6 @@ public class Main {
                     switch (enter) {
                         case 1:
                             System.out.print("Enter name to search: ");
-
                             String searchOfName = SC.next();
                             int indexByName = actionMove.findContactIndexByName(contacts, searchOfName);
                             actionMove.checkContact(indexByName, contacts);
@@ -116,26 +115,31 @@ public class Main {
                     actionMove.showContact(nextEmpty, contacts);
                     break;
                 case 5:
-                    System.out.println("Update Contact");
-                    System.out.println("Enter phone to search: ");
-                    String updatePhone = SC.next();
-                    int updateIndex = actionMove.findContactIndexByPhone(contacts, updatePhone);
-                    if (updateIndex != -1) {
-                        System.out.println("Found contact: " + contacts[updateIndex]);
-                    } else {
-                        System.out.println("No contact with such phone number!");
-                        break;
+                    System.out.println("\n--- UPDATE CONTACT ---");
+                    System.out.println("How would you like to search a contact for update?");
+                    System.out.println("1. By Name");
+                    System.out.println("2. By Surname");
+                    System.out.println("3. By Address");
+                    System.out.println("4. By Phone number");
+                    System.out.print("Please enter the corresponding number (1-4): ");
+                    int enterUpdate = SC.nextInt();
+                    switch (enterUpdate) {
+                        case 1:
+                            actionMove.updateContactIndexByName(nextEmpty, contacts);
+                            break;
+                        case 2:
+                            actionMove.updateContactIndexBySurname(nextEmpty, contacts);
+                            break;
+                        case 3:
+                            actionMove.updateContactIndexByAddress(nextEmpty, contacts);
+                            break;
+                        case 4:
+                            actionMove.updateContactIndexByPhone(nextEmpty, contacts);
+                            break;
+                        default:
+                            System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+                            break;
                     }
-                    System.out.print("Name:");
-                    String newName = SC.next();
-                    System.out.print("Surname");
-                    String newSurname = SC.next();
-                    System.out.print("ADDRESS");
-                    String newADDRESS = SC.next();
-                    System.out.print("Phone");
-                    String newPhone = SC.next();
-                    contacts[updateIndex] = newName + DELIMITER + newSurname + DELIMITER + newADDRESS + DELIMITER + newPhone;
-                    System.out.println("Contact Updated!");
                     break;
                 case 6:
                     System.out.println("👋 Exiting Contact Management System. Goodbye!");
