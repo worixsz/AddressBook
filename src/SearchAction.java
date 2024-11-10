@@ -1,2 +1,2 @@
-public class SearchAction {
+public interface SearchAction {
 }
