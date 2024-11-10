@@ -1,5 +1,7 @@
-import java.io.FileWriter;
-import java.io.IOException;
+import classes.CheckActionMove;
+import classes.SearchActionMove;
+import classes.UpdateActionMove;
+
 import java.util.Scanner;
 
 public class Main {
@@ -9,9 +11,10 @@ public class Main {
     static final Scanner SC = new Scanner(System.in);
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
+        CheckActionMove checkActionMove = new CheckActionMove();
         String[] contacts = new String[5];
         int nextEmpty = 0;
         int command;
@@ -42,12 +45,6 @@ public class Main {
                     if (nextEmpty < contacts.length) {
                         contacts[nextEmpty] = name + DELIMITER + surname + DELIMITER + address + DELIMITER + phone;
                         nextEmpty++;
-                        for (int i = 0; i < nextEmpty; i++) {
-                            FileWriter writerAdd = new FileWriter("contact.txt", true);
-                            writerAdd.write(contacts[i] + "\n");
-                            writerAdd.close();
-
-                        }
                         System.out.println("✅ Contact added successfully!\n");
 
 
@@ -70,26 +67,22 @@ public class Main {
                         case 1:
                             System.out.print("Enter name to search: ");
                             String searchOfName = SC.next();
-                            int indexByName = searchMove.searchContactIndexByName(contacts, searchOfName);
-                            actionMove.checkContact(indexByName, contacts);
+                            searchMove.searchContactByName(contacts, searchOfName);
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");
                             String searchOfSurname = SC.next();
-                            int indexBySurname = searchMove.searchContactIndexBySurname(contacts, searchOfSurname);
-                            actionMove.checkContact(indexBySurname, contacts);
+                            searchMove.searchContactBySurname(contacts, searchOfSurname);
                             break;
                         case 3:
                             System.out.print("Enter address to search: ");
                             String searchOfAddress = SC.next();
-                            int indexByAddress = searchMove.searchContactIndexByAddress(contacts, searchOfAddress);
-                            actionMove.checkContact(indexByAddress, contacts);
+                            searchMove.searchContactByAddress(contacts, searchOfAddress);
                             break;
                         case 4:
                             System.out.print("Enter phone number to search: ");
                             String searchOfNumber = SC.next();
-                            int indexByPhone = searchMove.searchContactIndexByPhone(contacts, searchOfNumber);
-                            actionMove.checkContact(indexByPhone, contacts);
+                            searchMove.searchContactByPhone(contacts, searchOfNumber);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
@@ -101,7 +94,7 @@ public class Main {
                     if (nextEmpty == 0) {
                         System.out.println("❌ No contacts available to delete.\n");
                     } else {
-                        actionMove.showContact(nextEmpty, contacts);
+                        checkActionMove.showContact(nextEmpty, contacts);
                         System.out.print("Enter the index of the contact to delete (1 to " + nextEmpty + "): ");
                         int index = SC.nextInt() - 1;
                         for (int i = index; i < nextEmpty - 1; i++) {
@@ -113,7 +106,7 @@ public class Main {
                     }
                     break;
                 case 4:
-                    actionMove.showContact(nextEmpty, contacts);
+                    checkActionMove.showContact(nextEmpty, contacts);
                     break;
                 case 5:
                     System.out.println("\n--- UPDATE CONTACT ---");
@@ -128,16 +121,22 @@ public class Main {
                         case 1:
                             System.out.print("Enter name to search: ");
                             String searchOfName = SC.next();
-                            actionMove.updateContactIndexByName(searchOfName, contacts);
+                            actionMove.updateContactByName(searchOfName, contacts);
                             break;
                         case 2:
-                            actionMove.updateContactIndexBySurname(nextEmpty, contacts);
+                            System.out.print("Enter surname to search: ");
+                            String searchOfSurname = SC.next();
+                            actionMove.updateContactBySurname(searchOfSurname, contacts);
                             break;
                         case 3:
-                            actionMove.updateContactIndexByAddress(nextEmpty, contacts);
+                            System.out.print("Enter address to search: ");
+                            String searchOfAddress = SC.next();
+                            actionMove.updateContactByAddress(searchOfAddress, contacts);
                             break;
                         case 4:
-                            actionMove.updateContactIndexByPhone(nextEmpty, contacts);
+                            System.out.print("Enter phone number to search: ");
+                            String searchOfNumber = SC.next();
+                            actionMove.updateContactByPhone(searchOfNumber, contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
