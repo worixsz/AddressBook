@@ -26,7 +26,7 @@ public class UpdateActionMove implements UpdateAction {
             int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
             updateContact(contacts, indexForSaving);
         } else {
-            System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+            System.out.println("❗No contact with such data!");
         }
 
     }
@@ -39,7 +39,7 @@ public class UpdateActionMove implements UpdateAction {
             int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
             updateContact(contacts, indexForSaving);
         } else {
-            System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+            System.out.println("❗No contact with such data!");
         }
 
     }
@@ -52,7 +52,7 @@ public class UpdateActionMove implements UpdateAction {
             int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
             updateContact(contacts, indexForSaving);
         } else {
-            System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+            System.out.println("❗No contact with such data!");
         }
 
     }
@@ -66,7 +66,7 @@ public class UpdateActionMove implements UpdateAction {
             int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
             updateContact(contacts, indexForSaving);
         } else {
-            System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+            System.out.println("❗No contact with such data!");
         }
     }
 
