@@ -125,7 +125,9 @@ public class Main {
                     int enterUpdate = SC.nextInt();
                     switch (enterUpdate) {
                         case 1:
-                            actionMove.updateContactIndexByName(nextEmpty, contacts);
+                            System.out.print("Enter name to search: ");
+                            String searchOfName = SC.next();
+                            actionMove.updateContactIndexByName(searchOfName, contacts);
                             break;
                         case 2:
                             actionMove.updateContactIndexBySurname(nextEmpty, contacts);
