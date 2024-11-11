@@ -3,6 +3,7 @@ package repository;
 import model.Contact;
 import service.UpdateAction;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UpdateActionMove implements UpdateAction {
@@ -18,7 +19,7 @@ public class UpdateActionMove implements UpdateAction {
 
 
     @Override
-    public void updateContactByName(String indexOfContact, Contact[] contacts) {
+    public void updateContactByName(String indexOfContact, List<Contact> contacts) {
         int updateIndex = search.searchContactByName(contacts, indexOfContact);
 
         if (updateIndex != -1) {
@@ -36,7 +37,7 @@ public class UpdateActionMove implements UpdateAction {
 
 
     @Override
-    public void updateContactBySurname(String indexOfContact, Contact[] contacts) {
+    public void updateContactBySurname(String indexOfContact, List<Contact> contacts) {
         int updateIndex = search.searchContactBySurname(contacts, indexOfContact);
 
         if (updateIndex != -1) {
@@ -54,7 +55,7 @@ public class UpdateActionMove implements UpdateAction {
 
 
     @Override
-    public void updateContactByAddress(String indexOfContact, Contact[] contacts) {
+    public void updateContactByAddress(String indexOfContact, List<Contact> contacts) {
         int updateIndex = search.searchContactByAddress(contacts, indexOfContact);
 
         if (updateIndex != -1) {
@@ -72,7 +73,7 @@ public class UpdateActionMove implements UpdateAction {
     }
 
     @Override
-    public void updateContactByPhone(String indexOfContact, Contact[] contacts) {
+    public void updateContactByPhone(String indexOfContact, List<Contact> contacts) {
         int updateIndex = search.searchContactByPhone(contacts, indexOfContact);
 
         if (updateIndex != -1) {
@@ -89,7 +90,7 @@ public class UpdateActionMove implements UpdateAction {
     }
 
     @Override
-    public void updateContact(Contact[] contacts, int indexForSave) {
+    public void updateContact(List<Contact> contacts, int indexForSave) {
         Scanner SC = new Scanner(System.in);
         System.out.print("Enter the new name:");
         String newName = SC.next();
@@ -99,7 +100,10 @@ public class UpdateActionMove implements UpdateAction {
         String newADDRESS = SC.next();
         System.out.print("Enter the new phone number:");
         String newPhone = SC.next();
-        contacts[indexForSave] = new Contact(newName, newSurname, newADDRESS, newPhone);
+
+        Contact contact = new Contact(newName, newSurname, newADDRESS, newPhone);
+        contacts.add(contact);
+
         System.out.println("✅ Contact Updated!");
     }
 
