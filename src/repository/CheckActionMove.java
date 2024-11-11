@@ -20,7 +20,6 @@ public class CheckActionMove implements CheckAction {
         if (contacts.isEmpty()) {
             System.out.println("❌ No contacts available.\n");
         } else {
-            // Перебираем весь список контактов
             for (int i = 0; i < contacts.size(); i++) {
                 System.out.println((i + 1) + ". " + contacts.get(i) + "\n");
             }
@@ -49,12 +48,16 @@ public class CheckActionMove implements CheckAction {
 
 
     @Override
-    public void checkContact(int index, List<Contact> contacts) {
-        if (index >= 0 && index < contacts.size()) {
-            Contact contact = contacts.get(index);
-            if (contact == null) {
-                System.out.println("❗No contact with such data!");
+    public void checkContact(String searchNameList, List<Contact> contacts) {
+        boolean found = false;
+        for (Contact contact : contacts) {
+            if (contact.getName().equalsIgnoreCase(searchNameList)) {
+                found = true;
+                break;
             }
+        }
+        if (!found) {
+            System.out.println("❌ No contact found with the name: " + searchNameList);
         }
     }
 

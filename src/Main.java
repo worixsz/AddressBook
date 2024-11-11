@@ -18,7 +18,6 @@ public class Main {
         DeleteActionMove deleteActionMove = new DeleteActionMove();
         CreateContactMove createMove = new CreateContactMove();
         List<Contact> contacts = new ArrayList<>();
-        int nextEmpty = 0;
         int command;
 
         do {
@@ -51,26 +50,26 @@ public class Main {
                             System.out.print("Enter name to search: ");
                             String searchOfName = SC.next();
                             searchMove.searchContactByName(contacts, searchOfName);
-                            checkMove.checkContact(nextEmpty, contacts);
+                            checkMove.checkContact(searchOfName, contacts);
 
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");
                             String searchOfSurname = SC.next();
                             searchMove.searchContactBySurname(contacts, searchOfSurname);
-                            checkMove.checkContact(nextEmpty, contacts);
+                            checkMove.checkContact(searchOfSurname, contacts);
                             break;
                         case 3:
                             System.out.print("Enter address to search: ");
                             String searchOfAddress = SC.next();
                             searchMove.searchContactByAddress(contacts, searchOfAddress);
-                            checkMove.checkContact(nextEmpty, contacts);
+                            checkMove.checkContact(searchOfAddress, contacts);
                             break;
                         case 4:
                             System.out.print("Enter phone number to search: ");
                             String searchOfNumber = SC.next();
                             searchMove.searchContactByPhone(contacts, searchOfNumber);
-                            checkMove.checkContact(nextEmpty, contacts);
+                            checkMove.checkContact(searchOfNumber, contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
