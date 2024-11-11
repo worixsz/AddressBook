@@ -1,23 +1,23 @@
-import repository.CheckActionMove;
-import repository.SearchActionMove;
-import repository.UpdateActionMove;
+import model.Contact;
+import repository.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
-    static final String DELIMITER = "; ";
 
     static final Scanner SC = new Scanner(System.in);
-
 
 
     public static void main(String[] args) {
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
         CheckActionMove checkMove = new CheckActionMove();
-        String[] contacts = new String[5];
-        int nextEmpty = 0;
+        DeleteActionMove deleteActionMove = new DeleteActionMove();
+        CreateContactMove createMove = new CreateContactMove();
+        List<Contact> contacts = new ArrayList<>();
         int command;
 
         do {
@@ -33,27 +33,8 @@ public class Main {
 
             switch (command) {
                 case 1:
-                    System.out.println("\n--- CREATE NEW CONTACT ---");
-                    System.out.print("Enter your name: ");
-                    String name = SC.next();
-                    System.out.print("Enter your surname: ");
-                    String surname = SC.next();
-                    System.out.print("Enter your address: ");
-                    String address = SC.next();
-                    System.out.print("Enter your phone number: ");
-                    String phone = SC.next();
-
-                    if (nextEmpty < contacts.length) {
-                        contacts[nextEmpty] = name + DELIMITER + surname + DELIMITER + address + DELIMITER + phone;
-                        nextEmpty++;
-                        System.out.println("✅ Contact added successfully!\n");
-
-
-                    } else {
-                        System.err.println("❗Memory full. Cannot add more contacts.\n");
-                    }
+                    createMove.createContact(contacts);
                     break;
-
                 case 2:
                     System.out.println("\n--- SEARCH CONTACT ---");
                     System.out.println("How would you like to search for a contact?");
@@ -69,26 +50,26 @@ public class Main {
                             System.out.print("Enter name to search: ");
                             String searchOfName = SC.next();
                             searchMove.searchContactByName(contacts, searchOfName);
-                            checkMove.checkContact(nextEmpty, contacts);
+                            checkMove.checkContact(searchOfName, contacts);
 
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");
                             String searchOfSurname = SC.next();
                             searchMove.searchContactBySurname(contacts, searchOfSurname);
-                            checkMove.checkContact(nextEmpty, contacts);
+                            checkMove.checkContact(searchOfSurname, contacts);
                             break;
                         case 3:
                             System.out.print("Enter address to search: ");
                             String searchOfAddress = SC.next();
                             searchMove.searchContactByAddress(contacts, searchOfAddress);
-                            checkMove.checkContact(nextEmpty, contacts);
+                            checkMove.checkContact(searchOfAddress, contacts);
                             break;
                         case 4:
                             System.out.print("Enter phone number to search: ");
                             String searchOfNumber = SC.next();
                             searchMove.searchContactByPhone(contacts, searchOfNumber);
-                            checkMove.checkContact(nextEmpty, contacts);
+                            checkMove.checkContact(searchOfNumber, contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
@@ -96,23 +77,10 @@ public class Main {
                     }
                     break;
                 case 3:
-                    System.out.println("\n--- DELETE CONTACT ---");
-                    if (nextEmpty == 0) {
-                        System.out.println("❌ No contacts available to delete.\n");
-                    } else {
-                        checkMove.showContact(nextEmpty, contacts);
-                        System.out.print("Enter the index of the contact to delete (1 to " + nextEmpty + "): ");
-                        int index = SC.nextInt() - 1;
-                        for (int i = index; i < nextEmpty - 1; i++) {
-                            contacts[i] = contacts[i + 1];
-                        }
-                        contacts[nextEmpty - 1] = null;
-                        nextEmpty--;
-                        System.out.println("🗑️ Contact deleted successfully.\n");
-                    }
+                    deleteActionMove.deleteContactByContact(contacts);
                     break;
                 case 4:
-                    checkMove.showContact(nextEmpty, contacts);
+                    checkMove.showContact(contacts);
                     break;
                 case 5:
                     System.out.println("\n--- UPDATE CONTACT ---");

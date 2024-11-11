@@ -1,55 +1,63 @@
 package repository;
 
+import model.Contact;
 import service.CheckAction;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CheckActionMove implements CheckAction {
-    static SearchActionMove searchActionMove = new SearchActionMove();
+
 
     public CheckActionMove() {
 
     }
 
     @Override
-    public void showContact(int index, String[] contacts) {
+    public void showContact(List<Contact> contacts) {
         System.out.println("\n--- LIST OF ALL CONTACTS ---");
-        if (index == 0) {
+
+        if (contacts.isEmpty()) {
             System.out.println("❌ No contacts available.\n");
         } else {
-            for (int i = 0; i < index; i++) {
-                System.out.println((i + 1) + ". " + contacts[i]);
-
+            for (int i = 0; i < contacts.size(); i++) {
+                System.out.println((i + 1) + ". " + contacts.get(i) + "\n");
             }
         }
     }
 
+
     @Override
-    public int checkLengthOfContact(String length, String[] contacts) {
-        int contactCount = contacts.length;
+    public int checkLengthOfContact(String length, List<Contact> contacts) {
+        int contactCount = contacts.size();
 
         Scanner SC = new Scanner(System.in);
         int index = -1;
 
         while (true) {
-            index = SC.nextInt();
+            index = SC.nextInt() - 1;
 
-            if (index >= 1 && index <= contactCount) {
-                return index - 1;
+            if (index >= 0 && index < contactCount) {
+                return index;
             } else {
                 System.out.println("❗ Invalid index. Please try again.");
+                System.out.print("Enter the index of the contact: ");
             }
         }
     }
 
 
     @Override
-    public void checkContact(int index, String[] contacts) {
-        if (index >= 0 && index < contacts.length) {
-            String contact = contacts[index];
-            if (contact == null || contact.trim().isEmpty()) {
-                System.out.println("❗No contact with such data!");
+    public void checkContact(String searchNameList, List<Contact> contacts) {
+        boolean found = false;
+        for (Contact contact : contacts) {
+            if (contact.getName().equalsIgnoreCase(searchNameList)) {
+                found = true;
+                break;
             }
+        }
+        if (!found) {
+            System.out.println("❌ No contact found with the name: " + searchNameList);
         }
     }
 
