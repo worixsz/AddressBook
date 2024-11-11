@@ -14,14 +14,15 @@ public class CheckActionMove implements CheckAction {
     }
 
     @Override
-    public void showContact(int index, List<Contact> contacts) {
+    public void showContact(List<Contact> contacts) {
         System.out.println("\n--- LIST OF ALL CONTACTS ---");
 
         if (contacts.isEmpty()) {
             System.out.println("❌ No contacts available.\n");
         } else {
-            for (int i = 0; i < index; i++) {
-                System.out.println((i + 1) + ". " + contacts.get(i));
+            // Перебираем весь список контактов
+            for (int i = 0; i < contacts.size(); i++) {
+                System.out.println((i + 1) + ". " + contacts.get(i) + "\n");
             }
         }
     }
@@ -45,7 +46,6 @@ public class CheckActionMove implements CheckAction {
             }
         }
     }
-
 
 
     @Override

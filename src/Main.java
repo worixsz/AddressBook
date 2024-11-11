@@ -1,8 +1,5 @@
 import model.Contact;
-import repository.CheckActionMove;
-import repository.DeleteActionMove;
-import repository.SearchActionMove;
-import repository.UpdateActionMove;
+import repository.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +16,7 @@ public class Main {
         SearchActionMove searchMove = new SearchActionMove();
         CheckActionMove checkMove = new CheckActionMove();
         DeleteActionMove deleteActionMove = new DeleteActionMove();
+        CreateContactMove createMove = new CreateContactMove();
         List<Contact> contacts = new ArrayList<>();
         int nextEmpty = 0;
         int command;
@@ -36,22 +34,8 @@ public class Main {
 
             switch (command) {
                 case 1:
-                    System.out.println("\n--- CREATE NEW CONTACT ---");
-                    System.out.print("Enter your name: ");
-                    String name = SC.next();
-                    System.out.print("Enter your surname: ");
-                    String surname = SC.next();
-                    System.out.print("Enter your address: ");
-                    String address = SC.next();
-                    System.out.print("Enter your phone number: ");
-                    String phone = SC.next();
-                    Contact c = new Contact(name, surname, address, phone);
-                    contacts.add(c);
-                    nextEmpty++;
-
-                    System.out.println("✅ Contact added successfully!\n");
+                    createMove.createContact(contacts);
                     break;
-
                 case 2:
                     System.out.println("\n--- SEARCH CONTACT ---");
                     System.out.println("How would you like to search for a contact?");
@@ -94,10 +78,10 @@ public class Main {
                     }
                     break;
                 case 3:
-                    deleteActionMove.deleteContactByContact(nextEmpty, contacts);
+                    deleteActionMove.deleteContactByContact(contacts);
                     break;
                 case 4:
-                    checkMove.showContact(nextEmpty, contacts);
+                    checkMove.showContact(contacts);
                     break;
                 case 5:
                     System.out.println("\n--- UPDATE CONTACT ---");

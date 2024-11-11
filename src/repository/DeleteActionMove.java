@@ -15,22 +15,29 @@ public class DeleteActionMove implements DeleteAction {
     }
 
     @Override
-    public void deleteContactByContact(int indexOF, List<Contact> contacts) {
+    public void deleteContactByContact(List<Contact> contacts) {
         Scanner SC = new Scanner(System.in);
         System.out.println("\n--- DELETE CONTACT ---");
-        if (indexOF == 0) {
+
+        if (contacts.isEmpty()) {
             System.out.println("❌ No contacts available to delete.\n");
         } else {
-            checkMove.showContact(indexOF, contacts);
-            System.out.print("Enter the indexOF of the contact to delete (1 to " + indexOF + "): ");
+            // Показываем все контакты
+            checkMove.showContact(contacts);
+
+            // Печатаем номер контакта для удаления
+            System.out.print("Enter the index of the contact to delete (1 to " + contacts.size() + "): ");
             int index = SC.nextInt() - 1;
-            if (index >= 0 && index < indexOF) {
+
+            // Проверяем, что введенный индекс действителен
+            if (index >= 0 && index < contacts.size()) {
+                // Удаляем контакт
                 contacts.remove(index);
-                indexOF--;
                 System.out.println("🗑️ Contact deleted successfully.\n");
             } else {
-                System.err.println("❗ Invalid indexOF. Please enter a valid indexOF between 1 and " + indexOF + ".\n");
+                System.err.println("❗ Invalid index. Please enter a valid index between 1 and " + contacts.size() + ".\n");
             }
         }
     }
+
 }

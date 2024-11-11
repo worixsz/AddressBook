@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CheckAction {
 
-    void showContact(int index, List<Contact> contacts);
+    void showContact(List<Contact> contacts);
 
     int checkLengthOfContact(String length, List<Contact> contacts);
 
