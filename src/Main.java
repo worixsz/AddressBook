@@ -1,5 +1,6 @@
 import model.Contact;
 import repository.CheckActionMove;
+import repository.DeleteActionMove;
 import repository.SearchActionMove;
 import repository.UpdateActionMove;
 
@@ -17,6 +18,7 @@ public class Main {
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
         CheckActionMove checkMove = new CheckActionMove();
+        DeleteActionMove deleteActionMove = new DeleteActionMove();
         List<Contact> contacts = new ArrayList<>();
         int nextEmpty = 0;
         int command;
@@ -44,17 +46,12 @@ public class Main {
                     System.out.print("Enter your phone number: ");
                     String phone = SC.next();
 
-                    if (nextEmpty < contacts.size()) {
-                        Contact contact = new Contact(name, surname, address, phone);
-                        contacts.add(contact);
-                        new Contact(name, surname, address, phone);
-                        nextEmpty++;
-                        System.out.println("✅ Contact added successfully!\n");
+                    Contact c = new Contact(name, surname, address, phone);
+                    contacts.add(c);
 
+                    nextEmpty++;
 
-                    } else {
-                        System.err.println("❗Memory full. Cannot add more contacts.\n");
-                    }
+                    System.out.println("✅ Contact added successfully!\n");
                     break;
 
                 case 2:
@@ -99,23 +96,8 @@ public class Main {
                     }
                     break;
                 case 3:
-                    System.out.println("\n--- DELETE CONTACT ---");
-                    if (nextEmpty == 0) {
-                        System.out.println("❌ No contacts available to delete.\n");
-                    } else {
-                        checkMove.showContact(nextEmpty, contacts);
-                        System.out.print("Enter the index of the contact to delete (1 to " + nextEmpty + "): ");
-                        int index = SC.nextInt() - 1;
-                        if (index >= 0 && index < nextEmpty) {
-                            contacts.remove(index);
-                            nextEmpty--;
-                            System.out.println("🗑️ Contact deleted successfully.\n");
-                        } else {
-                            System.err.println("❗ Invalid index. Please enter a valid index between 1 and " + nextEmpty + ".\n");
-                        }
-                    }
+                    deleteActionMove.deleteContactByContact(nextEmpty, contacts);
                     break;
-
                 case 4:
                     checkMove.showContact(nextEmpty, contacts);
                     break;
