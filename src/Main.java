@@ -1,3 +1,4 @@
+import model.Contact;
 import repository.CheckActionMove;
 import repository.SearchActionMove;
 import repository.UpdateActionMove;
@@ -11,12 +12,11 @@ public class Main {
     static final Scanner SC = new Scanner(System.in);
 
 
-
     public static void main(String[] args) {
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
         CheckActionMove checkMove = new CheckActionMove();
-        String[] contacts = new String[5];
+        Contact[] contacts = new Contact[5];
         int nextEmpty = 0;
         int command;
 
@@ -44,7 +44,7 @@ public class Main {
                     String phone = SC.next();
 
                     if (nextEmpty < contacts.length) {
-                        contacts[nextEmpty] = name + DELIMITER + surname + DELIMITER + address + DELIMITER + phone;
+                        contacts[nextEmpty] = new Contact(name, surname, address, phone);
                         nextEmpty++;
                         System.out.println("✅ Contact added successfully!\n");
 

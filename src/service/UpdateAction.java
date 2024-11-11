@@ -1,16 +1,18 @@
 package service;
 
+import model.Contact;
+
 public interface UpdateAction {
 
-    void updateContactByName(String indexOfContact, String[] contacts);
+    void updateContactByName(String indexOfContact, Contact[] contacts);
 
-    void updateContactBySurname(String indexOfContact, String[] contacts);
+    void updateContactBySurname(String indexOfContact, Contact[] contacts);
 
-    void updateContactByAddress(String indexOfContact, String[] contacts);
+    void updateContactByAddress(String indexOfContact, Contact[] contacts);
 
-    void updateContactByPhone(String indexOfContact, String[] contacts);
+    void updateContactByPhone(String indexOfContact, Contact[] contacts);
 
-    void updateContact(String[] contacts, int indexForSave);
+    void updateContact(Contact[] contacts, int indexForSave);
 
 
 }

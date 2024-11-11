@@ -1,12 +1,11 @@
 package repository;
 
+import model.Contact;
 import service.UpdateAction;
 
 import java.util.Scanner;
 
 public class UpdateActionMove implements UpdateAction {
-
-    static final String DELIMITER = "; ";
 
     public UpdateActionMove() {
         search = new SearchActionMove();
@@ -19,7 +18,7 @@ public class UpdateActionMove implements UpdateAction {
 
 
     @Override
-    public void updateContactByName(String indexOfContact, String[] contacts) {
+    public void updateContactByName(String indexOfContact, Contact[] contacts) {
         int updateIndex = search.searchContactByName(contacts, indexOfContact);
 
         if (updateIndex != -1) {
@@ -37,7 +36,7 @@ public class UpdateActionMove implements UpdateAction {
 
 
     @Override
-    public void updateContactBySurname(String indexOfContact, String[] contacts) {
+    public void updateContactBySurname(String indexOfContact, Contact[] contacts) {
         int updateIndex = search.searchContactBySurname(contacts, indexOfContact);
 
         if (updateIndex != -1) {
@@ -55,7 +54,7 @@ public class UpdateActionMove implements UpdateAction {
 
 
     @Override
-    public void updateContactByAddress(String indexOfContact, String[] contacts) {
+    public void updateContactByAddress(String indexOfContact, Contact[] contacts) {
         int updateIndex = search.searchContactByAddress(contacts, indexOfContact);
 
         if (updateIndex != -1) {
@@ -73,7 +72,7 @@ public class UpdateActionMove implements UpdateAction {
     }
 
     @Override
-    public void updateContactByPhone(String indexOfContact, String[] contacts) {
+    public void updateContactByPhone(String indexOfContact, Contact[] contacts) {
         int updateIndex = search.searchContactByPhone(contacts, indexOfContact);
 
         if (updateIndex != -1) {
@@ -90,7 +89,7 @@ public class UpdateActionMove implements UpdateAction {
     }
 
     @Override
-    public void updateContact(String[] contacts, int indexForSave) {
+    public void updateContact(Contact[] contacts, int indexForSave) {
         Scanner SC = new Scanner(System.in);
         System.out.print("Enter the new name:");
         String newName = SC.next();
@@ -100,7 +99,7 @@ public class UpdateActionMove implements UpdateAction {
         String newADDRESS = SC.next();
         System.out.print("Enter the new phone number:");
         String newPhone = SC.next();
-        contacts[indexForSave] = newName + DELIMITER + newSurname + DELIMITER + newADDRESS + DELIMITER + newPhone;
+        contacts[indexForSave] = new Contact(newName, newSurname, newADDRESS, newPhone);
         System.out.println("✅ Contact Updated!");
     }
 

@@ -1,18 +1,19 @@
 package repository;
 
+import model.Contact;
 import service.CheckAction;
 
 import java.util.Scanner;
 
 public class CheckActionMove implements CheckAction {
-    static SearchActionMove searchActionMove = new SearchActionMove();
+
 
     public CheckActionMove() {
 
     }
 
     @Override
-    public void showContact(int index, String[] contacts) {
+    public void showContact(int index, Contact[] contacts) {
         System.out.println("\n--- LIST OF ALL CONTACTS ---");
         if (index == 0) {
             System.out.println("❌ No contacts available.\n");
@@ -25,7 +26,7 @@ public class CheckActionMove implements CheckAction {
     }
 
     @Override
-    public int checkLengthOfContact(String length, String[] contacts) {
+    public int checkLengthOfContact(String length, Contact[] contacts) {
         int contactCount = contacts.length;
 
         Scanner SC = new Scanner(System.in);
@@ -44,10 +45,10 @@ public class CheckActionMove implements CheckAction {
 
 
     @Override
-    public void checkContact(int index, String[] contacts) {
+    public void checkContact(int index, Contact[] contacts) {
         if (index >= 0 && index < contacts.length) {
-            String contact = contacts[index];
-            if (contact == null || contact.trim().isEmpty()) {
+            Contact contact = contacts[index];
+            if (contact == null) {
                 System.out.println("❗No contact with such data!");
             }
         }
