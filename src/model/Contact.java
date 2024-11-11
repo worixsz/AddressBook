@@ -1,5 +1,4 @@
 package model;
-
 public class Contact {
 
     private String name;
@@ -49,11 +48,9 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Contact{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+        return String.format(" %-8s | %-8s | %-8s | %-8s ",
+                name, surname, address, phone);
     }
+
+
 }
