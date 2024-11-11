@@ -11,6 +11,7 @@ public class Main {
     static final Scanner SC = new Scanner(System.in);
 
 
+
     public static void main(String[] args) {
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
