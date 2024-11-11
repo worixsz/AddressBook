@@ -16,15 +16,16 @@ public class CheckActionMove implements CheckAction {
     @Override
     public void showContact(int index, List<Contact> contacts) {
         System.out.println("\n--- LIST OF ALL CONTACTS ---");
-        if (index == 0) {
+
+        if (contacts.isEmpty()) {
             System.out.println("❌ No contacts available.\n");
         } else {
             for (int i = 0; i < index; i++) {
-                System.out.println((i + 1) + ". " + contacts.get(index));
-
+                System.out.println((i + 1) + ". " + contacts.get(i));
             }
         }
     }
+
 
     @Override
     public int checkLengthOfContact(String length, List<Contact> contacts) {
@@ -34,16 +35,17 @@ public class CheckActionMove implements CheckAction {
         int index = -1;
 
         while (true) {
-            index = SC.nextInt();
+            index = SC.nextInt() - 1;
 
-            if (index >= 1 && index <= contactCount) {
-                return index - 1;
+            if (index >= 0 && index < contactCount) {
+                return index;
             } else {
                 System.out.println("❗ Invalid index. Please try again.");
-                System.out.print("Enter the index of the contact to update: ");
+                System.out.print("Enter the index of the contact: ");
             }
         }
     }
+
 
 
     @Override

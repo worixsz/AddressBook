@@ -8,14 +8,14 @@ import java.util.Scanner;
 
 public class UpdateActionMove implements UpdateAction {
 
+    private final SearchActionMove search;
+
+    private final CheckActionMove check;
+
     public UpdateActionMove() {
         search = new SearchActionMove();
         check = new CheckActionMove();
     }
-
-    static SearchActionMove search;
-
-    static CheckActionMove check;
 
 
     @Override
@@ -92,17 +92,21 @@ public class UpdateActionMove implements UpdateAction {
     @Override
     public void updateContact(List<Contact> contacts, int indexForSave) {
         Scanner SC = new Scanner(System.in);
-        System.out.print("Enter the new name:");
+
+        Contact contactToUpdate = contacts.get(indexForSave);
+        System.out.print("Enter the new name: ");
         String newName = SC.next();
-        System.out.print("Enter the new surname:");
+        System.out.print("Enter the new surname: ");
         String newSurname = SC.next();
-        System.out.print("Enter the new address:");
-        String newADDRESS = SC.next();
-        System.out.print("Enter the new phone number:");
+        System.out.print("Enter the new address: ");
+        String newAddress = SC.next();
+        System.out.print("Enter the new phone number: ");
         String newPhone = SC.next();
 
-        Contact contact = new Contact(newName, newSurname, newADDRESS, newPhone);
-        contacts.add(contact);
+        contactToUpdate.setName(newName);
+        contactToUpdate.setSurname(newSurname);
+        contactToUpdate.setAddress(newAddress);
+        contactToUpdate.setPhone(newPhone);
 
         System.out.println("✅ Contact Updated!");
     }

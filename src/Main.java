@@ -45,10 +45,8 @@ public class Main {
                     String address = SC.next();
                     System.out.print("Enter your phone number: ");
                     String phone = SC.next();
-
                     Contact c = new Contact(name, surname, address, phone);
                     contacts.add(c);
-
                     nextEmpty++;
 
                     System.out.println("✅ Contact added successfully!\n");
