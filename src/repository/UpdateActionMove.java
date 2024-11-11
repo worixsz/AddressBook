@@ -1,6 +1,6 @@
-package classes;
+package repository;
 
-import interfaces.UpdateAction;
+import service.UpdateAction;
 
 import java.util.Scanner;
 
@@ -21,36 +21,51 @@ public class UpdateActionMove implements UpdateAction {
     @Override
     public void updateContactByName(String indexOfContact, String[] contacts) {
         int updateIndex = search.searchContactByName(contacts, indexOfContact);
+
         if (updateIndex != -1) {
-            System.out.print("Enter the index of the contact to update\n");
+            System.out.print("Enter the index of the contact to update: ");
             int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
-            updateContact(contacts, indexForSaving);
+            if (indexForSaving == updateIndex) {
+                updateContact(contacts, indexForSaving);
+            } else {
+                System.out.println("❗No contact with such data!");
+            }
         } else {
             System.out.println("❗No contact with such data!");
         }
-
     }
+
 
     @Override
     public void updateContactBySurname(String indexOfContact, String[] contacts) {
         int updateIndex = search.searchContactBySurname(contacts, indexOfContact);
+
         if (updateIndex != -1) {
-            System.out.print("Enter the index of the contact to update\n");
+            System.out.print("Enter the index of the contact to update: ");
             int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
-            updateContact(contacts, indexForSaving);
+            if (indexForSaving == updateIndex) {
+                updateContact(contacts, indexForSaving);
+            } else {
+                System.out.println("❗No contact with such data!");
+            }
         } else {
             System.out.println("❗No contact with such data!");
         }
-
     }
+
 
     @Override
     public void updateContactByAddress(String indexOfContact, String[] contacts) {
         int updateIndex = search.searchContactByAddress(contacts, indexOfContact);
+
         if (updateIndex != -1) {
-            System.out.print("Enter the index of the contact to update\n");
+            System.out.print("Enter the index of the contact to update: ");
             int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
-            updateContact(contacts, indexForSaving);
+            if (indexForSaving == updateIndex) {
+                updateContact(contacts, indexForSaving);
+            } else {
+                System.out.println("❗No contact with such data!");
+            }
         } else {
             System.out.println("❗No contact with such data!");
         }
@@ -59,12 +74,16 @@ public class UpdateActionMove implements UpdateAction {
 
     @Override
     public void updateContactByPhone(String indexOfContact, String[] contacts) {
-
         int updateIndex = search.searchContactByPhone(contacts, indexOfContact);
+
         if (updateIndex != -1) {
-            System.out.print("Enter the index of the contact to update\n");
+            System.out.print("Enter the index of the contact to update: ");
             int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
-            updateContact(contacts, indexForSaving);
+            if (indexForSaving == updateIndex) {
+                updateContact(contacts, indexForSaving);
+            } else {
+                System.out.println("❗No contact with such data!");
+            }
         } else {
             System.out.println("❗No contact with such data!");
         }

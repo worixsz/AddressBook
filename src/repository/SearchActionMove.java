@@ -1,6 +1,6 @@
-package classes;
+package repository;
 
-import interfaces.SearchAction;
+import service.SearchAction;
 
 public class SearchActionMove implements SearchAction {
 

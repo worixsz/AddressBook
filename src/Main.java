@@ -1,6 +1,6 @@
-import classes.CheckActionMove;
-import classes.SearchActionMove;
-import classes.UpdateActionMove;
+import repository.CheckActionMove;
+import repository.SearchActionMove;
+import repository.UpdateActionMove;
 
 import java.util.Scanner;
 

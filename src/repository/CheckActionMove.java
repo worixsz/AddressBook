@@ -1,10 +1,11 @@
-package classes;
+package repository;
 
-import interfaces.CheckAction;
+import service.CheckAction;
 
 import java.util.Scanner;
 
 public class CheckActionMove implements CheckAction {
+    static SearchActionMove searchActionMove = new SearchActionMove();
 
     public CheckActionMove() {
 
@@ -25,13 +26,22 @@ public class CheckActionMove implements CheckAction {
 
     @Override
     public int checkLengthOfContact(String length, String[] contacts) {
+        int contactCount = contacts.length;
+
         Scanner SC = new Scanner(System.in);
-        int index = SC.nextInt() - 1;
-        for (int i = index; i < length.length() - 1; i++) {
-            contacts[i] = contacts[i + 1];
+        int index = -1;
+
+        while (true) {
+            index = SC.nextInt();
+
+            if (index >= 1 && index <= contactCount) {
+                return index - 1;
+            } else {
+                System.out.println("❗ Invalid index. Please try again.");
+            }
         }
-        return index;
     }
+
 
     @Override
     public void checkContact(int index, String[] contacts) {
