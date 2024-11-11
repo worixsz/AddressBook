@@ -3,11 +3,12 @@ import repository.CheckActionMove;
 import repository.SearchActionMove;
 import repository.UpdateActionMove;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
-    static final String DELIMITER = "; ";
 
     static final Scanner SC = new Scanner(System.in);
 
@@ -16,7 +17,7 @@ public class Main {
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
         CheckActionMove checkMove = new CheckActionMove();
-        Contact[] contacts = new Contact[5];
+        List<Contact> contacts = new ArrayList<>();
         int nextEmpty = 0;
         int command;
 
@@ -43,8 +44,10 @@ public class Main {
                     System.out.print("Enter your phone number: ");
                     String phone = SC.next();
 
-                    if (nextEmpty < contacts.length) {
-                        contacts[nextEmpty] = new Contact(name, surname, address, phone);
+                    if (nextEmpty < contacts.size()) {
+                        Contact contact = new Contact(name, surname, address, phone);
+                        contacts.add(contact);
+                        new Contact(name, surname, address, phone);
                         nextEmpty++;
                         System.out.println("✅ Contact added successfully!\n");
 
@@ -103,14 +106,16 @@ public class Main {
                         checkMove.showContact(nextEmpty, contacts);
                         System.out.print("Enter the index of the contact to delete (1 to " + nextEmpty + "): ");
                         int index = SC.nextInt() - 1;
-                        for (int i = index; i < nextEmpty - 1; i++) {
-                            contacts[i] = contacts[i + 1];
+                        if (index >= 0 && index < nextEmpty) {
+                            contacts.remove(index);
+                            nextEmpty--;
+                            System.out.println("🗑️ Contact deleted successfully.\n");
+                        } else {
+                            System.err.println("❗ Invalid index. Please enter a valid index between 1 and " + nextEmpty + ".\n");
                         }
-                        contacts[nextEmpty - 1] = null;
-                        nextEmpty--;
-                        System.out.println("🗑️ Contact deleted successfully.\n");
                     }
                     break;
+
                 case 4:
                     checkMove.showContact(nextEmpty, contacts);
                     break;
