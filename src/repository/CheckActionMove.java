@@ -3,6 +3,7 @@ package repository;
 import model.Contact;
 import service.CheckAction;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CheckActionMove implements CheckAction {
@@ -13,21 +14,21 @@ public class CheckActionMove implements CheckAction {
     }
 
     @Override
-    public void showContact(int index, Contact[] contacts) {
+    public void showContact(int index, List<Contact> contacts) {
         System.out.println("\n--- LIST OF ALL CONTACTS ---");
         if (index == 0) {
             System.out.println("❌ No contacts available.\n");
         } else {
             for (int i = 0; i < index; i++) {
-                System.out.println((i + 1) + ". " + contacts[i]);
+                System.out.println((i + 1) + ". " + contacts.get(index));
 
             }
         }
     }
 
     @Override
-    public int checkLengthOfContact(String length, Contact[] contacts) {
-        int contactCount = contacts.length;
+    public int checkLengthOfContact(String length, List<Contact> contacts) {
+        int contactCount = contacts.size();
 
         Scanner SC = new Scanner(System.in);
         int index = -1;
@@ -39,15 +40,16 @@ public class CheckActionMove implements CheckAction {
                 return index - 1;
             } else {
                 System.out.println("❗ Invalid index. Please try again.");
+                System.out.print("Enter the index of the contact to update: ");
             }
         }
     }
 
 
     @Override
-    public void checkContact(int index, Contact[] contacts) {
-        if (index >= 0 && index < contacts.length) {
-            Contact contact = contacts[index];
+    public void checkContact(int index, List<Contact> contacts) {
+        if (index >= 0 && index < contacts.size()) {
+            Contact contact = contacts.get(index);
             if (contact == null) {
                 System.out.println("❗No contact with such data!");
             }
