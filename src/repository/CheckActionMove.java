@@ -32,7 +32,7 @@ public class CheckActionMove implements CheckAction {
         int contactCount = contacts.size();
 
         Scanner SC = new Scanner(System.in);
-        int index = -1;
+        int index;
 
         while (true) {
             index = SC.nextInt() - 1;
@@ -56,7 +56,7 @@ public class CheckActionMove implements CheckAction {
             }
         }
         if (!found) {
-            System.out.println("❌ No contact found with the name: " + searchNameList);
+            System.out.println("❌ No contact found with the such data: " + searchNameList);
         }
     }
 
