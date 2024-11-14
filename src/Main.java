@@ -12,12 +12,12 @@ public class Main {
 
 
     public static void main(String[] args) {
+        List<Contact> contacts = new ArrayList<>();
         UpdateActionMove actionMove = new UpdateActionMove();
         SearchActionMove searchMove = new SearchActionMove();
         CheckActionMove checkMove = new CheckActionMove();
         DeleteActionMove deleteActionMove = new DeleteActionMove();
         CreateContactMove createMove = new CreateContactMove();
-        List<Contact> contacts = new ArrayList<>();
         int command;
 
         do {

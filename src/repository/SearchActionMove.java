@@ -7,8 +7,6 @@ import java.util.List;
 
 public class SearchActionMove implements SearchAction {
 
-    static final String DELIMITER = "; ";
-
     public SearchActionMove() {
     }
 
