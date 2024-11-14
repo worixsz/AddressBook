@@ -36,7 +36,6 @@ public class CheckActionMove implements CheckAction {
 
         while (true) {
             index = SC.nextInt() - 1;
-
             if (index >= 0 && index < contactCount) {
                 return index;
             } else {
