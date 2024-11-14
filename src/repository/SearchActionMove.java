@@ -7,9 +7,10 @@ import java.util.List;
 
 public class SearchActionMove implements SearchAction {
 
-    private int foundIndex = -1;
+    private int foundIndex;
 
     public SearchActionMove() {
+        this.foundIndex = -1;
     }
 
     @Override
