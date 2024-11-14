@@ -22,16 +22,12 @@ public class DeleteActionMove implements DeleteAction {
         if (contacts.isEmpty()) {
             System.out.println("❌ No contacts available to delete.\n");
         } else {
-            // Показываем все контакты
             checkMove.showContact(contacts);
 
-            // Печатаем номер контакта для удаления
             System.out.print("Enter the index of the contact to delete (1 to " + contacts.size() + "): ");
             int index = SC.nextInt() - 1;
 
-            // Проверяем, что введенный индекс действителен
             if (index >= 0 && index < contacts.size()) {
-                // Удаляем контакт
                 contacts.remove(index);
                 System.out.println("🗑️ Contact deleted successfully.\n");
             } else {
