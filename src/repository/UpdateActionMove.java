@@ -61,14 +61,16 @@ public class UpdateActionMove implements UpdateAction {
     }
 
     @Override
-    public void updateContactByPhone(String indexOfContact, List<Contact> contacts) {
-//        int updateIndex = search.searchContactByPhone(contacts, indexOfContact);
-//
-//        if (updateIndex != -1) {
-//            System.out.print("Enter the index of the contact to update: ");
-//            //  List<Contact> indexForSaving = check.checkLengthOfContact(contacts);
-////
-//        }
+    public void updateContactByPhone(List<Contact> contacts) {
+        List<Contact> updateIndex = search.searchContactByPhone(contacts);
+
+        if (!updateIndex.isEmpty()) {
+            System.out.print("Enter the index of the contact to update: ");
+            int indexForSaving = check.checkLengthOfContact(updateIndex.size());
+            if (indexForSaving >= 0 && indexForSaving < updateIndex.size()) {
+                updateContact(contacts, indexForSaving);
+            }
+        }
     }
 
     @Override
