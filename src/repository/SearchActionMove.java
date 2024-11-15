@@ -17,15 +17,15 @@ public class SearchActionMove implements SearchAction {
 
     public List<Contact> searchContactByName(List<Contact> contacts) {
         System.out.print("Enter name to search: ");
-        String searchOfName = SC.next();
+        String next = SC.next();
         List<Contact> foundContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact.getName().equals(searchOfName)) {
+            if (contact.getName().equals(next)) {
                 System.out.println("🔍 Contact Found: " + contact);
                 foundContacts.add(contact);
             } else {
-                System.out.println("❌ No contact found with the such name: " + contact);
+                System.out.println("❌ No contact found with the such name: " + next);
                 break;
             }
         }
@@ -35,15 +35,15 @@ public class SearchActionMove implements SearchAction {
     @Override
     public List<Contact> searchContactBySurname(List<Contact> contacts) {
         System.out.print("Enter surname to search: ");
-        String searchOfName = SC.next();
+        String next = SC.next();
         List<Contact> foundContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact.getSurname().equals(searchOfName)) {
+            if (contact.getSurname().equals(next)) {
                 System.out.println("🔍 Contact Found: " + contact);
                 foundContacts.add(contact);
             } else {
-                System.out.println("❌ No contact found with the such surname: " + contact);
+                System.out.println("❌ No contact found with the such surname: " + next);
                 break;
             }
         }
@@ -53,15 +53,15 @@ public class SearchActionMove implements SearchAction {
     @Override
     public List<Contact> searchContactByAddress(List<Contact> contacts) {
         System.out.print("Enter address to search: ");
-        String searchOfName = SC.next();
+        String next = SC.next();
         List<Contact> foundContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact.getAddress().equals(searchOfName)) {
+            if (contact.getAddress().equals(next)) {
                 System.out.println("🔍 Contact Found: " + contact);
                 foundContacts.add(contact);
             } else {
-                System.out.println("❌ No contact found with the such address: " + contact);
+                System.out.println("❌ No contact found with the such address: " + next);
                 break;
             }
         }
@@ -71,15 +71,15 @@ public class SearchActionMove implements SearchAction {
     @Override
     public List<Contact> searchContactByPhone(List<Contact> contacts) {
         System.out.print("Enter phone number to search: ");
-        String searchOfName = SC.next();
+        String next = SC.next();
         List<Contact> foundContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact.getPhone().equals(searchOfName)) {
+            if (contact.getPhone().equals(next)) {
                 System.out.println("🔍 Contact Found: " + contact);
                 foundContacts.add(contact);
             } else {
-                System.out.println("❌ No contact found with the such phone number: " + contact);
+                System.out.println("❌ No contact found with the such phone number: " + next);
                 break;
             }
         }
