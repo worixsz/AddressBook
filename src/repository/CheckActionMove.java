@@ -28,9 +28,7 @@ public class CheckActionMove implements CheckAction {
 
 
     @Override
-    public int checkLengthOfContact(String length, List<Contact> contacts) {
-        int contactCount = contacts.size();
-
+    public int checkLengthOfContact(int contactCount) {
         Scanner SC = new Scanner(System.in);
         int index;
 

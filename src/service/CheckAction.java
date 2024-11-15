@@ -8,7 +8,7 @@ public interface CheckAction {
 
     void showContact(List<Contact> contacts);
 
-    int checkLengthOfContact(String length, List<Contact> contacts);
+    int checkLengthOfContact(int contactCount);
 
     void checkContact(String searchName, List<Contact> contacts);
 }
