@@ -91,7 +91,7 @@ public class Action {
                             actionMove.updateContactBySurname(contacts);
                             break;
                         case 3:
-                            //                    actionMove.updateContactByAddress(contacts);
+                            actionMove.updateContactByAddress(contacts);
                             break;
                         case 4:
                             //                   actionMove.updateContactByPhone(contacts);
