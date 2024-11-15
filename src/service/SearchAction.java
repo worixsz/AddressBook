@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface SearchAction {
 
-    int searchContactByName(List<Contact> contacts, String searchString);
+    List<Contact> searchContactByName(List<Contact> contacts);
 
-    int searchContactBySurname(List<Contact> contacts, String searchString);
+    List<Contact> searchContactBySurname(List<Contact> contacts);
 
-    int searchContactByAddress(List<Contact> contacts, String searchString);
+    List<Contact> searchContactByAddress(List<Contact> contacts);
 
-    int searchContactByPhone(List<Contact> contacts, String searchString);
+    List<Contact> searchContactByPhone(List<Contact> contacts);
 }
