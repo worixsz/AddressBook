@@ -3,7 +3,6 @@ package repository;
 import model.Contact;
 import service.SearchAction;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -69,15 +68,14 @@ public class SearchActionMove implements SearchAction {
     public List<Contact> searchContactByPhone(List<Contact> contacts) {
         System.out.print("Enter phone number to search: ");
         String next = SC.next();
-        List<Contact> foundContacts = new ArrayList<>();
+        List<Contact> foundContacts = contacts.stream()
+                .filter(contact -> contact.getPhone().equals(next))
+                .collect(Collectors.toList());
+        if (!foundContacts.isEmpty()) {
 
-        for (Contact contact : contacts) {
-            if (contact.getPhone().equals(next)) {
-                System.out.println("🔍 Contact Found: " + contact);
-                foundContacts.add(contact);
-            } else {
-                System.out.println("❌ No contact found with the such phone number: " + next);
-            }
+            foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
+        } else {
+            System.out.println("❌ No contact found with the such address: " + next);
         }
         return foundContacts;
     }
