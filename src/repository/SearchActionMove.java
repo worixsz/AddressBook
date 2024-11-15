@@ -20,11 +20,11 @@ public class SearchActionMove implements SearchAction {
     public List<Contact> searchContactByName(List<Contact> contacts) {
         System.out.print("Enter name to search: ");
         String next = SC.next();
-
         List<Contact> foundContacts = contacts.stream()
                 .filter(contact -> contact.getName().equals(next))
                 .collect(Collectors.toList());
         if (!foundContacts.isEmpty()) {
+
             foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
         } else {
             System.out.println("❌ No contact found with the such name: " + next);
@@ -37,15 +37,14 @@ public class SearchActionMove implements SearchAction {
     public List<Contact> searchContactBySurname(List<Contact> contacts) {
         System.out.print("Enter surname to search: ");
         String next = SC.next();
-        List<Contact> foundContacts = new ArrayList<>();
+        List<Contact> foundContacts = contacts.stream()
+                .filter(contact -> contact.getSurname().equals(next))
+                .collect(Collectors.toList());
+        if (!foundContacts.isEmpty()) {
 
-        for (Contact contact : contacts) {
-            if (contact.getSurname().equals(next)) {
-                System.out.println("🔍 Contact Found: " + contact);
-                foundContacts.add(contact);
-            } else {
-                System.out.println("❌ No contact found with the such surname: " + next);
-            }
+            foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
+        } else {
+            System.out.println("❌ No contact found with the such surname: " + next);
         }
         return foundContacts;
     }
