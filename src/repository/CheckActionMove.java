@@ -51,7 +51,17 @@ public class CheckActionMove implements CheckAction {
             if (contact.getName().equalsIgnoreCase(searchNameList)) {
                 found = true;
                 break;
+            } else if (contact.getSurname().equalsIgnoreCase(searchNameList)) {
+                found = true;
+                break;
+            } else if (contact.getAddress().equalsIgnoreCase(searchNameList)) {
+                found = true;
+                break;
+            } else if (contact.getPhone().equalsIgnoreCase(searchNameList)) {
+                found = true;
+                break;
             }
+
         }
         if (!found) {
             System.out.println("❌ No contact found with the such data: " + searchNameList);

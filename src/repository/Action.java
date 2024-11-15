@@ -52,29 +52,16 @@ public class Action {
 
                     switch (enter) {
                         case 1:
-                            System.out.print("Enter name to search: ");
-                            String searchOfName = SC.next();
-                            searchMove.searchContactByName(contacts, searchOfName);
-                            checkMove.checkContact(searchOfName, contacts);
-
+                            searchMove.searchContactByName(contacts);
                             break;
                         case 2:
-                            System.out.print("Enter surname to search: ");
-                            String searchOfSurname = SC.next();
-                            searchMove.searchContactBySurname(contacts, searchOfSurname);
-                            checkMove.checkContact(searchOfSurname, contacts);
+                            searchMove.searchContactBySurname(contacts);
                             break;
                         case 3:
-                            System.out.print("Enter address to search: ");
-                            String searchOfAddress = SC.next();
-                            searchMove.searchContactByAddress(contacts, searchOfAddress);
-                            checkMove.checkContact(searchOfAddress, contacts);
+                            searchMove.searchContactByAddress(contacts);
                             break;
                         case 4:
-                            System.out.print("Enter phone number to search: ");
-                            String searchOfNumber = SC.next();
-                            searchMove.searchContactByPhone(contacts, searchOfNumber);
-                            checkMove.checkContact(searchOfNumber, contacts);
+                            searchMove.searchContactByPhone(contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
@@ -98,9 +85,7 @@ public class Action {
                     int enterUpdate = SC.nextInt();
                     switch (enterUpdate) {
                         case 1:
-                            System.out.print("Enter name to search: ");
-                            String searchOfName = SC.next();
-                            actionMove.updateContactByName(searchOfName, contacts);
+                            actionMove.updateContactByName(contacts);
                             break;
                         case 2:
                             System.out.print("Enter surname to search: ");

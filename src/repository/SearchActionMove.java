@@ -29,8 +29,8 @@ public class SearchActionMove implements SearchAction {
                 }
             }
         }
-        checkMove.checkContact(searchOfName, contacts);
 
+        checkMove.checkContact(searchOfName, contacts);
         return contacts;
     }
 
@@ -46,6 +46,7 @@ public class SearchActionMove implements SearchAction {
                 }
             }
         }
+
         checkMove.checkContact(searchOfSurname, contacts);
         return contacts;
     }
@@ -61,8 +62,8 @@ public class SearchActionMove implements SearchAction {
                 }
             }
         }
-        checkMove.checkContact(searchOfAddress, contacts);
 
+        checkMove.checkContact(searchOfAddress, contacts);
         return contacts;
     }
 
