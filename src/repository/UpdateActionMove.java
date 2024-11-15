@@ -31,15 +31,14 @@ public class UpdateActionMove implements UpdateAction {
 
     @Override
     public void updateContactBySurname(List<Contact> contacts) {
-//        List<Contact> updateIndex = search.searchContactBySurname(contacts);
-//        //   check.checkContact(contact.getSurname(), updateIndex);
-//        if (!updateIndex.isEmpty()) {
-//            System.out.print("Enter the index of the contact to update: ");
-//          //  int indexForSaving = check.checkLengthOfContact(updateIndex.size());
-//            if (indexForSaving >= 0 && indexForSaving < updateIndex.size()) {
-//                updateContact(contacts, indexForSaving);
-//            }
-//        }
+        List<Contact> foundContacts = search.searchContactBySurname(contacts);
+        if (!foundContacts.isEmpty()) {
+            System.out.print("Enter the index of the contact to update: ");
+            int userIndex = check.checkLengthOfContact(foundContacts.size());
+            if (userIndex >= 0 && userIndex < foundContacts.size()) {
+                updateContact(contacts, userIndex);
+            }
+        }
     }
 
 

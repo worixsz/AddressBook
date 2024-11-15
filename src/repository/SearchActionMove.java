@@ -26,7 +26,6 @@ public class SearchActionMove implements SearchAction {
                 foundContacts.add(contact);
             } else {
                 System.out.println("❌ No contact found with the such name: " + next);
-                break;
             }
         }
         return foundContacts;
@@ -44,7 +43,6 @@ public class SearchActionMove implements SearchAction {
                 foundContacts.add(contact);
             } else {
                 System.out.println("❌ No contact found with the such surname: " + next);
-                break;
             }
         }
         return foundContacts;
@@ -62,7 +60,6 @@ public class SearchActionMove implements SearchAction {
                 foundContacts.add(contact);
             } else {
                 System.out.println("❌ No contact found with the such address: " + next);
-                break;
             }
         }
         return foundContacts;
@@ -80,7 +77,6 @@ public class SearchActionMove implements SearchAction {
                 foundContacts.add(contact);
             } else {
                 System.out.println("❌ No contact found with the such phone number: " + next);
-                break;
             }
         }
         return foundContacts;
