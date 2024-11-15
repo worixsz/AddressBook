@@ -23,9 +23,10 @@ public class UpdateActionMove implements UpdateAction {
         if (!foundContacts.isEmpty()) {
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             int userIndex = check.checkLengthOfContact(foundContacts.size());
-            if (userIndex >= 0 && userIndex < foundContacts.size()) {
-                updateContact(contacts, userIndex);
-            }
+            foundContacts.stream()
+                    .skip(userIndex)
+                    .findFirst()
+                    .ifPresent(contact -> updateContact(contacts, userIndex));
         }
     }
 
@@ -35,12 +36,13 @@ public class UpdateActionMove implements UpdateAction {
         if (!foundContacts.isEmpty()) {
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             int userIndex = check.checkLengthOfContact(foundContacts.size());
-            if (userIndex >= 0 && userIndex < foundContacts.size()) {
-                updateContact(contacts, userIndex);
-            }
+
+            foundContacts.stream()
+                    .skip(userIndex)
+                    .findFirst()
+                    .ifPresent(contact -> updateContact(contacts, userIndex));
         }
     }
-
 
     @Override
     public void updateContactByAddress(List<Contact> contacts) {
@@ -48,11 +50,12 @@ public class UpdateActionMove implements UpdateAction {
         if (!foundContacts.isEmpty()) {
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             int userIndex = check.checkLengthOfContact(foundContacts.size());
-            if (userIndex >= 0 && userIndex < foundContacts.size()) {
-                updateContact(contacts, userIndex);
-            }
-        }
 
+            foundContacts.stream()
+                    .skip(userIndex)
+                    .findFirst()
+                    .ifPresent(contact -> updateContact(contacts, userIndex));
+        }
     }
 
     @Override
@@ -61,13 +64,14 @@ public class UpdateActionMove implements UpdateAction {
         if (!foundContacts.isEmpty()) {
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             int userIndex = check.checkLengthOfContact(foundContacts.size());
-            if (userIndex >= 0 && userIndex < foundContacts.size()) {
-                updateContact(contacts, userIndex);
-            }
+
+            foundContacts.stream()
+                    .skip(userIndex)
+                    .findFirst()
+                    .ifPresent(contact -> updateContact(contacts, userIndex));
         }
-
-
     }
+
 
     @Override
     public void updateContact(List<Contact> contacts, int indexForSave) {
