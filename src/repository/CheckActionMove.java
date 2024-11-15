@@ -16,14 +16,13 @@ public class CheckActionMove implements CheckAction {
     @Override
     public void showContact(List<Contact> contacts) {
         System.out.println("\n--- LIST OF ALL CONTACTS ---");
-
         if (contacts.isEmpty()) {
             System.out.println("❌ No contacts available.\n");
         } else {
-            for (int i = 0; i < contacts.size(); i++) {
-                System.out.println((i + 1) + ". " + contacts.get(i) + "\n");
-            }
+            contacts.forEach(System.out::println);
         }
+
+
     }
 
     @Override
