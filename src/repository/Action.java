@@ -11,9 +11,7 @@ public class Action {
     static Scanner SC = new Scanner(System.in);
 
     public Action() {
-
     }
-
 
     public static void run() {
         List<Contact> contacts = new ArrayList<>();
@@ -42,7 +40,7 @@ public class Action {
                     break;
                 case 2:
                     System.out.println("\n--- SEARCH CONTACT ---");
-                    System.out.println("How would you like to search for a contact?");
+                    System.out.println("How would you like to search the contacts?");
                     System.out.println("1. By Name");
                     System.out.println("2. By Surname");
                     System.out.println("3. By Address");
