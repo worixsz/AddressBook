@@ -28,11 +28,9 @@ public class CheckActionMove implements CheckAction {
 
 
     @Override
-    public int checkLengthOfContact(String length, List<Contact> contacts) {
-        int contactCount = contacts.size();
-
+    public int checkLengthOfContact(int contactCount) {
         Scanner SC = new Scanner(System.in);
-        int index = -1;
+        int index;
 
         while (true) {
             index = SC.nextInt() - 1;
@@ -53,10 +51,20 @@ public class CheckActionMove implements CheckAction {
             if (contact.getName().equalsIgnoreCase(searchNameList)) {
                 found = true;
                 break;
+            } else if (contact.getSurname().equalsIgnoreCase(searchNameList)) {
+                found = true;
+                break;
+            } else if (contact.getAddress().equalsIgnoreCase(searchNameList)) {
+                found = true;
+                break;
+            } else if (contact.getPhone().equalsIgnoreCase(searchNameList)) {
+                found = true;
+                break;
             }
+
         }
         if (!found) {
-            System.out.println("❌ No contact found with the name: " + searchNameList);
+            System.out.println("❌ No contact found with the such data: " + searchNameList);
         }
     }
 
