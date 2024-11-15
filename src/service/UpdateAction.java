@@ -10,7 +10,7 @@ public interface UpdateAction {
 
     void updateContactBySurname(List<Contact> contacts);
 
-    void updateContactByAddress(String indexOfContact, List<Contact> contacts);
+    void updateContactByAddress(List<Contact> contacts);
 
     void updateContactByPhone(String indexOfContact, List<Contact> contacts);
 
