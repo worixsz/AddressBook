@@ -88,9 +88,7 @@ public class Action {
                             actionMove.updateContactByName(contacts);
                             break;
                         case 2:
-                            System.out.print("Enter surname to search: ");
-                            String searchOfSurname = SC.next();
-                            actionMove.updateContactBySurname(searchOfSurname, contacts);
+                            actionMove.updateContactBySurname(contacts);
                             break;
                         case 3:
                             System.out.print("Enter address to search: ");

@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface UpdateAction {
 
-    void updateContactByName(String indexOfContact, List<Contact> contacts);
+    void updateContactByName( List<Contact> contacts);
 
-    void updateContactBySurname(String indexOfContact, List<Contact> contacts);
+    void updateContactBySurname(List<Contact> contacts);
 
     void updateContactByAddress(String indexOfContact, List<Contact> contacts);
 
