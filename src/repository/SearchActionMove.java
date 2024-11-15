@@ -53,14 +53,14 @@ public class SearchActionMove implements SearchAction {
     public List<Contact> searchContactByAddress(List<Contact> contacts) {
         System.out.print("Enter address to search: ");
         String next = SC.next();
-        List<Contact> foundContacts = new ArrayList<>();
-        for (Contact contact : contacts) {
-            if (contact.getAddress().equals(next)) {
-                System.out.println("🔍 Contact Found: " + contact);
-                foundContacts.add(contact);
-            } else {
-                System.out.println("❌ No contact found with the such address: " + next);
-            }
+        List<Contact> foundContacts = contacts.stream()
+                .filter(contact -> contact.getAddress().equals(next))
+                .collect(Collectors.toList());
+        if (!foundContacts.isEmpty()) {
+
+            foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
+        } else {
+            System.out.println("❌ No contact found with the such address: " + next);
         }
         return foundContacts;
     }
