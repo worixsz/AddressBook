@@ -3,10 +3,12 @@ package repository;
 import model.Contact;
 import service.SearchAction;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class SearchActionMove implements SearchAction {
+
 
     Scanner SC = new Scanner(System.in);
 
@@ -14,73 +16,73 @@ public class SearchActionMove implements SearchAction {
     }
 
     public List<Contact> searchContactByName(List<Contact> contacts) {
-
         System.out.print("Enter name to search: ");
         String searchOfName = SC.next();
+        List<Contact> foundContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact != null) {
-                if (contact.getName().equals(searchOfName)) {
-                    System.out.println("🔍 Contact Found: " + contact);
-                } else {
-                    System.out.println("❌ No contact found with the such name: " + searchOfName);
-                    break;
-                }
+            if (contact.getName().equals(searchOfName)) {
+                System.out.println("🔍 Contact Found: " + contact);
+                foundContacts.add(contact);
+            } else {
+                System.out.println("❌ No contact found with the such name: " + contact);
+                break;
             }
         }
-        return contacts;
+        return foundContacts;
     }
 
     @Override
     public List<Contact> searchContactBySurname(List<Contact> contacts) {
         System.out.print("Enter surname to search: ");
-        String searchOfSurname = SC.next();
+        String searchOfName = SC.next();
+        List<Contact> foundContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact != null) {
-                if (contact.getSurname().equals(searchOfSurname)) {
-                    System.out.println("🔍 Contact Found: " + contact);
-                } else {
-                    System.out.println("❌ No contact found with the such surname: " + searchOfSurname);
-                    break;
-                }
+            if (contact.getSurname().equals(searchOfName)) {
+                System.out.println("🔍 Contact Found: " + contact);
+                foundContacts.add(contact);
+            } else {
+                System.out.println("❌ No contact found with the such surname: " + contact);
+                break;
             }
         }
-        return contacts;
+        return foundContacts;
     }
 
     @Override
     public List<Contact> searchContactByAddress(List<Contact> contacts) {
         System.out.print("Enter address to search: ");
-        String searchOfAddress = SC.next();
+        String searchOfName = SC.next();
+        List<Contact> foundContacts = new ArrayList<>();
+
         for (Contact contact : contacts) {
-            if (contact != null) {
-                if (contact.getAddress().equals(searchOfAddress)) {
-                    System.out.println("🔍 Contact Found: " + contact);
-                } else {
-                    System.out.println("❌ No contact found with the such address: " + searchOfAddress);
-                    break;
-                }
+            if (contact.getAddress().equals(searchOfName)) {
+                System.out.println("🔍 Contact Found: " + contact);
+                foundContacts.add(contact);
+            } else {
+                System.out.println("❌ No contact found with the such address: " + contact);
+                break;
             }
         }
-        return contacts;
+        return foundContacts;
     }
 
     @Override
     public List<Contact> searchContactByPhone(List<Contact> contacts) {
         System.out.print("Enter phone number to search: ");
-        String searchOfNumber = SC.next();
+        String searchOfName = SC.next();
+        List<Contact> foundContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact != null) {
-                if (contact.getPhone().equals(searchOfNumber)) {
-                    System.out.println("🔍 Contact Found: " + contact);
-                } else {
-                    System.out.println("❌ No contact found with the such phone number: " + searchOfNumber);
-                    break;
-                }
+            if (contact.getPhone().equals(searchOfName)) {
+                System.out.println("🔍 Contact Found: " + contact);
+                foundContacts.add(contact);
+            } else {
+                System.out.println("❌ No contact found with the such phone number: " + contact);
+                break;
             }
         }
-        return contacts;
+        return foundContacts;
     }
 }
