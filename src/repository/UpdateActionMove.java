@@ -21,7 +21,7 @@ public class UpdateActionMove implements UpdateAction {
     public void updateContactByName(List<Contact> contacts) {
         List<Contact> foundContacts = search.searchContactByName(contacts);
         if (!foundContacts.isEmpty()) {
-            System.out.print("Enter the index of the contact to update: ");
+            System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             int userIndex = check.checkLengthOfContact(foundContacts.size());
             if (userIndex >= 0 && userIndex < foundContacts.size()) {
                 updateContact(contacts, userIndex);
@@ -33,7 +33,7 @@ public class UpdateActionMove implements UpdateAction {
     public void updateContactBySurname(List<Contact> contacts) {
         List<Contact> foundContacts = search.searchContactBySurname(contacts);
         if (!foundContacts.isEmpty()) {
-            System.out.print("Enter the index of the contact to update: ");
+            System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             int userIndex = check.checkLengthOfContact(foundContacts.size());
             if (userIndex >= 0 && userIndex < foundContacts.size()) {
                 updateContact(contacts, userIndex);
@@ -46,7 +46,7 @@ public class UpdateActionMove implements UpdateAction {
     public void updateContactByAddress(List<Contact> contacts) {
         List<Contact> foundContacts = search.searchContactByAddress(contacts);
         if (!foundContacts.isEmpty()) {
-            System.out.print("Enter the index of the contact to update: ");
+            System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             int userIndex = check.checkLengthOfContact(foundContacts.size());
             if (userIndex >= 0 && userIndex < foundContacts.size()) {
                 updateContact(contacts, userIndex);
@@ -59,7 +59,7 @@ public class UpdateActionMove implements UpdateAction {
     public void updateContactByPhone(List<Contact> contacts) {
         List<Contact> foundContacts = search.searchContactByPhone(contacts);
         if (!foundContacts.isEmpty()) {
-            System.out.print("Enter the index of the contact to update: ");
+            System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             int userIndex = check.checkLengthOfContact(foundContacts.size());
             if (userIndex >= 0 && userIndex < foundContacts.size()) {
                 updateContact(contacts, userIndex);
