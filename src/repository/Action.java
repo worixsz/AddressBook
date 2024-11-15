@@ -85,7 +85,7 @@ public class Action {
                     int enterUpdate = SC.nextInt();
                     switch (enterUpdate) {
                         case 1:
-                            actionMove.updateContactByName(contacts);
+                        //    actionMove.updateContactByName(contacts.get());
                             break;
                         case 2:
                             actionMove.updateContactBySurname(contacts);
