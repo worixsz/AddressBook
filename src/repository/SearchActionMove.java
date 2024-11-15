@@ -8,13 +8,10 @@ import java.util.Scanner;
 
 public class SearchActionMove implements SearchAction {
 
-
-    private final CheckActionMove checkMove;
-
     Scanner SC = new Scanner(System.in);
 
     public SearchActionMove() {
-        this.checkMove = new CheckActionMove();
+
     }
 
     public List<Contact> searchContactByName(List<Contact> contacts) {
@@ -26,11 +23,11 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 if (contact.getName().equals(searchOfName)) {
                     System.out.println("🔍 Contact Found: " + contact);
+                } else {
+                    System.out.println("❌ No contact found with the such data: " + searchOfName);
                 }
             }
         }
-
-        checkMove.checkContact(searchOfName, contacts);
         return contacts;
     }
 
@@ -43,11 +40,11 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 if (contact.getSurname().equals(searchOfSurname)) {
                     System.out.println("🔍 Contact Found: " + contact);
+                } else {
+                    System.out.println("❌ No contact found with the such data: " + searchOfSurname);
                 }
             }
         }
-
-        checkMove.checkContact(searchOfSurname, contacts);
         return contacts;
     }
 
@@ -59,11 +56,11 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 if (contact.getAddress().equals(searchOfAddress)) {
                     System.out.println("🔍 Contact Found: " + contact);
+                } else {
+                    System.out.println("❌ No contact found with the such data: " + searchOfAddress);
                 }
             }
         }
-
-        checkMove.checkContact(searchOfAddress, contacts);
         return contacts;
     }
 
@@ -76,10 +73,11 @@ public class SearchActionMove implements SearchAction {
             if (contact != null) {
                 if (contact.getPhone().equals(searchOfNumber)) {
                     System.out.println("🔍 Contact Found: " + contact);
+                } else {
+                    System.out.println("❌ No contact found with the such data: " + searchOfNumber);
                 }
             }
         }
-        checkMove.checkContact(searchOfNumber, contacts);
         return contacts;
     }
 }
