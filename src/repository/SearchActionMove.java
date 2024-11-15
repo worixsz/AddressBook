@@ -11,7 +11,6 @@ public class SearchActionMove implements SearchAction {
     Scanner SC = new Scanner(System.in);
 
     public SearchActionMove() {
-
     }
 
     public List<Contact> searchContactByName(List<Contact> contacts) {
@@ -24,7 +23,8 @@ public class SearchActionMove implements SearchAction {
                 if (contact.getName().equals(searchOfName)) {
                     System.out.println("🔍 Contact Found: " + contact);
                 } else {
-                    System.out.println("❌ No contact found with the such data: " + searchOfName);
+                    System.out.println("❌ No contact found with the such name: " + searchOfName);
+                    break;
                 }
             }
         }
@@ -41,7 +41,8 @@ public class SearchActionMove implements SearchAction {
                 if (contact.getSurname().equals(searchOfSurname)) {
                     System.out.println("🔍 Contact Found: " + contact);
                 } else {
-                    System.out.println("❌ No contact found with the such data: " + searchOfSurname);
+                    System.out.println("❌ No contact found with the such surname: " + searchOfSurname);
+                    break;
                 }
             }
         }
@@ -57,7 +58,8 @@ public class SearchActionMove implements SearchAction {
                 if (contact.getAddress().equals(searchOfAddress)) {
                     System.out.println("🔍 Contact Found: " + contact);
                 } else {
-                    System.out.println("❌ No contact found with the such data: " + searchOfAddress);
+                    System.out.println("❌ No contact found with the such address: " + searchOfAddress);
+                    break;
                 }
             }
         }
@@ -74,7 +76,8 @@ public class SearchActionMove implements SearchAction {
                 if (contact.getPhone().equals(searchOfNumber)) {
                     System.out.println("🔍 Contact Found: " + contact);
                 } else {
-                    System.out.println("❌ No contact found with the such data: " + searchOfNumber);
+                    System.out.println("❌ No contact found with the such phone number: " + searchOfNumber);
+                    break;
                 }
             }
         }
