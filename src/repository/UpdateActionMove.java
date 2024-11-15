@@ -19,73 +19,57 @@ public class UpdateActionMove implements UpdateAction {
 
 
     @Override
-    public void updateContactByName(String indexOfContact, List<Contact> contacts) {
-        int updateIndex = search.searchContactByName(contacts, indexOfContact);
+    public void updateContactByName(List<Contact> contacts) {
+        List<Contact> updateIndex = search.searchContactByName(contacts);
 
-        if (updateIndex != -1) {
+        if (!updateIndex.isEmpty()) {
             System.out.print("Enter the index of the contact to update: ");
-            int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
-            if (indexForSaving == updateIndex) {
+            int indexForSaving = check.checkLengthOfContact(updateIndex.size());
+            if (indexForSaving >= 0 && indexForSaving < updateIndex.size()) {
                 updateContact(contacts, indexForSaving);
-            } else {
-                System.out.println("❗No contact with such data!");
             }
-        } else {
-            System.out.println("❗No contact with such data!");
         }
     }
 
 
     @Override
-    public void updateContactBySurname(String indexOfContact, List<Contact> contacts) {
-        int updateIndex = search.searchContactBySurname(contacts, indexOfContact);
+    public void updateContactBySurname(List<Contact> contacts) {
+        List<Contact> updateIndex = search.searchContactBySurname(contacts);
 
-        if (updateIndex != -1) {
+        if (!updateIndex.isEmpty()) {
             System.out.print("Enter the index of the contact to update: ");
-            int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
-            if (indexForSaving == updateIndex) {
+            int indexForSaving = check.checkLengthOfContact(updateIndex.size());
+            if (indexForSaving >= 0 && indexForSaving < updateIndex.size()) {
                 updateContact(contacts, indexForSaving);
-            } else {
-                System.out.println("❗No contact with such data!");
             }
-        } else {
-            System.out.println("❗No contact with such data!");
         }
     }
 
 
     @Override
-    public void updateContactByAddress(String indexOfContact, List<Contact> contacts) {
-        int updateIndex = search.searchContactByAddress(contacts, indexOfContact);
+    public void updateContactByAddress(List<Contact> contacts) {
+        List<Contact> updateIndex = search.searchContactByAddress(contacts);
 
-        if (updateIndex != -1) {
+        if (!updateIndex.isEmpty()) {
             System.out.print("Enter the index of the contact to update: ");
-            int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
-            if (indexForSaving == updateIndex) {
+            int indexForSaving = check.checkLengthOfContact(updateIndex.size());
+            if (indexForSaving >= 0 && indexForSaving < updateIndex.size()) {
                 updateContact(contacts, indexForSaving);
-            } else {
-                System.out.println("❗No contact with such data!");
             }
-        } else {
-            System.out.println("❗No contact with such data!");
         }
 
     }
 
     @Override
-    public void updateContactByPhone(String indexOfContact, List<Contact> contacts) {
-        int updateIndex = search.searchContactByPhone(contacts, indexOfContact);
+    public void updateContactByPhone(List<Contact> contacts) {
+        List<Contact> updateIndex = search.searchContactByPhone(contacts);
 
-        if (updateIndex != -1) {
+        if (!updateIndex.isEmpty()) {
             System.out.print("Enter the index of the contact to update: ");
-            int indexForSaving = check.checkLengthOfContact(indexOfContact, contacts);
-            if (indexForSaving == updateIndex) {
+            int indexForSaving = check.checkLengthOfContact(updateIndex.size());
+            if (indexForSaving >= 0 && indexForSaving < updateIndex.size()) {
                 updateContact(contacts, indexForSaving);
-            } else {
-                System.out.println("❗No contact with such data!");
             }
-        } else {
-            System.out.println("❗No contact with such data!");
         }
     }
 
@@ -102,7 +86,6 @@ public class UpdateActionMove implements UpdateAction {
         String newAddress = SC.next();
         System.out.print("Enter the new phone number: ");
         String newPhone = SC.next();
-
         contactToUpdate.setName(newName);
         contactToUpdate.setSurname(newSurname);
         contactToUpdate.setAddress(newAddress);

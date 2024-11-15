@@ -88,19 +88,13 @@ public class Action {
                             actionMove.updateContactByName(contacts);
                             break;
                         case 2:
-                            System.out.print("Enter surname to search: ");
-                            String searchOfSurname = SC.next();
-                            actionMove.updateContactBySurname(searchOfSurname, contacts);
+                            actionMove.updateContactBySurname(contacts);
                             break;
                         case 3:
-                            System.out.print("Enter address to search: ");
-                            String searchOfAddress = SC.next();
-                            actionMove.updateContactByAddress(searchOfAddress, contacts);
+                            actionMove.updateContactByAddress(contacts);
                             break;
                         case 4:
-                            System.out.print("Enter phone number to search: ");
-                            String searchOfNumber = SC.next();
-                            actionMove.updateContactByPhone(searchOfNumber, contacts);
+                            actionMove.updateContactByPhone(contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
