@@ -3,83 +3,82 @@ package repository;
 import model.Contact;
 import service.SearchAction;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class SearchActionMove implements SearchAction {
 
 
-    private final CheckActionMove checkMove;
-
     Scanner SC = new Scanner(System.in);
 
     public SearchActionMove() {
-        this.checkMove = new CheckActionMove();
     }
 
     public List<Contact> searchContactByName(List<Contact> contacts) {
-
         System.out.print("Enter name to search: ");
-        String searchOfName = SC.next();
+        String next = SC.next();
+        List<Contact> foundContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact != null) {
-                if (contact.getName().equals(searchOfName)) {
-                    System.out.println("🔍 Contact Found: " + contact);
-                }
+            if (contact.getName().equals(next)) {
+                System.out.println("🔍 Contact Found: " + contact);
+                foundContacts.add(contact);
+            } else {
+                System.out.println("❌ No contact found with the such name: " + next);
             }
         }
-
-        checkMove.checkContact(searchOfName, contacts);
-        return contacts;
+        return foundContacts;
     }
 
     @Override
     public List<Contact> searchContactBySurname(List<Contact> contacts) {
         System.out.print("Enter surname to search: ");
-        String searchOfSurname = SC.next();
+        String next = SC.next();
+        List<Contact> foundContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact != null) {
-                if (contact.getSurname().equals(searchOfSurname)) {
-                    System.out.println("🔍 Contact Found: " + contact);
-                }
+            if (contact.getSurname().equals(next)) {
+                System.out.println("🔍 Contact Found: " + contact);
+                foundContacts.add(contact);
+            } else {
+                System.out.println("❌ No contact found with the such surname: " + next);
             }
         }
-
-        checkMove.checkContact(searchOfSurname, contacts);
-        return contacts;
+        return foundContacts;
     }
 
     @Override
     public List<Contact> searchContactByAddress(List<Contact> contacts) {
         System.out.print("Enter address to search: ");
-        String searchOfAddress = SC.next();
+        String next = SC.next();
+        List<Contact> foundContacts = new ArrayList<>();
+
         for (Contact contact : contacts) {
-            if (contact != null) {
-                if (contact.getAddress().equals(searchOfAddress)) {
-                    System.out.println("🔍 Contact Found: " + contact);
-                }
+            if (contact.getAddress().equals(next)) {
+                System.out.println("🔍 Contact Found: " + contact);
+                foundContacts.add(contact);
+            } else {
+                System.out.println("❌ No contact found with the such address: " + next);
             }
         }
-
-        checkMove.checkContact(searchOfAddress, contacts);
-        return contacts;
+        return foundContacts;
     }
 
     @Override
     public List<Contact> searchContactByPhone(List<Contact> contacts) {
         System.out.print("Enter phone number to search: ");
-        String searchOfNumber = SC.next();
+        String next = SC.next();
+        List<Contact> foundContacts = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact != null) {
-                if (contact.getPhone().equals(searchOfNumber)) {
-                    System.out.println("🔍 Contact Found: " + contact);
-                }
+            if (contact.getPhone().equals(next)) {
+                System.out.println("🔍 Contact Found: " + contact);
+                foundContacts.add(contact);
+            } else {
+                System.out.println("❌ No contact found with the such phone number: " + next);
             }
         }
-        checkMove.checkContact(searchOfNumber, contacts);
-        return contacts;
+        return foundContacts;
     }
 }

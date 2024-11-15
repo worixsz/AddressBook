@@ -10,5 +10,4 @@ public interface CheckAction {
 
     int checkLengthOfContact(int contactCount);
 
-    void checkContact(String searchName, List<Contact> contacts);
 }

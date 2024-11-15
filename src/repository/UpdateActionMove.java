@@ -17,30 +17,26 @@ public class UpdateActionMove implements UpdateAction {
         check = new CheckActionMove();
     }
 
-
     @Override
     public void updateContactByName(List<Contact> contacts) {
-        List<Contact> updateIndex = search.searchContactByName(contacts);
-
-        if (!updateIndex.isEmpty()) {
+        List<Contact> foundContacts = search.searchContactByName(contacts);
+        if (!foundContacts.isEmpty()) {
             System.out.print("Enter the index of the contact to update: ");
-            int indexForSaving = check.checkLengthOfContact(updateIndex.size());
-            if (indexForSaving >= 0 && indexForSaving < updateIndex.size()) {
-                updateContact(contacts, indexForSaving);
+            int userIndex = check.checkLengthOfContact(foundContacts.size());
+            if (userIndex >= 0 && userIndex < foundContacts.size()) {
+                updateContact(contacts, userIndex);
             }
         }
     }
 
-
     @Override
     public void updateContactBySurname(List<Contact> contacts) {
-        List<Contact> updateIndex = search.searchContactBySurname(contacts);
-
-        if (!updateIndex.isEmpty()) {
+        List<Contact> foundContacts = search.searchContactBySurname(contacts);
+        if (!foundContacts.isEmpty()) {
             System.out.print("Enter the index of the contact to update: ");
-            int indexForSaving = check.checkLengthOfContact(updateIndex.size());
-            if (indexForSaving >= 0 && indexForSaving < updateIndex.size()) {
-                updateContact(contacts, indexForSaving);
+            int userIndex = check.checkLengthOfContact(foundContacts.size());
+            if (userIndex >= 0 && userIndex < foundContacts.size()) {
+                updateContact(contacts, userIndex);
             }
         }
     }
@@ -48,13 +44,12 @@ public class UpdateActionMove implements UpdateAction {
 
     @Override
     public void updateContactByAddress(List<Contact> contacts) {
-        List<Contact> updateIndex = search.searchContactByAddress(contacts);
-
-        if (!updateIndex.isEmpty()) {
+        List<Contact> foundContacts = search.searchContactByAddress(contacts);
+        if (!foundContacts.isEmpty()) {
             System.out.print("Enter the index of the contact to update: ");
-            int indexForSaving = check.checkLengthOfContact(updateIndex.size());
-            if (indexForSaving >= 0 && indexForSaving < updateIndex.size()) {
-                updateContact(contacts, indexForSaving);
+            int userIndex = check.checkLengthOfContact(foundContacts.size());
+            if (userIndex >= 0 && userIndex < foundContacts.size()) {
+                updateContact(contacts, userIndex);
             }
         }
 
@@ -62,15 +57,16 @@ public class UpdateActionMove implements UpdateAction {
 
     @Override
     public void updateContactByPhone(List<Contact> contacts) {
-        List<Contact> updateIndex = search.searchContactByPhone(contacts);
-
-        if (!updateIndex.isEmpty()) {
+        List<Contact> foundContacts = search.searchContactByPhone(contacts);
+        if (!foundContacts.isEmpty()) {
             System.out.print("Enter the index of the contact to update: ");
-            int indexForSaving = check.checkLengthOfContact(updateIndex.size());
-            if (indexForSaving >= 0 && indexForSaving < updateIndex.size()) {
-                updateContact(contacts, indexForSaving);
+            int userIndex = check.checkLengthOfContact(foundContacts.size());
+            if (userIndex >= 0 && userIndex < foundContacts.size()) {
+                updateContact(contacts, userIndex);
             }
         }
+
+
     }
 
     @Override
