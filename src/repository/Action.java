@@ -85,16 +85,16 @@ public class Action {
                     int enterUpdate = SC.nextInt();
                     switch (enterUpdate) {
                         case 1:
-                        //    actionMove.updateContactByName(contacts.get());
+                            actionMove.updateContactByName(contacts);
                             break;
                         case 2:
-                            actionMove.updateContactBySurname(contacts);
+                            //                     actionMove.updateContactBySurname(contacts);
                             break;
                         case 3:
-                            actionMove.updateContactByAddress(contacts);
+                            //                    actionMove.updateContactByAddress(contacts);
                             break;
                         case 4:
-                            actionMove.updateContactByPhone(contacts);
+                            //                   actionMove.updateContactByPhone(contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
