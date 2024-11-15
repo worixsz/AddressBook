@@ -94,7 +94,7 @@ public class Action {
                             actionMove.updateContactByAddress(contacts);
                             break;
                         case 4:
-                            //                   actionMove.updateContactByPhone(contacts);
+                            actionMove.updateContactByPhone(contacts);
                             break;
                         default:
                             System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
