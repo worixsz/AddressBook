@@ -80,7 +80,9 @@ public class SearchActionMove implements SearchAction {
 
             foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
         } else {
-            System.out.println("❌ No contact found with the such address: " + next);
+            System.out.println("No contact found with the such phone number: " + next);
+            System.out.println("Trying to find similar contacts by phone number...");
+
         }
         return foundContacts;
     }
@@ -108,6 +110,8 @@ public class SearchActionMove implements SearchAction {
 
     @Override
     public void findByPhonePrefix(List<Contact> contacts, String phonePrefix) {
+        List<Contact> filteredList = contacts.stream().filter(c -> c.getPhone().startsWith(phonePrefix)).toList();
+        filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
 
     }
 }
