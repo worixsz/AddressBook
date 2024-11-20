@@ -65,6 +65,7 @@ public class SearchActionMove implements SearchAction {
         } else {
             System.out.println("No contact found with the such address: " + next);
             System.out.println("Trying to find similar contacts by address...");
+            findByAddressPrefix(contacts, next);
         }
         return foundContacts;
     }
