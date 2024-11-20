@@ -27,6 +27,8 @@ public class SearchActionMove implements SearchAction {
             foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
         } else {
             System.out.println("❌ No contact found with the such name: " + next);
+            System.out.println("Trying to find similar contacts by phone number...");
+            findByNamePrefix(contacts, next);
         }
         return foundContacts;
     }
@@ -82,6 +84,9 @@ public class SearchActionMove implements SearchAction {
 
     @Override
     public void findByNamePrefix(List<Contact> contacts, String namePrefix) {
+        List<Contact> filteredList = contacts.stream().filter(c -> c.getName().startsWith(namePrefix)).toList();
+        filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
+
 
     }
 
