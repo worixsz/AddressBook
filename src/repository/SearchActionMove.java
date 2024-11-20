@@ -79,4 +79,24 @@ public class SearchActionMove implements SearchAction {
         }
         return foundContacts;
     }
+
+    @Override
+    public void findByNamePrefix(List<Contact> contacts, String namePrefix) {
+
+    }
+
+    @Override
+    public void findBySurnamePrefix(List<Contact> contacts, String surnamePrefix) {
+
+    }
+
+    @Override
+    public void findByAddressPrefix(List<Contact> contacts, String addressPrefix) {
+
+    }
+
+    @Override
+    public void findByPhonePrefix(List<Contact> contacts, String phonePrefix) {
+
+    }
 }
