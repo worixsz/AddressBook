@@ -26,7 +26,9 @@ public class SearchActionMove implements SearchAction {
 
             foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
         } else {
-            System.out.println("❌ No contact found with the such name: " + next);
+            System.out.println("No contact found with the such name: " + next);
+            System.out.println("Trying to find similar contacts by name...");
+            findByNamePrefix(contacts, next);
         }
         return foundContacts;
     }
@@ -43,7 +45,9 @@ public class SearchActionMove implements SearchAction {
 
             foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
         } else {
-            System.out.println("❌ No contact found with the such surname: " + next);
+            System.out.println("No contact found with the such surname: " + next);
+            System.out.println("Trying to find similar contacts by surname...");
+            findBySurnamePrefix(contacts, next);
         }
         return foundContacts;
     }
@@ -59,7 +63,8 @@ public class SearchActionMove implements SearchAction {
 
             foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
         } else {
-            System.out.println("❌ No contact found with the such address: " + next);
+            System.out.println("No contact found with the such address: " + next);
+            System.out.println("Trying to find similar contacts by address...");
         }
         return foundContacts;
     }
@@ -75,8 +80,38 @@ public class SearchActionMove implements SearchAction {
 
             foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
         } else {
-            System.out.println("❌ No contact found with the such address: " + next);
+            System.out.println("No contact found with the such phone number: " + next);
+            System.out.println("Trying to find similar contacts by phone number...");
+
         }
         return foundContacts;
+    }
+
+    @Override
+    public void findByNamePrefix(List<Contact> contacts, String namePrefix) {
+        List<Contact> filteredList = contacts.stream().filter(c -> c.getName().startsWith(namePrefix)).toList();
+        filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
+
+    }
+
+    @Override
+    public void findBySurnamePrefix(List<Contact> contacts, String surnamePrefix) {
+        List<Contact> filteredList = contacts.stream().filter(c -> c.getSurname().startsWith(surnamePrefix)).toList();
+        filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
+
+    }
+
+    @Override
+    public void findByAddressPrefix(List<Contact> contacts, String addressPrefix) {
+        List<Contact> filteredList = contacts.stream().filter(c -> c.getAddress().startsWith(addressPrefix)).toList();
+        filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
+
+    }
+
+    @Override
+    public void findByPhonePrefix(List<Contact> contacts, String phonePrefix) {
+        List<Contact> filteredList = contacts.stream().filter(c -> c.getPhone().startsWith(phonePrefix)).toList();
+        filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
+
     }
 }
