@@ -93,7 +93,7 @@ public class SearchActionMove implements SearchAction {
 
     @Override
     public void findBySurnamePrefix(List<Contact> contacts, String surnamePrefix) {
-        List<Contact> filteredList = contacts.stream().filter(c -> c.getName().startsWith(surnamePrefix)).toList();
+        List<Contact> filteredList = contacts.stream().filter(c -> c.getSurname().startsWith(surnamePrefix)).toList();
         filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
 
     }
