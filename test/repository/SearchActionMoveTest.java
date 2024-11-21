@@ -202,21 +202,21 @@ public class SearchActionMoveTest {
 
     }
 
-//    @Test
-//    @DisplayName("Test for checking valid contact by address prefix")
-//    public void findByValidAddressPrefixTest() {
-//        String validInput = "Jo";
-//
-//        searchActionMove.findBySurnamePrefix(contactList, validInput);
-//
-//        List<Contact> filteredContacts = contactList.stream()
-//                .filter(contact -> contact.getAddress().startsWith(validInput))
-//                .toList();
-//
-//        assertEquals(1, filteredContacts.size(), "Should find one contacts with the address prefix 'Jo'");
-//        assertTrue(filteredContacts.getFirst().getName().startsWith(validInput), "First contact should start with 'Jo'");
-//
-//    }
+    @Test
+    @DisplayName("Test for checking valid contact by address prefix")
+    public void findByValidAddressPrefixTest() {
+        String validInput = "Ge";
+
+        searchActionMove.findByAddressPrefix(contactList, validInput);
+
+        List<Contact> filteredContacts = contactList.stream()
+                .filter(contact -> contact.getAddress().startsWith(validInput))
+                .toList();
+
+        assertEquals(1, filteredContacts.size(), "Should find one contacts with the address prefix 'Ge'");
+        assertTrue(filteredContacts.getFirst().getAddress().startsWith(validInput), "First contact should start with 'Ge'");
+
+    }
 
 
 }
