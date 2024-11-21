@@ -99,17 +99,17 @@ public class SearchActionMoveTest {
 
     }
 
-//    @Test
-//    @DisplayName("Test for checking invalid contact by surname")
-//    public void searchContactByInvalidAddressTest() {
-//
-//        String invalidInput = "Unknown\n";
-//        System.setIn(new ByteArrayInputStream(invalidInput.getBytes()));
-//        searchActionMove.setScanner(new Scanner(System.in));
-//        List<Contact> foundContactsInvalid = searchActionMove.searchContactBySurname(contactList);
-//        assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
-//
-//    }
+    @Test
+    @DisplayName("Test for checking invalid contact by address")
+    public void searchContactByInvalidAddressTest() {
+
+        String invalidInput = "Unknown\n";
+        System.setIn(new ByteArrayInputStream(invalidInput.getBytes()));
+        searchActionMove.setScanner(new Scanner(System.in));
+        List<Contact> foundContactsInvalid = searchActionMove.searchContactByAddress(contactList);
+        assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
+
+    }
 
 
 }
