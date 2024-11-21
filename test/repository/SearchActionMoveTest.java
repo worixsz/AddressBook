@@ -34,13 +34,13 @@ public class SearchActionMoveTest {
         System.setIn(new ByteArrayInputStream(validInput.getBytes()));
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsValid = searchActionMove.searchContactByName(contactList);
-        assertEquals(2, foundContactsValid.size(), "Should find twp contact");
+        assertEquals(2, foundContactsValid.size(), "Should find two contact");
         assertEquals("Azidin", foundContactsValid.get(1).getName(), "Name should match for valid input");
 
     }
 
     @Test
-    @DisplayName("Test for checking valid contact by Name")
+    @DisplayName("Test for checking invalid contact by Name")
     public void searchContactByInvalidNameTest() {
 
         String invalidInput = "Unknown\n";
@@ -48,6 +48,20 @@ public class SearchActionMoveTest {
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsInvalid = searchActionMove.searchContactByName(contactList);
         assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
+
+
+    }
+
+    @Test
+    @DisplayName("Test for checking valid contact by surname")
+    public void searchContactByValidSurNameTest() {
+
+        String validInput = "Mahronovich\n";
+        System.setIn(new ByteArrayInputStream(validInput.getBytes()));
+        searchActionMove.setScanner(new Scanner(System.in));
+        List<Contact> foundContactsValid = searchActionMove.searchContactBySurname(contactList);
+        assertEquals(1, foundContactsValid.size(), "Should find one contact");
+        assertEquals("Mahronovich", foundContactsValid.get(0).getSurname(), "Surname should match for valid input");
 
     }
 
