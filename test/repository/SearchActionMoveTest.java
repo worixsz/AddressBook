@@ -234,5 +234,40 @@ public class SearchActionMoveTest {
     }
 
 
+    @Test
+    @DisplayName("Test for checking valid contact by phone prefix")
+    public void findByValidPhonePrefixTest() {
+        String validInput = "996";
+
+        searchActionMove.findByPhonePrefix(contactList, validInput);
+
+        List<Contact> filteredContacts = contactList.stream()
+                .filter(contact -> contact.getPhone().startsWith(validInput))
+                .toList();
+
+        assertEquals(3, filteredContacts.size(), "Should find three contacts with the phone prefix '996'");
+        assertTrue(filteredContacts.get(0).getPhone().startsWith(validInput), "First contact should start with '996'");
+        assertTrue(filteredContacts.get(1).getPhone().startsWith(validInput), "Second contact should start with '996'");
+        assertTrue(filteredContacts.get(2).getPhone().startsWith(validInput), "Third contact should start with '996'");
+
+    }
+
+//
+//    @Test
+//    @DisplayName("Test for checking invalid contact by phone prefix")
+//    public void findByInvalidPhonePrefixTest() {
+//
+//        String invalidInput = "Unknown\n";
+//        searchActionMove.findByAddressPrefix(contactList, invalidInput);
+//
+//        List<Contact> filteredContacts = contactList.stream()
+//                .filter(contact -> contact.getAddress().startsWith(invalidInput))
+//                .toList();
+//
+//        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
+//
+//    }
+
+
 
 }
