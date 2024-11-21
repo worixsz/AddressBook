@@ -69,7 +69,7 @@ public class SearchActionMoveTest {
         System.setIn(new ByteArrayInputStream(validInput.getBytes()));
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsValid = searchActionMove.searchContactBySurname(contactList);
-        assertEquals(2, foundContactsValid.size(), "Should find one contact");
+        assertEquals(2, foundContactsValid.size(), "Should find two contact");
         assertEquals("Mahronovich", foundContactsValid.get(1).getSurname(), "Surname should match for valid input");
 
     }
@@ -94,7 +94,7 @@ public class SearchActionMoveTest {
         System.setIn(new ByteArrayInputStream(validInput.getBytes()));
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsValid = searchActionMove.searchContactByAddress(contactList);
-        assertEquals(2, foundContactsValid.size(), "Should find one contact");
+        assertEquals(2, foundContactsValid.size(), "Should find two contact");
         assertEquals("Japan", foundContactsValid.get(1).getAddress(), "Address should match for valid input");
 
     }
@@ -110,6 +110,31 @@ public class SearchActionMoveTest {
         assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
 
     }
+
+    @Test
+    @DisplayName("Test for checking valid contact by address")
+    public void searchContactByValidPhoneTest() {
+
+        String validInput = "996777777777\n";
+        System.setIn(new ByteArrayInputStream(validInput.getBytes()));
+        searchActionMove.setScanner(new Scanner(System.in));
+        List<Contact> foundContactsValid = searchActionMove.searchContactByPhone(contactList);
+        assertEquals(2, foundContactsValid.size(), "Should find two contact");
+        assertEquals("996777777777", foundContactsValid.get(1).getPhone(), "Address should match for valid input");
+
+    }
+
+//    @Test
+//    @DisplayName("Test for checking invalid contact by address")
+//    public void searchContactByInvalidAddressTest() {
+//
+//        String invalidInput = "Unknown\n";
+//        System.setIn(new ByteArrayInputStream(invalidInput.getBytes()));
+//        searchActionMove.setScanner(new Scanner(System.in));
+//        List<Contact> foundContactsInvalid = searchActionMove.searchContactByAddress(contactList);
+//        assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
+//
+//    }
 
 
 }
