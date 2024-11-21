@@ -8,12 +8,14 @@ import java.util.Scanner;
 
 public class CreateContactMove implements CreateAction {
 
+    Scanner SC = new Scanner(System.in);
+
     public CreateContactMove() {
     }
 
     @Override
     public void createContact(List<Contact> contacts) {
-        Scanner SC = new Scanner(System.in);
+
         System.out.println("\n--- CREATE NEW CONTACT ---");
         System.out.print("Enter your name: ");
         String name = SC.next();
@@ -27,5 +29,9 @@ public class CreateContactMove implements CreateAction {
         contacts.add(c);
 
         System.out.println("✅ Contact added successfully!\n");
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.SC = scanner;
     }
 }
