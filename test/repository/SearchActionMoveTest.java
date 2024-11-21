@@ -218,5 +218,21 @@ public class SearchActionMoveTest {
 
     }
 
+    @Test
+    @DisplayName("Test for checking invalid contact by address prefix")
+    public void findByInvalidAddressPrefixTest() {
+
+        String invalidInput = "Unknown\n";
+        searchActionMove.findByAddressPrefix(contactList, invalidInput);
+
+        List<Contact> filteredContacts = contactList.stream()
+                .filter(contact -> contact.getAddress().startsWith(invalidInput))
+                .toList();
+
+        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
+
+    }
+
+
 
 }
