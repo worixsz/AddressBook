@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SearchActionMoveTest {
 
@@ -135,6 +136,25 @@ public class SearchActionMoveTest {
         assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
 
     }
+
+    @Test
+    @DisplayName("Test for checking valid contact by name prefix")
+    public void findByValidNamePrefixTest() {
+        String validInput = "Azi";
+
+        searchActionMove.findByNamePrefix(contactList, validInput);
+
+        List<Contact> filteredContacts = contactList.stream()
+                .filter(contact -> contact.getName().startsWith(validInput))
+                .toList();
+
+        assertEquals(2, filteredContacts.size(), "Should find two contacts with the name prefix 'A'");
+
+        assertTrue(filteredContacts.get(0).getName().startsWith(validInput), "First contact should start with 'A'");
+        assertTrue(filteredContacts.get(1).getName().startsWith(validInput), "Second contact should start with 'A'");
+
+    }
+
 
 
 }
