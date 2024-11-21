@@ -12,6 +12,8 @@ public class UpdateActionMove implements UpdateAction {
 
     private final CheckActionMove check;
 
+    Scanner SC = new Scanner(System.in);
+
     public UpdateActionMove() {
         search = new SearchActionMove();
         check = new CheckActionMove();
@@ -22,13 +24,28 @@ public class UpdateActionMove implements UpdateAction {
         List<Contact> foundContacts = search.searchContactByName(contacts);
         if (!foundContacts.isEmpty()) {
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
-            int userIndex = check.checkLengthOfContact(foundContacts.size());
+            Scanner SC = new Scanner(System.in);
+            int userIndex;
+            int attemptCount = 0;
+            do {
+                userIndex = SC.nextInt() - 1;
+                if (userIndex >= 0 && userIndex < foundContacts.size()) {
+                    break;
+                } else {
+                    attemptCount++;
+                    System.out.println("❗ Invalid index. Please try again.");
+                    System.out.print("Enter the index of the contact: ");
+                }
+            } while (attemptCount < 5);
+
+            int finalUserIndex = userIndex;
             foundContacts.stream()
-                    .skip(userIndex)
+                    .skip(finalUserIndex)
                     .findFirst()
-                    .ifPresent(contact -> updateContact(contacts, userIndex));
+                    .ifPresent(contact -> updateContact(contacts, contacts.indexOf(contact)));
         }
     }
+
 
     @Override
     public void updateContactBySurname(List<Contact> contacts) {
@@ -40,7 +57,7 @@ public class UpdateActionMove implements UpdateAction {
             foundContacts.stream()
                     .skip(userIndex)
                     .findFirst()
-                    .ifPresent(contact -> updateContact(contacts, userIndex));
+                    .ifPresent(_ -> updateContact(contacts, userIndex));
         }
     }
 
@@ -54,7 +71,7 @@ public class UpdateActionMove implements UpdateAction {
             foundContacts.stream()
                     .skip(userIndex)
                     .findFirst()
-                    .ifPresent(contact -> updateContact(contacts, userIndex));
+                    .ifPresent(_ -> updateContact(contacts, userIndex));
         }
     }
 
@@ -68,7 +85,7 @@ public class UpdateActionMove implements UpdateAction {
             foundContacts.stream()
                     .skip(userIndex)
                     .findFirst()
-                    .ifPresent(contact -> updateContact(contacts, userIndex));
+                    .ifPresent(_ -> updateContact(contacts, userIndex));
         }
     }
 
@@ -76,7 +93,6 @@ public class UpdateActionMove implements UpdateAction {
     @Override
     public void updateContact(List<Contact> contacts, int indexForSave) {
         Scanner SC = new Scanner(System.in);
-
         Contact contactToUpdate = contacts.get(indexForSave);
         System.out.print("Enter the new name: ");
         String newName = SC.next();
@@ -92,6 +108,10 @@ public class UpdateActionMove implements UpdateAction {
         contactToUpdate.setPhone(newPhone);
 
         System.out.println("✅ Contact Updated!");
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.SC = scanner;
     }
 
 
