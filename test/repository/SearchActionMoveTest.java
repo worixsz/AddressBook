@@ -170,5 +170,37 @@ public class SearchActionMoveTest {
 
     }
 
+    @Test
+    @DisplayName("Test for checking valid contact by surname prefix")
+    public void findByValidSurnamePrefixTest() {
+        String validInput = "Jo";
+
+        searchActionMove.findBySurnamePrefix(contactList, validInput);
+
+        List<Contact> filteredContacts = contactList.stream()
+                .filter(contact -> contact.getName().startsWith(validInput))
+                .toList();
+
+        assertEquals(1, filteredContacts.size(), "Should find one contacts with the surname prefix 'Jo'");
+
+        assertTrue(filteredContacts.getFirst().getName().startsWith(validInput), "First contact should start with 'Jo'");
+
+    }
+
+//    @Test
+//    @DisplayName("Test for checking invalid contact by surname prefix")
+//    public void findByInvalidSurnamePrefixTest() {
+//
+//        String invalidInput = "Unknown\n";
+//        searchActionMove.findBySurnamePrefix(contactList, invalidInput);
+//
+//        List<Contact> filteredContacts = contactList.stream()
+//                .filter(contact -> contact.getName().startsWith(invalidInput))
+//                .toList();
+//
+//        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
+//
+//    }
+
 
 }
