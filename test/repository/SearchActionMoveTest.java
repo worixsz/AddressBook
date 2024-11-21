@@ -155,6 +155,20 @@ public class SearchActionMoveTest {
 
     }
 
+    @Test
+    @DisplayName("Test for checking invalid contact by name prefix")
+    public void findByInvalidNamePrefixTest() {
+
+        String invalidInput = "Unknown\n";
+        searchActionMove.findByNamePrefix(contactList, invalidInput);
+
+        List<Contact> filteredContacts = contactList.stream()
+                .filter(contact -> contact.getName().startsWith(invalidInput))
+                .toList();
+
+        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
+
+    }
 
 
 }
