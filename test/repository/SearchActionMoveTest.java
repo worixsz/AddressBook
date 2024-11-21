@@ -37,12 +37,17 @@ public class SearchActionMoveTest {
         assertEquals(2, foundContactsValid.size(), "Should find twp contact");
         assertEquals("Azidin", foundContactsValid.get(1).getName(), "Name should match for valid input");
 
+    }
 
-//        String invalidInput = "Unknown\n";
-//        System.setIn(new ByteArrayInputStream(invalidInput.getBytes()));
-//        searchActionMove.setScanner(new Scanner(System.in));
-//        List<Contact> foundContactsInvalid = searchActionMove.searchContactByName(contactList);
-//        assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
+    @Test
+    @DisplayName("Test for checking valid contact by Name")
+    public void searchContactByInvalidNameTest() {
+
+        String invalidInput = "Unknown\n";
+        System.setIn(new ByteArrayInputStream(invalidInput.getBytes()));
+        searchActionMove.setScanner(new Scanner(System.in));
+        List<Contact> foundContactsInvalid = searchActionMove.searchContactByName(contactList);
+        assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
 
     }
 
