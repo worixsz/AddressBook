@@ -173,17 +173,17 @@ public class SearchActionMoveTest {
     @Test
     @DisplayName("Test for checking valid contact by surname prefix")
     public void findByValidSurnamePrefixTest() {
-        String validInput = "Jo";
+        String validInput = "Sm";
 
         searchActionMove.findBySurnamePrefix(contactList, validInput);
 
         List<Contact> filteredContacts = contactList.stream()
-                .filter(contact -> contact.getName().startsWith(validInput))
+                .filter(contact -> contact.getSurname().startsWith(validInput))
                 .toList();
 
-        assertEquals(1, filteredContacts.size(), "Should find one contacts with the surname prefix 'Jo'");
+        assertEquals(1, filteredContacts.size(), "Should find one contacts with the surname prefix 'Sm'");
 
-        assertTrue(filteredContacts.getFirst().getName().startsWith(validInput), "First contact should start with 'Jo'");
+        assertTrue(filteredContacts.getFirst().getSurname().startsWith(validInput), "First contact should start with 'Sm'");
 
     }
 
@@ -195,12 +195,28 @@ public class SearchActionMoveTest {
         searchActionMove.findBySurnamePrefix(contactList, invalidInput);
 
         List<Contact> filteredContacts = contactList.stream()
-                .filter(contact -> contact.getName().startsWith(invalidInput))
+                .filter(contact -> contact.getSurname().startsWith(invalidInput))
                 .toList();
 
         assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
 
     }
+
+//    @Test
+//    @DisplayName("Test for checking valid contact by address prefix")
+//    public void findByValidAddressPrefixTest() {
+//        String validInput = "Jo";
+//
+//        searchActionMove.findBySurnamePrefix(contactList, validInput);
+//
+//        List<Contact> filteredContacts = contactList.stream()
+//                .filter(contact -> contact.getAddress().startsWith(validInput))
+//                .toList();
+//
+//        assertEquals(1, filteredContacts.size(), "Should find one contacts with the address prefix 'Jo'");
+//        assertTrue(filteredContacts.getFirst().getName().startsWith(validInput), "First contact should start with 'Jo'");
+//
+//    }
 
 
 }
