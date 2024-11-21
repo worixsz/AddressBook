@@ -115,4 +115,8 @@ public class SearchActionMove implements SearchAction {
         filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
 
     }
+
+    public void setScanner(Scanner scanner) {
+        this.SC = scanner;
+    }
 }
