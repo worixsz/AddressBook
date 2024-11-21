@@ -40,19 +40,19 @@ public class DeleteActionMoveTest {
     }
 
 
-//    @Test
-//    @DisplayName("Test for invalid index input to delete")
-//    public void deleteInvalidContactByContactTest() {
-//        String inputString = "5\n";
-//        System.setIn(new ByteArrayInputStream(inputString.getBytes()));
-//
-//        deleteActionMove.deleteContactByContact(contact);
-//
-//        assertEquals(1, contact.size(), "List size should remain the same after invalid input");
-//        assertTrue(contact.stream()
-//                        .anyMatch(contact -> contact.getName().equals("Azidin")),
-//                "Contact 'Azidin' should still exist in the list.");
-//    }
+    @Test
+    @DisplayName("Test for invalid index input to delete")
+    public void deleteInvalidContactByContactTest() {
+        String inputString = "5\n";
+        System.setIn(new ByteArrayInputStream(inputString.getBytes()));
+
+        deleteActionMove.deleteContactByContact(contact);
+
+        assertEquals(1, contact.size(), "List size should remain the same after invalid input");
+        assertTrue(contact.stream()
+                        .anyMatch(contact -> contact.getName().equals("Azidin")),
+                "Contact 'Azidin' should still exist in the list.");
+    }
 
 
 
