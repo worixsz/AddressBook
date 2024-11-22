@@ -23,27 +23,18 @@ public class CreateContactMove implements CreateAction {
         try {
             System.out.print("Enter your name: ");
             String name = SC.nextLine();
-            if (name.trim().isEmpty()) {
-                throw new InputMismatchException("Name cannot be empty.");
-            }
-
+            checkActionMove.checkStringForEmpty(name);
             System.out.print("Enter your surname: ");
             String surname = SC.nextLine();
-            if (surname.trim().isEmpty()) {
-                throw new InputMismatchException("Surname cannot be empty.");
-            }
+            checkActionMove.checkStringForEmpty(surname);
 
             System.out.print("Enter your address: ");
             String address = SC.nextLine();
-            if (address.trim().isEmpty()) {
-                throw new InputMismatchException("Address cannot be empty.");
-            }
+            checkActionMove.checkStringForEmpty(address);
 
             System.out.print("Enter your phone number: ");
             String phone = SC.nextLine();
-            if (phone.trim().isEmpty()) {
-                throw new InputMismatchException("Phone number cannot be empty.");
-            }
+            checkActionMove.checkStringForEmpty(phone);
 
             Contact c = new Contact(name, surname, address, phone);
 
@@ -61,4 +52,6 @@ public class CreateContactMove implements CreateAction {
     public void setScanner(Scanner scanner) {
         this.SC = scanner;
     }
+
+
 }
