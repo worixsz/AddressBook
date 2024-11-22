@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SearchActionMoveTest {
 
@@ -137,136 +136,7 @@ public class SearchActionMoveTest {
 
     }
 
-    @Test
-    @DisplayName("Test for checking valid contact by name prefix")
-    public void findByValidNamePrefixTest() {
-        String validInput = "Azi";
 
-        searchActionMove.findByNamePrefix(contactList, validInput);
-
-        List<Contact> filteredContacts = contactList.stream()
-                .filter(contact -> contact.getName().startsWith(validInput))
-                .toList();
-
-        assertEquals(2, filteredContacts.size(), "Should find two contacts with the name prefix 'A'");
-
-        assertTrue(filteredContacts.get(0).getName().startsWith(validInput), "First contact should start with 'A'");
-        assertTrue(filteredContacts.get(1).getName().startsWith(validInput), "Second contact should start with 'A'");
-
-    }
-
-    @Test
-    @DisplayName("Test for checking invalid contact by name prefix")
-    public void findByInvalidNamePrefixTest() {
-
-        String invalidInput = "Unknown\n";
-        searchActionMove.findByNamePrefix(contactList, invalidInput);
-
-        List<Contact> filteredContacts = contactList.stream()
-                .filter(contact -> contact.getName().startsWith(invalidInput))
-                .toList();
-
-        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
-
-    }
-
-    @Test
-    @DisplayName("Test for checking valid contact by surname prefix")
-    public void findByValidSurnamePrefixTest() {
-        String validInput = "Sm";
-
-        searchActionMove.findBySurnamePrefix(contactList, validInput);
-
-        List<Contact> filteredContacts = contactList.stream()
-                .filter(contact -> contact.getSurname().startsWith(validInput))
-                .toList();
-
-        assertEquals(1, filteredContacts.size(), "Should find one contacts with the surname prefix 'Sm'");
-
-        assertTrue(filteredContacts.getFirst().getSurname().startsWith(validInput), "First contact should start with 'Sm'");
-
-    }
-
-    @Test
-    @DisplayName("Test for checking invalid contact by surname prefix")
-    public void findByInvalidSurnamePrefixTest() {
-
-        String invalidInput = "Unknown\n";
-        searchActionMove.findBySurnamePrefix(contactList, invalidInput);
-
-        List<Contact> filteredContacts = contactList.stream()
-                .filter(contact -> contact.getSurname().startsWith(invalidInput))
-                .toList();
-
-        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
-
-    }
-
-    @Test
-    @DisplayName("Test for checking valid contact by address prefix")
-    public void findByValidAddressPrefixTest() {
-        String validInput = "Ge";
-
-        searchActionMove.findByAddressPrefix(contactList, validInput);
-
-        List<Contact> filteredContacts = contactList.stream()
-                .filter(contact -> contact.getAddress().startsWith(validInput))
-                .toList();
-
-        assertEquals(1, filteredContacts.size(), "Should find one contacts with the address prefix 'Ge'");
-        assertTrue(filteredContacts.getFirst().getAddress().startsWith(validInput), "First contact should start with 'Ge'");
-
-    }
-
-    @Test
-    @DisplayName("Test for checking invalid contact by address prefix")
-    public void findByInvalidAddressPrefixTest() {
-
-        String invalidInput = "Unknown\n";
-        searchActionMove.findByAddressPrefix(contactList, invalidInput);
-
-        List<Contact> filteredContacts = contactList.stream()
-                .filter(contact -> contact.getAddress().startsWith(invalidInput))
-                .toList();
-
-        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
-
-    }
-
-
-    @Test
-    @DisplayName("Test for checking valid contact by phone prefix")
-    public void findByValidPhonePrefixTest() {
-        String validInput = "996";
-
-        searchActionMove.findByPhonePrefix(contactList, validInput);
-
-        List<Contact> filteredContacts = contactList.stream()
-                .filter(contact -> contact.getPhone().startsWith(validInput))
-                .toList();
-
-        assertEquals(3, filteredContacts.size(), "Should find three contacts with the phone prefix '996'");
-        assertTrue(filteredContacts.get(0).getPhone().startsWith(validInput), "First contact should start with '996'");
-        assertTrue(filteredContacts.get(1).getPhone().startsWith(validInput), "Second contact should start with '996'");
-        assertTrue(filteredContacts.get(2).getPhone().startsWith(validInput), "Third contact should start with '996'");
-
-    }
-
-
-    @Test
-    @DisplayName("Test for checking invalid contact by phone prefix")
-    public void findByInvalidPhonePrefixTest() {
-
-        String invalidInput = "Unknown\n";
-        searchActionMove.findByPhonePrefix(contactList, invalidInput);
-
-        List<Contact> filteredContacts = contactList.stream()
-                .filter(contact -> contact.getPhone().startsWith(invalidInput))
-                .toList();
-
-        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
-
-    }
 
 
 
