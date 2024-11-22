@@ -11,7 +11,10 @@ public class SearchActionMove implements SearchAction {
 
     Scanner SC = new Scanner(System.in);
 
+    private final SearchActionByPrefixMove searchByPrefix;
+
     public SearchActionMove() {
+        searchByPrefix = new SearchActionByPrefixMove();
     }
 
     @Override
@@ -27,13 +30,12 @@ public class SearchActionMove implements SearchAction {
             } else {
                 System.out.println("No contact found with the such name: " + next);
                 System.out.println("Trying to find similar contacts by name...");
-                findByNamePrefix(contacts, next);
+                searchByPrefix.findByNamePrefix(contacts, next);
             }
 
         } catch (Exception e) {
             e.addSuppressed(e.fillInStackTrace());
         }
-
         return contacts;
     }
 
@@ -52,12 +54,11 @@ public class SearchActionMove implements SearchAction {
             } else {
                 System.out.println("No contact found with the such surname: " + next);
                 System.out.println("Trying to find similar contacts by surname...");
-                findBySurnamePrefix(contacts, next);
+                searchByPrefix.findByNamePrefix(contacts, next);
             }
         } catch (Exception e) {
             e.addSuppressed(e.fillInStackTrace());
         }
-
         return contacts;
     }
 
@@ -75,13 +76,12 @@ public class SearchActionMove implements SearchAction {
             } else {
                 System.out.println("No contact found with the such address: " + next);
                 System.out.println("Trying to find similar contacts by address...");
-                findByAddressPrefix(contacts, next);
+                searchByPrefix.findByNamePrefix(contacts, next);
             }
 
         } catch (Exception e) {
             e.addSuppressed(e.fillInStackTrace());
         }
-
         return contacts;
     }
 
@@ -99,13 +99,12 @@ public class SearchActionMove implements SearchAction {
             } else {
                 System.out.println("No contact found with the such phone number: " + next);
                 System.out.println("Trying to find similar contacts by phone number...");
-                findByPhonePrefix(contacts, next);
+                searchByPrefix.findByNamePrefix(contacts, next);
             }
 
         } catch (Exception e) {
             e.addSuppressed(e.fillInStackTrace());
         }
-
         return contacts;
     }
 
