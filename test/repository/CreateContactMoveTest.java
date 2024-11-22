@@ -32,7 +32,7 @@ public class CreateContactMoveTest {
         String name = "Azidin\n";
         String surname = "Amankulov\n";
         String address = "Japan\n";
-        String number = "996777777777\n";
+        String number = "996 777 777 777\n";
 
 
         String input = name + surname + address + number;
@@ -46,7 +46,7 @@ public class CreateContactMoveTest {
         assertEquals("Azidin", contact.getFirst().getName(), "Contact name should be 'Azidin'");
         assertEquals("Amankulov", contact.getFirst().getSurname(), "Contact last name should be 'Amankulov'");
         assertEquals("Japan", contact.getFirst().getAddress(), "Contact address should be 'Japan'");
-        assertEquals("996777777777", contact.getFirst().getPhone(), "Contact phone should be '996777777777'");
+        assertEquals("996 777 777 777", contact.getFirst().getPhone(), "Contact phone should be '996777777777'");
     }
 
 
