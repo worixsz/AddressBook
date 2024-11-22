@@ -22,7 +22,7 @@ public class CheckActionMove implements CheckAction {
             } else {
                 contacts.forEach(System.out::println);
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             System.err.println("❌ There are no available contacts");
 
         }
@@ -30,31 +30,42 @@ public class CheckActionMove implements CheckAction {
 
     }
 
-//    @Override
-//    public void validateContact(List<Contact> contact) throws InputMismatchException {
-//
-//        for (Contact contact1 : contact) {
-//            String nameRegex = "^[A-Z][a-zA-Z '.-]*[A-Za-z]$";
-//            String phoneRegex = "^([+]?\\d{1,3}[-\\s]?|)\\d{3}[-\\s]?\\d{3}[-\\s]?\\d{3}$";
-//            String addressRegex = "^(\\d{1,}) [a-zA-Z0-9\\s]+(,)? [a-zA-Z]+(,)? [A-Z]{2} [0-9]{5,6}$";
-//            if (!contact1.getName().matches(nameRegex)) {
-//                System.out.println("No correct type of name");
-//                throw new InputMismatchException();
-//            }
-//            if (!contact1.getSurname().matches(nameRegex)) {
-//                System.out.println("No correct type of surname");
-//                throw new InputMismatchException();
-//            }
-//            if (!contact1.getAddress().matches(addressRegex)) {
-//                System.out.println("No correct type of address");
-//                throw new InputMismatchException();
-//            }
-//            if (!contact1.getPhone().matches(phoneRegex)) {
-//                System.out.println("No correct type of phone");
-//                throw new InputMismatchException();
-//            }
-//        }
-//
-//
-//    }
+    @Override
+    public void validateContact(Contact contact) throws InputMismatchException {
+
+
+        String nameRegex = "^[A-Z][a-zA-Z '.-]*[A-Za-z]$";
+        String surnameRegex = "^[A-Za-z]+([ '-][A-Za-z]+)*$";
+        String phoneRegex = "^([+]?\\d{1,3}[-\\s]?\\(?\\d{3}\\)?[-\\s]?\\d{3}[-\\s]?\\d{3})$";
+        String addressRegex = "^[\\w\\s,.-]+$";
+
+        if (!contact.getName().matches(nameRegex)) {
+            System.out.println("❌ Invalid name format");
+            throw new InputMismatchException();
+        }
+
+        if (!contact.getSurname().matches(surnameRegex)) {
+            System.out.println("❌ Invalid surname format");
+            throw new InputMismatchException();
+        }
+
+        if (!contact.getAddress().matches(addressRegex)) {
+            System.out.println("❌ Invalid address format");
+            throw new InputMismatchException();
+        }
+
+        if (!contact.getPhone().matches(phoneRegex)) {
+            System.out.println("❌ Invalid phone number format");
+            throw new InputMismatchException();
+        }
+    }
+
+    @Override
+    public void checkStringForEmpty(String text) throws InputMismatchException {
+        if (text.trim().isEmpty()) {
+            throw new InputMismatchException("The input cannot be empty.");
+        }
+    }
+
+
 }
