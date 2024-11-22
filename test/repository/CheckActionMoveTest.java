@@ -37,29 +37,5 @@ public class CheckActionMoveTest {
     }
 
 
-    @Test
-    @DisplayName("Test for valid index input")
-    public void testValidIndex() {
-        String inputString = "2\n";
-        System.setIn(new ByteArrayInputStream(inputString.getBytes()));
-
-        int index = checkAction.checkLengthOfContact(2);
-        assertEquals(1, index, "Index should be valid");
-    }
-
-
-    @Test
-    @DisplayName("Test for invalid index input")
-    public void testInvalidIndex() {
-        String inputString = "2\n2\n0\n1\n";
-        System.setIn(new ByteArrayInputStream(inputString.getBytes()));
-
-        int index = checkAction.checkLengthOfContact(1);
-        assertEquals(0, index, "Index should be valid after invalid inputs");
-    }
-
-
-
-
 
 }

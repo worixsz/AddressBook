@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class CheckActionMove implements CheckAction {
 
+    Scanner SC = new Scanner(System.in);
 
     public CheckActionMove() {
 
@@ -25,20 +26,5 @@ public class CheckActionMove implements CheckAction {
 
     }
 
-    @Override
-    public int checkLengthOfContact(int contactCount) {
-        Scanner SC = new Scanner(System.in);
-        int index;
-
-        while (true) {
-            index = SC.nextInt() - 1;
-            if (index >= 0 && index < contactCount) {
-                return index;
-            } else {
-                System.out.println("❗ Invalid index. Please try again.");
-                System.out.print("Enter the index of the contact: ");
-            }
-        }
-    }
 
 }

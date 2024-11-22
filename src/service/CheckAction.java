@@ -8,6 +8,5 @@ public interface CheckAction {
 
     void showContact(List<Contact> contacts);
 
-    int checkLengthOfContact(int contactCount);
 
 }
