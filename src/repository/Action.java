@@ -9,12 +9,12 @@ import java.util.Scanner;
 public class Action {
 
     static Scanner SC = new Scanner(System.in);
-    private List<Contact> contacts;
-    private UpdateActionMove actionMove;
-    private SearchActionMove searchMove;
-    private CheckActionMove checkMove;
-    private DeleteActionMove deleteActionMove;
-    private CreateContactMove createMove;
+    private final List<Contact> contacts;
+    private final UpdateActionMove actionMove;
+    private final SearchActionMove searchMove;
+    private final CheckActionMove checkMove;
+    private final DeleteActionMove deleteActionMove;
+    private final CreateContactMove createMove;
 
     public Action() {
         contacts = new ArrayList<>();
@@ -23,11 +23,9 @@ public class Action {
         checkMove = new CheckActionMove();
         deleteActionMove = new DeleteActionMove();
         createMove = new CreateContactMove();
-
     }
 
     public void run() {
-
 
         int command = 0;
 

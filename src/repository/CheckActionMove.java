@@ -40,22 +40,18 @@ public class CheckActionMove implements CheckAction {
         String addressRegex = "^[\\w\\s,.-]+$";
 
         if (!contact.getName().matches(nameRegex)) {
-            System.out.println("❌ Invalid name format");
             throw new InputMismatchException();
         }
 
         if (!contact.getSurname().matches(surnameRegex)) {
-            System.out.println("❌ Invalid surname format");
             throw new InputMismatchException();
         }
 
         if (!contact.getAddress().matches(addressRegex)) {
-            System.out.println("❌ Invalid address format");
             throw new InputMismatchException();
         }
 
         if (!contact.getPhone().matches(phoneRegex)) {
-            System.out.println("❌ Invalid phone number format");
             throw new InputMismatchException();
         }
     }
