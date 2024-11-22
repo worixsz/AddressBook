@@ -109,8 +109,6 @@ public class Action {
                 }
             } catch (NumberFormatException e) {
                 System.err.println("❌ Invalid input. Please enter the correct number.");
-            } finally {
-                SC.close();
             }
         }
     }
