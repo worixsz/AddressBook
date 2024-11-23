@@ -65,27 +65,33 @@ public class SearchActionMove implements SearchAction {
             }
         } catch (InputMismatchException e) {
             e.fillInStackTrace();
-            System.err.print("❌ Invalid input. Please enter the name to search.\n");
+            System.err.print("❌ Invalid input. Please enter the surname to search.\n");
         }
         return foundContacts;
     }
 
     @Override
     public List<Contact> searchContactByAddress(List<Contact> contacts) {
+        List<Contact> foundContacts = new ArrayList<>();
+        try {
+            System.out.print("Enter address to search: ");
+            String next = SC.nextLine();
+            checkActionMove.checkStringForEmpty(next);
+            foundContacts = contacts.stream()
+                    .filter(contact -> contact.getAddress().equals(next))
+                    .toList();
+            if (!foundContacts.isEmpty()) {
 
-        System.out.print("Enter address to search: ");
-        String next = SC.nextLine();
-        checkActionMove.checkStringForEmpty(next);
-        List<Contact> foundContacts = contacts.stream()
-                .filter(contact -> contact.getAddress().equals(next))
-                .toList();
-        if (!foundContacts.isEmpty()) {
+                foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
+            } else {
+                System.out.println("No contact found with the such address: " + next);
+                System.out.println("Trying to find similar contacts by address...");
+                searchByPrefix.findByNamePrefix(contacts, next);
+            }
+        } catch (InputMismatchException e) {
+            e.fillInStackTrace();
+            System.err.print("❌ Invalid input. Please enter the address to search.\n");
 
-            foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
-        } else {
-            System.out.println("No contact found with the such address: " + next);
-            System.out.println("Trying to find similar contacts by address...");
-            searchByPrefix.findByNamePrefix(contacts, next);
         }
 
 
