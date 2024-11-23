@@ -12,7 +12,6 @@ public class SearchActionMove implements SearchAction {
 
 
     Scanner SC = new Scanner(System.in);
-
     private final SearchActionByPrefixMove searchByPrefix;
     private final CheckActionMove checkActionMove;
 
@@ -38,35 +37,36 @@ public class SearchActionMove implements SearchAction {
                 System.out.println("Trying to find similar contacts by name...");
                 searchByPrefix.findByNamePrefix(contacts, next);
             }
-
         } catch (InputMismatchException e) {
             e.fillInStackTrace();
             System.err.print("❌ Invalid input. Please enter the name to search.\n");
-
         }
-
         return foundContacts;
     }
 
 
     @Override
     public List<Contact> searchContactBySurname(List<Contact> contacts) {
+        List<Contact> foundContacts = new ArrayList<>();
+        try {
+            System.out.print("Enter surname to search: ");
+            String next = SC.nextLine();
+            checkActionMove.checkStringForEmpty(next);
+            foundContacts = contacts.stream()
+                    .filter(contact -> contact.getSurname().equals(next))
+                    .toList();
+            if (!foundContacts.isEmpty()) {
 
-        System.out.print("Enter surname to search: ");
-        String next = SC.nextLine();
-        checkActionMove.checkStringForEmpty(next);
-        List<Contact> foundContacts = contacts.stream()
-                .filter(contact -> contact.getSurname().equals(next))
-                .toList();
-        if (!foundContacts.isEmpty()) {
-
-            foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
-        } else {
-            System.out.println("No contact found with the such surname: " + next);
-            System.out.println("Trying to find similar contacts by surname...");
-            searchByPrefix.findByNamePrefix(contacts, next);
+                foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
+            } else {
+                System.out.println("No contact found with the such surname: " + next);
+                System.out.println("Trying to find similar contacts by surname...");
+                searchByPrefix.findByNamePrefix(contacts, next);
+            }
+        } catch (InputMismatchException e) {
+            e.fillInStackTrace();
+            System.err.print("❌ Invalid input. Please enter the name to search.\n");
         }
-
         return foundContacts;
     }
 
