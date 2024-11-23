@@ -15,7 +15,7 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
                     .filter(c -> c.getName().startsWith(namePrefix))
                     .toList();
             if (filteredList.isEmpty()) {
-                System.out.println("❗ No contacts found with the name prefix: " + namePrefix);
+                System.out.println("❗ The are not similar contacts: " + namePrefix);
             } else {
                 filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
             }
@@ -31,7 +31,7 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
         try {
             List<Contact> filteredList = contacts.stream().filter(c -> c.getSurname().startsWith(surnamePrefix)).toList();
             if (filteredList.isEmpty()) {
-                System.out.println("❗ No contacts found with the surname prefix: " + surnamePrefix);
+                System.out.println("❗ The are not similar contacts: " + surnamePrefix);
             } else {
                 filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
             }
@@ -46,7 +46,7 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
         try {
             List<Contact> filteredList = contacts.stream().filter(c -> c.getAddress().startsWith(addressPrefix)).toList();
             if (filteredList.isEmpty()) {
-                System.out.println("❗ No contacts found with the address prefix: " + addressPrefix);
+                System.out.println("❗ The are not similar contacts: " + addressPrefix);
             } else {
                 filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
             }
@@ -62,7 +62,7 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
         try {
             List<Contact> filteredList = contacts.stream().filter(c -> c.getPhone().startsWith(phonePrefix)).toList();
             if (filteredList.isEmpty()) {
-                System.out.println("❗ No contacts found with the phone prefix: " + phonePrefix);
+                System.out.println("❗ The are not similar contacts: " + phonePrefix);
             } else {
                 filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
             }
