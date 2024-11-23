@@ -91,7 +91,6 @@ public class SearchActionMove implements SearchAction {
         } catch (InputMismatchException e) {
             e.fillInStackTrace();
             System.err.print("❌ Invalid input. Please enter the address to search.\n");
-
         }
 
 
@@ -100,22 +99,27 @@ public class SearchActionMove implements SearchAction {
 
     @Override
     public List<Contact> searchContactByPhone(List<Contact> contacts) {
+        List<Contact> foundContacts = new ArrayList<>();
+        try {
+            System.out.print("Enter phone number to search: ");
+            String next = SC.nextLine();
+            checkActionMove.checkStringForEmpty(next);
+            foundContacts = contacts.stream()
+                    .filter(contact -> contact.getPhone().equals(next))
+                    .toList();
+            if (!foundContacts.isEmpty()) {
 
-        System.out.print("Enter phone number to search: ");
-        String next = SC.nextLine();
-        checkActionMove.checkStringForEmpty(next);
-        List<Contact> foundContacts = contacts.stream()
-                .filter(contact -> contact.getPhone().equals(next))
-                .toList();
-        if (!foundContacts.isEmpty()) {
+                foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
+            } else {
+                System.out.println("No contact found with the such phone number: " + next);
+                System.out.println("Trying to find similar contacts by phone number...");
+                searchByPrefix.findByNamePrefix(contacts, next);
+            }
 
-            foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
-        } else {
-            System.out.println("No contact found with the such phone number: " + next);
-            System.out.println("Trying to find similar contacts by phone number...");
-            searchByPrefix.findByNamePrefix(contacts, next);
+        } catch (InputMismatchException e) {
+            e.fillInStackTrace();
+            System.err.print("❌ Invalid input. Please enter the phone number to search.\n");
         }
-
         return foundContacts;
     }
 
