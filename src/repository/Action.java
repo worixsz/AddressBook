@@ -114,7 +114,8 @@ public class Action {
                         break;
                 }
             } catch (NumberFormatException e) {
-                System.err.println("❌ Invalid input. Please enter the correct number.");
+                System.err.print("❌ Invalid input. Please enter the correct number.\n");
+
             }
         }
     }
