@@ -1,8 +1,6 @@
 package repository;
-
 import model.Contact;
 import service.SearchAction;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;

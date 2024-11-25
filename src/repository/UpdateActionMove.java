@@ -1,8 +1,6 @@
 package repository;
-
 import model.Contact;
 import service.UpdateAction;
-
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;

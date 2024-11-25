@@ -1,9 +1,6 @@
 package repository;
-
-
 import model.Contact;
 import service.SearchActionByPrefix;
-
 import java.util.List;
 
 public class SearchActionByPrefixMove implements SearchActionByPrefix {

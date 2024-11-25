@@ -2,8 +2,6 @@ package repository;
 
 import model.Contact;
 import service.DeleteAction;
-
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 

@@ -36,11 +36,11 @@ public class CreateContactMove implements CreateAction {
             String phone = SC.nextLine();
             checkActionMove.checkStringForEmpty(phone);
 
-            Contact c = new Contact(name, surname, address, phone);
+            Contact contact = new Contact(name, surname, address, phone);
 
-            checkActionMove.validateContact(c);
+            checkActionMove.validateContact(contact);
 
-            contacts.add(c);
+            contacts.add(contact);
             System.out.println("✅ Contact added successfully!\n");
         } catch (InputMismatchException e) {
             System.err.println("\n❌ Error: " + e.getMessage() + " Contact not added.\n");
