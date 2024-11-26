@@ -35,11 +35,9 @@ public class CreateContactMove implements CreateAction {
             System.out.print("Enter your phone number: +996 ");
             String phone = SC.nextLine();
             checkActionMove.checkStringForEmpty(phone);
-            String cleanPhone = phone.replaceAll("\\D", "");
-            String formattedNumberKG = "+996 " + cleanPhone.replaceAll("(.{3})(.{3})(.{3})", "$1 $2 $3");
-            formattedNumberKG = formattedNumberKG.trim();
-            checkActionMove.checkPhoneNumber(formattedNumberKG);
-            Contact contact = new Contact(name, surname, address, formattedNumberKG);
+
+            String validNumber = checkActionMove.checkPhoneNumberForValid(phone);
+            Contact contact = new Contact(name, surname, address, validNumber);
             checkActionMove.validateContact(contact);
 
             contacts.add(contact);
