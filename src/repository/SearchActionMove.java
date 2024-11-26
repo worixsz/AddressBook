@@ -104,8 +104,8 @@ public class SearchActionMove implements SearchAction {
             System.out.print("Enter phone number to search: +996 ");
             String next = SC.nextLine();
             checkActionMove.checkStringForEmpty(next);
-
-            String finalFormattedPhone = "+996 " + next.replaceAll("(.{3})", "$1 ").trim();
+            String cleanPhone = next.replaceAll("\\D", "");
+            String finalFormattedPhone = "+996 " + cleanPhone.replaceAll("(.{3})(.{3})(.{3})", "$1 $2 $3");
 
             foundContacts = contacts.stream()
                     .filter(contact -> contact.getPhone().equals(finalFormattedPhone))
