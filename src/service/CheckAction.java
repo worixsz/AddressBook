@@ -12,4 +12,6 @@ public interface CheckAction {
 
     void checkStringForEmpty(String text);
 
+    void checkPhoneNumber(String number);
+
 }
