@@ -61,10 +61,19 @@ public class CheckActionMove implements CheckAction {
     }
 
     @Override
-    public void checkPhoneNumber(String number) throws InputMismatchException{
+    public void checkPhoneNumber(String number) throws InputMismatchException {
         if (number.length() != 16) {
             throw new InputMismatchException("Incorrect number.");
         }
+    }
+
+    @Override
+    public String checkPhoneNumberForValid(String phone) {
+        String cleanPhone = phone.replaceAll("\\D", "");
+        String formattedNumberKG = "+996 " + cleanPhone.replaceAll("(.{3})(.{3})(.{3})", "$1 $2 $3");
+        formattedNumberKG = formattedNumberKG.trim();
+        checkPhoneNumber(formattedNumberKG);
+        return formattedNumberKG;
     }
 
 
