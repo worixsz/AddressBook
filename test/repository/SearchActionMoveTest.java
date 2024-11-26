@@ -28,8 +28,8 @@ public class SearchActionMoveTest {
                 new Contact("John", "Doe", "USA", "123456789"),
                 new Contact("Jane", "Smith", "Canada", "987654321"),
                 new Contact("Emily", "Johnson", "UK", "444555666"),
-                new Contact("Michael", "Brown", "Australia", "555666777"),
-                new Contact("Sophia", "Williams", "Germany", "888999000"),
+                new Contact("Michael", "Brown", "Australia", "+996 777 777 777"),
+                new Contact("Sophia", "Williams", "Germany", "+996 777 777 777"),
                 new Contact("Liam", "Miller", "France", "111222333"),
                 new Contact("Olivia", "Davis", "Italy", "222333444")
         );
@@ -115,12 +115,12 @@ public class SearchActionMoveTest {
     @DisplayName("Test for checking valid contact by phone number")
     public void searchContactByValidPhoneTest() {
 
-        String validInput = "996777777777\n";
+        String validInput = "777777777\n";
         System.setIn(new ByteArrayInputStream(validInput.getBytes()));
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsValid = searchActionMove.searchContactByPhone(contactList);
         assertEquals(2, foundContactsValid.size(), "Should find two contact");
-        assertEquals("996777777777", foundContactsValid.get(1).getPhone(), "Address should match for valid input");
+        assertEquals("+996 777 777 777", foundContactsValid.get(1).getPhone(), "Address should match for valid input");
 
     }
 
