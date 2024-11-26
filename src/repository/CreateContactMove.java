@@ -32,12 +32,12 @@ public class CreateContactMove implements CreateAction {
             String address = SC.nextLine();
             checkActionMove.checkStringForEmpty(address);
 
-            System.out.print("Enter your phone number: ");
+            System.out.print("Enter your phone number: +996 ");
             String phone = SC.nextLine();
             checkActionMove.checkStringForEmpty(phone);
 
-            Contact contact = new Contact(name, surname, address, phone);
-
+            String validNumber = checkActionMove.checkPhoneNumberForValid(phone);
+            Contact contact = new Contact(name, surname, address, validNumber);
             checkActionMove.validateContact(contact);
 
             contacts.add(contact);

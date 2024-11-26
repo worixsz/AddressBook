@@ -1,6 +1,8 @@
 package repository;
+
 import model.Contact;
 import service.SearchAction;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -59,7 +61,7 @@ public class SearchActionMove implements SearchAction {
             } else {
                 System.out.println("No contact found with the such surname: " + next);
                 System.out.println("Trying to find similar contacts by surname...");
-                searchByPrefix.findByNamePrefix(contacts, next);
+                searchByPrefix.findBySurnamePrefix(contacts, next);
             }
         } catch (InputMismatchException e) {
             e.fillInStackTrace();
@@ -84,7 +86,7 @@ public class SearchActionMove implements SearchAction {
             } else {
                 System.out.println("No contact found with the such address: " + next);
                 System.out.println("Trying to find similar contacts by address...");
-                searchByPrefix.findByNamePrefix(contacts, next);
+                searchByPrefix.findByAddressPrefix(contacts, next);
             }
         } catch (InputMismatchException e) {
             e.fillInStackTrace();
@@ -99,28 +101,32 @@ public class SearchActionMove implements SearchAction {
     public List<Contact> searchContactByPhone(List<Contact> contacts) {
         List<Contact> foundContacts = new ArrayList<>();
         try {
-            System.out.print("Enter phone number to search: ");
+            System.out.print("Enter phone number to search: +996 ");
             String next = SC.nextLine();
             checkActionMove.checkStringForEmpty(next);
-            foundContacts = contacts.stream()
-                    .filter(contact -> contact.getPhone().equals(next))
-                    .toList();
-            if (!foundContacts.isEmpty()) {
+            String cleanPhone = next.replaceAll("\\D", "");
+            String finalFormattedPhone = "+996 " + cleanPhone.replaceAll("(.{3})(.{3})(.{3})", "$1 $2 $3");
 
+            foundContacts = contacts.stream()
+                    .filter(contact -> contact.getPhone().equals(finalFormattedPhone))
+                    .toList();
+
+            if (!foundContacts.isEmpty()) {
                 foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
             } else {
-                System.out.println("No contact found with the such phone number: " + next);
+                System.out.println("No contact found with the phone number: " + finalFormattedPhone);
                 System.out.println("Trying to find similar contacts by phone number...");
-                searchByPrefix.findByNamePrefix(contacts, next);
-            }
 
+
+                String withoutCountryCode = finalFormattedPhone.replaceFirst("^\\+996\\s*", "");
+                searchByPrefix.findByPhonePrefix(contacts, withoutCountryCode);
+            }
         } catch (InputMismatchException e) {
             e.fillInStackTrace();
-            System.err.print("❌ Invalid input. Please enter the phone number to search.\n");
+            System.err.println("❌ Invalid input. Please enter the phone number to search.\n");
         }
         return foundContacts;
     }
-
 
     public void setScanner(Scanner scanner) {
         this.SC = scanner;

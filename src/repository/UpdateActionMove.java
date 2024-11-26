@@ -1,6 +1,8 @@
 package repository;
+
 import model.Contact;
 import service.UpdateAction;
+
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -146,16 +148,15 @@ public class UpdateActionMove implements UpdateAction {
             String newAddress = SC.nextLine();
             checkActionMove.checkStringForEmpty(newAddress);
 
-            System.out.print("Enter the new phone number: ");
+            System.out.print("Enter the new phone number: +996 ");
             String newPhone = SC.nextLine();
             checkActionMove.checkStringForEmpty(newPhone);
-
+            String validNumber = checkActionMove.checkPhoneNumberForValid(newPhone);
             checkActionMove.validateContact(contactToUpdate);
-
             contactToUpdate.setName(newName);
             contactToUpdate.setSurname(newSurname);
             contactToUpdate.setAddress(newAddress);
-            contactToUpdate.setPhone(newPhone);
+            contactToUpdate.setPhone(validNumber);
 
             System.out.println("✅ Contact Updated!");
 
