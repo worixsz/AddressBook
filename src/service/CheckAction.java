@@ -14,4 +14,6 @@ public interface CheckAction {
 
     void checkPhoneNumber(String number);
 
+    String checkPhoneNumberForValid(String number);
+
 }
