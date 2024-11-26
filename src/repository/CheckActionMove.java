@@ -62,10 +62,8 @@ public class CheckActionMove implements CheckAction {
 
     @Override
     public void checkPhoneNumber(String number) throws InputMismatchException{
-        if (number.length() > 12){
+        if (number.length() != 16) {
             throw new InputMismatchException("Incorrect number.");
-        } else {
-            System.out.println("Correct format");
         }
     }
 
