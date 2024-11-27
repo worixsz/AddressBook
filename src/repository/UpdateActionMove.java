@@ -2,6 +2,7 @@ package repository;
 
 import model.Contact;
 import service.UpdateAction;
+
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -37,7 +38,7 @@ public class UpdateActionMove implements UpdateAction {
 
             int userIndex = SC.nextInt() - 1;
             if (userIndex < 0 || userIndex >= foundContacts.size()) {
-                throw new IndexOutOfBoundsException("❗Invalid index of contact.");
+                throw new IndexOutOfBoundsException("❗Invalid index of contact to update.");
             }
 
             foundContacts.stream()
@@ -54,26 +55,37 @@ public class UpdateActionMove implements UpdateAction {
     }
 
 
-//    @Override
-//    public void updateContactBySurname(List<Contact> contacts) {
-//        try {
-//            for (Contact _ : contacts) {
-//                List<Contact> foundContacts = search.searchContactBySurname(contacts);
-//                if (foundContacts.isEmpty()) {
-//                    return;
-//                } else {
-//                    System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
-//                    int userIndex = getValidIndex(foundContacts.size());
-//                    foundContacts.stream()
-//                            .skip(userIndex)
-//                            .findFirst()
-//                            .ifPresent(contact -> updateContact(contacts, contacts.indexOf(contact)));
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.fillInStackTrace();
-//        }
-//    }
+    @Override
+    public void updateContactBySurname(List<Contact> contacts) {
+        try {
+            List<Contact> foundContacts = search.searchContactBySurname(contacts);
+            if (foundContacts.isEmpty()) {
+                throw new NoSuchElementException("❗The are not contacts");
+            }
+
+            System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
+            if (!SC.hasNextInt()) {
+                SC.nextLine();
+                throw new InputMismatchException("❗Invalid input of contact to update.");
+            }
+
+            int userIndex = SC.nextInt() - 1;
+            if (userIndex < 0 || userIndex >= foundContacts.size()) {
+                throw new IndexOutOfBoundsException("❗Invalid index of contact to update.");
+            }
+
+            foundContacts.stream()
+                    .skip(userIndex)
+                    .findFirst()
+                    .ifPresent(contact -> updateContact(contacts, contacts.indexOf(contact)));
+
+        } catch (NoSuchElementException | IndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("❗An unexpected error occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 //
 //    @Override
 //    public void updateContactByAddress(List<Contact> contacts) {
@@ -121,8 +133,6 @@ public class UpdateActionMove implements UpdateAction {
 //    }
 
 
-
-
     @Override
     public void updateContact(List<Contact> contacts, int indexForSave) {
         Scanner SC = new Scanner(System.in);
@@ -154,6 +164,7 @@ public class UpdateActionMove implements UpdateAction {
         } catch (InputMismatchException e) {
             System.err.println("\n❌ Error: " + e.getMessage() + " Contact not updated.\n");
             System.err.print("Choose an option again: \n");
+            e.printStackTrace();
         }
     }
 
