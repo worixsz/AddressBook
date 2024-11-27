@@ -1,5 +1,7 @@
 package repository;
+
 import model.Contact;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,7 +25,7 @@ public class Action {
         createMove = new CreateContactMove();
     }
 
-    public void run() {
+    public void run() throws NumberFormatException {
 
         int command = 0;
 
@@ -91,13 +93,13 @@ public class Action {
                                 actionMove.updateContactByName(contacts);
                                 break;
                             case 2:
-                                actionMove.updateContactBySurname(contacts);
+                               // actionMove.updateContactBySurname(contacts);
                                 break;
                             case 3:
-                                actionMove.updateContactByAddress(contacts);
+                              //  actionMove.updateContactByAddress(contacts);
                                 break;
                             case 4:
-                                actionMove.updateContactByPhone(contacts);
+                              //  actionMove.updateContactByPhone(contacts);
                                 break;
                             default:
                                 System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
@@ -112,7 +114,7 @@ public class Action {
                         break;
                 }
             } catch (NumberFormatException e) {
-                System.err.print("❌ Invalid input. Please enter the correct number.\n");
+                e.printStackTrace();
 
             }
         }
