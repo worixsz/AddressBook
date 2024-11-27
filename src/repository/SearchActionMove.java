@@ -28,9 +28,10 @@ public class SearchActionMove implements SearchAction {
                     .filter(contact -> contact.getName().equals(next))
                     .toList();
             if (!foundContacts.isEmpty()) {
+
                 foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
             } else {
-                System.out.println("❗No contact found with the such name: " + next);
+                System.out.println("❗ No contact found with the such name: " + next);
                 System.out.println("Trying to find similar contacts by name...");
                 searchByPrefix.findByNamePrefix(contacts, next);
             }
