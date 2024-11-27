@@ -38,7 +38,7 @@ public class SearchActionMove implements SearchAction {
                 searchByPrefix.findByNamePrefix(contacts, next);
             }
         } catch (InputMismatchException e) {
-            e.fillInStackTrace();
+            e.printStackTrace();
             System.err.print("❌ Invalid input. Please enter the name to search.\n");
         }
         return foundContacts;
@@ -64,7 +64,7 @@ public class SearchActionMove implements SearchAction {
                 searchByPrefix.findBySurnamePrefix(contacts, next);
             }
         } catch (InputMismatchException e) {
-            e.fillInStackTrace();
+            e.printStackTrace();
             System.err.print("❌ Invalid input. Please enter the surname to search.\n");
         }
         return foundContacts;
@@ -89,7 +89,7 @@ public class SearchActionMove implements SearchAction {
                 searchByPrefix.findByAddressPrefix(contacts, next);
             }
         } catch (InputMismatchException e) {
-            e.fillInStackTrace();
+            e.printStackTrace();
             System.err.print("❌ Invalid input. Please enter the address to search.\n");
         }
 
@@ -122,7 +122,7 @@ public class SearchActionMove implements SearchAction {
                 searchByPrefix.findByPhonePrefix(contacts, withoutCountryCode);
             }
         } catch (InputMismatchException e) {
-            e.fillInStackTrace();
+            e.printStackTrace();
             System.err.println("❌ Invalid input. Please enter the phone number to search.\n");
         }
         return foundContacts;
