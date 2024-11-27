@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class DeleteActionMove implements DeleteAction {
 
+    Scanner SC = new Scanner(System.in);
     private final CheckActionMove checkMove;
 
     public DeleteActionMove() {
@@ -15,7 +16,6 @@ public class DeleteActionMove implements DeleteAction {
 
     @Override
     public void deleteContactByContact(List<Contact> contacts) {
-        Scanner SC = new Scanner(System.in);
         try {
             System.out.println("\n--- DELETE CONTACT ---");
 
