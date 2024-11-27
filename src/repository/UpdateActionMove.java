@@ -123,7 +123,7 @@ public class UpdateActionMove implements UpdateAction {
     @Override
     public void updateContactByPhone(List<Contact> contacts) {
         try {
-            List<Contact> foundContacts = search.searchContactByAddress(contacts);
+            List<Contact> foundContacts = search.searchContactByPhone(contacts);
             if (foundContacts.isEmpty()) {
                 throw new NoSuchElementException("❗The are not contacts");
             }
