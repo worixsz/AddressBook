@@ -1,5 +1,7 @@
 package repository;
+
 import model.Contact;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,7 +25,7 @@ public class Action {
         createMove = new CreateContactMove();
     }
 
-    public void run() {
+    public void run() throws NumberFormatException {
 
         int command = 0;
 
@@ -112,7 +114,7 @@ public class Action {
                         break;
                 }
             } catch (NumberFormatException e) {
-                System.err.print("❌ Invalid input. Please enter the correct number.\n");
+                e.printStackTrace();
 
             }
         }

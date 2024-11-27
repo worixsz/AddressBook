@@ -16,7 +16,5 @@ public interface UpdateAction {
 
     void updateContact(List<Contact> contacts, int indexForSave);
 
-    int getValidIndex(int size);
-
 
 }
