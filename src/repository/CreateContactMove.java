@@ -45,6 +45,7 @@ public class CreateContactMove implements CreateAction {
         } catch (InputMismatchException e) {
             System.err.println("\n❌ Error: " + e.getMessage() + " Contact not added.\n");
             System.err.print("Choose an option again: \n");
+            e.printStackTrace();
         }
     }
 
