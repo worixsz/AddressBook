@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class UpdateActionMove implements UpdateAction {
 
-    private final SearchActionMove search;
+    private SearchActionMove search;
 
     private final CheckActionMove checkActionMove;
 
@@ -32,11 +32,11 @@ public class UpdateActionMove implements UpdateAction {
 
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             if (!SC.hasNextInt()) {
-                SC.nextLine();
                 throw new InputMismatchException("❗Invalid input of contact to update.");
             }
 
             int userIndex = SC.nextInt() - 1;
+            SC.nextLine();
             if (userIndex < 0 || userIndex >= foundContacts.size()) {
                 throw new IndexOutOfBoundsException("❗Invalid index of contact to update.");
             }
@@ -69,7 +69,8 @@ public class UpdateActionMove implements UpdateAction {
                 throw new InputMismatchException("❗Invalid input of contact to update.");
             }
 
-            int userIndex = SC.nextInt() - 1;
+            int userIndex;
+            userIndex = Integer.parseInt(SC.nextLine());
             if (userIndex < 0 || userIndex >= foundContacts.size()) {
                 throw new IndexOutOfBoundsException("❗Invalid index of contact to update.");
             }
@@ -155,7 +156,6 @@ public class UpdateActionMove implements UpdateAction {
 
     @Override
     public void updateContact(List<Contact> contacts, int indexForSave) {
-        Scanner SC = new Scanner(System.in);
         Contact contactToUpdate = contacts.get(indexForSave);
 
         try {
@@ -194,5 +194,8 @@ public class UpdateActionMove implements UpdateAction {
         this.SC = scanner;
     }
 
+    public void setSearch(SearchActionMove search) {
+        this.search = search;
+    }
 
 }
