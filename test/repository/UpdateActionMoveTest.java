@@ -66,9 +66,9 @@ public class UpdateActionMoveTest {
     @DisplayName("Test for invalid index input during update")
     void testUpdateContactInvalidIndex() {
         String simulatedInput = """
-            Aibek
-            invalidIndex
-            """;
+                Aibek
+                invalidIndex
+                """;
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         Scanner sharedScanner = new Scanner(System.in);
 
@@ -87,6 +87,34 @@ public class UpdateActionMoveTest {
 
     }
 
+    @Test
+    @DisplayName("Test for update valid contact by surname")
+    void testUpdateContactBySurname() {
+
+        String simulatedInput = """
+                Mahronovich
+                1
+                Michael
+                Williams
+                France 93A
+                555 555 555
+                """;
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner sharedScanner = new Scanner(System.in);
+
+        updateActionMove.setScanner(sharedScanner);
+        searchActionMove.setScanner(sharedScanner);
+
+        updateActionMove.setSearch(searchActionMove);
+
+        updateActionMove.updateContactBySurname(contactList);
+        System.out.println(contactList);
+
+        assertEquals("Michael", contactList.getFirst().getName());
+        assertEquals("Williams", contactList.getFirst().getSurname());
+        assertEquals("France 93A", contactList.getFirst().getAddress());
+        assertEquals("+996 555 555 555", contactList.getFirst().getPhone());
+    }
 
 
 }

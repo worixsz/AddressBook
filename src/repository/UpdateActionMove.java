@@ -70,8 +70,8 @@ public class UpdateActionMove implements UpdateAction {
                 throw new InputMismatchException("❗Invalid input of contact to update.");
             }
 
-            int userIndex;
-            userIndex = Integer.parseInt(SC.nextLine());
+            int userIndex = SC.nextInt() - 1;
+            SC.nextLine();
             if (userIndex < 0 || userIndex >= foundContacts.size()) {
                 throw new IndexOutOfBoundsException("❗Invalid index of contact to update.");
             }
