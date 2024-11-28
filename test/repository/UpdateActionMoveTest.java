@@ -2,11 +2,13 @@ package repository;
 
 import model.Contact;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import java.io.ByteArrayInputStream;
 import java.util.List;
+import java.util.Scanner;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UpdateActionMoveTest {
 
@@ -15,28 +17,48 @@ public class UpdateActionMoveTest {
 
     private UpdateActionMove updateActionMove;
 
+    private SearchActionMove searchActionMove;
+
+
     @BeforeEach
     void setUp() {
         updateActionMove = new UpdateActionMove();
-        contactList = Arrays.asList(
-                new Contact("Azidin", "Amankulov", "Japan", "996777777777"),
-                new Contact("Aibek", "Mahronovich", "China", "9966666666"),
-                new Contact("Azidin", "Mahronovich", "Japan", "996777777777"),
-                new Contact("John", "Doe", "USA", "123456789"),
-                new Contact("Jane", "Smith", "Canada", "987654321"),
-                new Contact("Emily", "Johnson", "UK", "444555666"),
-                new Contact("Michael", "Brown", "Australia", "555666777"),
-                new Contact("Sophia", "Williams", "Germany", "888999000"),
-                new Contact("Liam", "Miller", "France", "111222333"),
-                new Contact("Olivia", "Davis", "Italy", "222333444")
+        searchActionMove = new SearchActionMove();
+
+        contactList = List.of(
+                new Contact("Aibek", "Mahronovich", "China", "+996 666 666 666")
         );
 
 
     }
 
     @Test
-    @DisplayName("Test to check correct update by name")
-    public void updateContactByNameTest() {
+    void testUpdateContactByName() {
 
+        String simulatedInput = """
+                Aibek
+                1
+                Michael
+                Williams
+                France 93A
+                555 555 555
+                """;
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner sharedScanner = new Scanner(System.in);
+
+        updateActionMove.setScanner(sharedScanner);
+        searchActionMove.setScanner(sharedScanner);
+
+        updateActionMove.setSearch(searchActionMove);
+
+        updateActionMove.updateContactByName(contactList);
+        System.out.println(contactList);
+
+        assertEquals("Michael", contactList.getFirst().getName());
+        assertEquals("Williams", contactList.getFirst().getSurname());
+        assertEquals("France 93A", contactList.getFirst().getAddress());
+        assertEquals("+996 555 555 555", contactList.getFirst().getPhone());
     }
+
+
 }
