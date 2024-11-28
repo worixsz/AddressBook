@@ -32,6 +32,7 @@ public class UpdateActionMove implements UpdateAction {
 
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             if (!SC.hasNextInt()) {
+                SC.nextLine();
                 throw new InputMismatchException("❗Invalid input of contact to update.");
             }
 
