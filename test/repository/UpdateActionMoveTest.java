@@ -64,7 +64,7 @@ public class UpdateActionMoveTest {
 
     @Test
     @DisplayName("Test for invalid input during update")
-    void updateInValidContactByNameTest() {
+    void updateInvalidContactByNameTest() {
         String simulatedInput = """
                 Aibek
                 invalidIndex
@@ -87,59 +87,59 @@ public class UpdateActionMoveTest {
 
     }
 
-//    @Test
-//    @DisplayName("Test for update valid contact by surname")
-//    void updateContactBySurnameTest() {
-//
-//        String simulatedInput = """
-//                Mahronovich
-//                1
-//                Michael
-//                Williams
-//                France 93A
-//                555 555 555
-//                """;
-//        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-//        Scanner sharedScanner = new Scanner(System.in);
-//
-//        updateActionMove.setScanner(sharedScanner);
-//        searchActionMove.setScanner(sharedScanner);
-//
-//        updateActionMove.setSearch(searchActionMove);
-//
-//        updateActionMove.updateContactBySurname(contactList);
-//        System.out.println(contactList);
-//
-//        assertEquals("Michael", contactList.getFirst().getName());
-//        assertEquals("Williams", contactList.getFirst().getSurname());
-//        assertEquals("France 93A", contactList.getFirst().getAddress());
-//        assertEquals("+996 555 555 555", contactList.getFirst().getPhone());
-//    }
-//
-//    @Test
-//    @DisplayName("Test for invalid index input during update")
-//    void updateContactInvalidIndex() {
-//        String simulatedInput = """
-//                Aibek
-//                invalidIndex
-//                """;
-//        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-//        Scanner sharedScanner = new Scanner(System.in);
-//
-//        updateActionMove.setScanner(sharedScanner);
-//        searchActionMove.setScanner(sharedScanner);
-//
-//        updateActionMove.setSearch(searchActionMove);
-//
-//        Contact originalContact = contactList.getFirst();
-//        updateActionMove.updateContactByName(contactList);
-//
-//        assertEquals(originalContact.getName(), contactList.getFirst().getName());
-//        assertEquals(originalContact.getSurname(), contactList.getFirst().getSurname());
-//        assertEquals(originalContact.getAddress(), contactList.getFirst().getAddress());
-//        assertEquals(originalContact.getPhone(), contactList.getFirst().getPhone());
-//
-//    }
+    @Test
+    @DisplayName("Test for update valid contact by surname")
+    void updateValidContactBySurnameTest() {
+
+        String simulatedInput = """
+                Mahronovich
+                1
+                Michael
+                Williams
+                France 93A
+                555 555 555
+                """;
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner sharedScanner = new Scanner(System.in);
+
+        updateActionMove.setScanner(sharedScanner);
+        searchActionMove.setScanner(sharedScanner);
+
+        updateActionMove.setSearch(searchActionMove);
+
+        updateActionMove.updateContactBySurname(contactList);
+        System.out.println(contactList);
+
+        assertEquals("Michael", contactList.getFirst().getName());
+        assertEquals("Williams", contactList.getFirst().getSurname());
+        assertEquals("France 93A", contactList.getFirst().getAddress());
+        assertEquals("+996 555 555 555", contactList.getFirst().getPhone());
+    }
+
+    @Test
+    @DisplayName("Test for invalid index input during update")
+    void updateInvalidContactBySurnameTest() {
+        String simulatedInput = """
+                Aibek
+                invalidIndex
+                """;
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner sharedScanner = new Scanner(System.in);
+
+        updateActionMove.setScanner(sharedScanner);
+        searchActionMove.setScanner(sharedScanner);
+
+        updateActionMove.setSearch(searchActionMove);
+
+        Contact originalContact = contactList.getFirst();
+        updateActionMove.updateContactBySurname(contactList);
+
+        assertEquals(originalContact.getName(), contactList.getFirst().getName());
+        assertEquals(originalContact.getSurname(), contactList.getFirst().getSurname());
+        assertEquals(originalContact.getAddress(), contactList.getFirst().getAddress());
+        assertEquals(originalContact.getPhone(), contactList.getFirst().getPhone());
+
+    }
 
 
 }
