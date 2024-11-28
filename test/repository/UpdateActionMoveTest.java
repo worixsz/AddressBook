@@ -195,5 +195,33 @@ public class UpdateActionMoveTest {
 
     }
 
+    @Test
+    @DisplayName("Test for update valid contact by phone number")
+    void updateValidContactByPhoneNumberTest() {
+
+        String simulatedInput = """
+                666666666
+                1
+                Michael
+                Williams
+                France 93A
+                555 555 555
+                """;
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner sharedScanner = new Scanner(System.in);
+
+        updateActionMove.setScanner(sharedScanner);
+        searchActionMove.setScanner(sharedScanner);
+
+        updateActionMove.setSearch(searchActionMove);
+
+        updateActionMove.updateContactByPhone(contactList);
+
+        assertEquals("Michael", contactList.getFirst().getName());
+        assertEquals("Williams", contactList.getFirst().getSurname());
+        assertEquals("France 93A", contactList.getFirst().getAddress());
+        assertEquals("+996 555 555 555", contactList.getFirst().getPhone());
+    }
+
 
 }

@@ -138,6 +138,7 @@ public class UpdateActionMove implements UpdateAction {
             }
 
             int userIndex = SC.nextInt() - 1;
+            SC.nextLine();
             if (userIndex < 0 || userIndex >= foundContacts.size()) {
                 throw new IndexOutOfBoundsException("❗Invalid index of contact to update.");
             }
