@@ -170,5 +170,30 @@ public class UpdateActionMoveTest {
         assertEquals("+996 555 555 555", contactList.getFirst().getPhone());
     }
 
+    @Test
+    @DisplayName("Test for invalid input during update by 'address'")
+    void updateInvalidContactByAddressTest() {
+        String simulatedInput = """
+                Aibek
+                invalidIndex
+                """;
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner sharedScanner = new Scanner(System.in);
+
+        updateActionMove.setScanner(sharedScanner);
+        searchActionMove.setScanner(sharedScanner);
+
+        updateActionMove.setSearch(searchActionMove);
+
+        Contact originalContact = contactList.getFirst();
+        updateActionMove.updateContactByAddress(contactList);
+
+        assertEquals(originalContact.getName(), contactList.getFirst().getName());
+        assertEquals(originalContact.getSurname(), contactList.getFirst().getSurname());
+        assertEquals(originalContact.getAddress(), contactList.getFirst().getAddress());
+        assertEquals(originalContact.getPhone(), contactList.getFirst().getPhone());
+
+    }
+
 
 }
