@@ -2,6 +2,7 @@ package repository;
 import model.Contact;
 import service.SearchActionByPrefix;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class SearchActionByPrefixMove implements SearchActionByPrefix {
 
@@ -16,8 +17,9 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
             } else {
                 filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
             }
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             System.err.println("An error occurred while searching for contacts: " + e.getMessage());
+            e.printStackTrace();
         }
 
 
@@ -32,8 +34,9 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
             } else {
                 filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
             }
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             System.err.println("An error occurred while searching for contacts: " + e.getMessage());
+            e.printStackTrace();
         }
 
     }
@@ -48,8 +51,9 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
                 filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
             }
 
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             System.err.println("An error occurred while searching for contacts: " + e.getMessage());
+            e.printStackTrace();
         }
 
     }
@@ -64,8 +68,9 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
                 filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
             }
 
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             System.err.println("An error occurred while searching for contacts: " + e.getMessage());
+            e.printStackTrace();
         }
 
     }

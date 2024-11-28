@@ -37,6 +37,7 @@ public class DeleteActionMove implements DeleteAction {
 
         } catch (NumberFormatException e) {
             System.out.println("❌ Invalid input. you will return to Main menu...");
+            e.printStackTrace();
         }
 
     }

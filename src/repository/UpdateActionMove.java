@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class UpdateActionMove implements UpdateAction {
 
-    private final SearchActionMove search;
+    private SearchActionMove search;
 
     private final CheckActionMove checkActionMove;
 
@@ -27,16 +27,16 @@ public class UpdateActionMove implements UpdateAction {
         try {
             List<Contact> foundContacts = search.searchContactByName(contacts);
             if (foundContacts.isEmpty()) {
-                throw new NoSuchElementException("❗The are not contacts");
+                throw new NoSuchElementException("❗We cannot find the contact which you had searching");
             }
 
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
             if (!SC.hasNextInt()) {
-                SC.nextLine();
                 throw new InputMismatchException("❗Invalid input of contact to update.");
             }
 
             int userIndex = SC.nextInt() - 1;
+            SC.nextLine();
             if (userIndex < 0 || userIndex >= foundContacts.size()) {
                 throw new IndexOutOfBoundsException("❗Invalid index of contact to update.");
             }
@@ -60,7 +60,7 @@ public class UpdateActionMove implements UpdateAction {
         try {
             List<Contact> foundContacts = search.searchContactBySurname(contacts);
             if (foundContacts.isEmpty()) {
-                throw new NoSuchElementException("❗The are not contacts");
+                throw new NoSuchElementException("❗We cannot find the contact which you had searching");
             }
 
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
@@ -69,7 +69,8 @@ public class UpdateActionMove implements UpdateAction {
                 throw new InputMismatchException("❗Invalid input of contact to update.");
             }
 
-            int userIndex = SC.nextInt() - 1;
+            int userIndex;
+            userIndex = Integer.parseInt(SC.nextLine());
             if (userIndex < 0 || userIndex >= foundContacts.size()) {
                 throw new IndexOutOfBoundsException("❗Invalid index of contact to update.");
             }
@@ -92,7 +93,7 @@ public class UpdateActionMove implements UpdateAction {
         try {
             List<Contact> foundContacts = search.searchContactByAddress(contacts);
             if (foundContacts.isEmpty()) {
-                throw new NoSuchElementException("❗The are not contacts");
+                throw new NoSuchElementException("❗We cannot find the contact which you had searching");
             }
 
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
@@ -125,7 +126,7 @@ public class UpdateActionMove implements UpdateAction {
         try {
             List<Contact> foundContacts = search.searchContactByPhone(contacts);
             if (foundContacts.isEmpty()) {
-                throw new NoSuchElementException("❗The are not contacts");
+                throw new NoSuchElementException("❗We cannot find the contact which you had searching");
             }
 
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
@@ -155,7 +156,6 @@ public class UpdateActionMove implements UpdateAction {
 
     @Override
     public void updateContact(List<Contact> contacts, int indexForSave) {
-        Scanner SC = new Scanner(System.in);
         Contact contactToUpdate = contacts.get(indexForSave);
 
         try {
@@ -180,6 +180,7 @@ public class UpdateActionMove implements UpdateAction {
             contactToUpdate.setSurname(newSurname);
             contactToUpdate.setAddress(newAddress);
             contactToUpdate.setPhone(validNumber);
+            System.out.println("✅ Contact added successfully!\n");
 
         } catch (InputMismatchException e) {
             System.err.println("\n❌ Error: " + e.getMessage() + " Contact not updated.\n");
@@ -193,5 +194,8 @@ public class UpdateActionMove implements UpdateAction {
         this.SC = scanner;
     }
 
+    public void setSearch(SearchActionMove search) {
+        this.search = search;
+    }
 
 }
