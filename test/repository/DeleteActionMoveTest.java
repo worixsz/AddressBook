@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +31,7 @@ public class DeleteActionMoveTest {
     public void deleteValidContactByContactTest() {
         String inputString = "1\n";
         System.setIn(new ByteArrayInputStream(inputString.getBytes()));
-
+        deleteActionMove.setScanner(new Scanner(System.in));
         deleteActionMove.deleteContactByContact(contact);
         assertEquals(0, contact.size(), "Contact should be deleted, list size should be 0 after deletion");
         assertFalse(contact.stream()
@@ -45,6 +46,7 @@ public class DeleteActionMoveTest {
     public void deleteInvalidContactByContactTest() {
         String inputString = "5\n";
         System.setIn(new ByteArrayInputStream(inputString.getBytes()));
+        deleteActionMove.setScanner(new Scanner(System.in));
 
         deleteActionMove.deleteContactByContact(contact);
 
@@ -53,7 +55,6 @@ public class DeleteActionMoveTest {
                         .anyMatch(contact -> contact.getName().equals("Azidin")),
                 "Contact 'Azidin' should still exist in the list.");
     }
-
 
 
 }

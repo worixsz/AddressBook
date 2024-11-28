@@ -41,5 +41,9 @@ public class DeleteActionMove implements DeleteAction {
         }
 
     }
+    public void setScanner(Scanner scanner) {
+        this.SC = scanner;
+    }
+
 
 }
