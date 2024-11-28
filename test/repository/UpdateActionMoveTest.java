@@ -2,6 +2,7 @@ package repository;
 
 import model.Contact;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -33,6 +34,7 @@ public class UpdateActionMoveTest {
     }
 
     @Test
+    @DisplayName("Test for update valid contact by name")
     void testUpdateContactByName() {
 
         String simulatedInput = """
@@ -59,6 +61,32 @@ public class UpdateActionMoveTest {
         assertEquals("France 93A", contactList.getFirst().getAddress());
         assertEquals("+996 555 555 555", contactList.getFirst().getPhone());
     }
+
+    @Test
+    @DisplayName("Test for invalid index input during update")
+    void testUpdateContactInvalidIndex() {
+        String simulatedInput = """
+            Aibek
+            invalidIndex
+            """;
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner sharedScanner = new Scanner(System.in);
+
+        updateActionMove.setScanner(sharedScanner);
+        searchActionMove.setScanner(sharedScanner);
+
+        updateActionMove.setSearch(searchActionMove);
+
+        Contact originalContact = contactList.getFirst();
+        updateActionMove.updateContactByName(contactList);
+
+        assertEquals(originalContact.getName(), contactList.getFirst().getName());
+        assertEquals(originalContact.getSurname(), contactList.getFirst().getSurname());
+        assertEquals(originalContact.getAddress(), contactList.getFirst().getAddress());
+        assertEquals(originalContact.getPhone(), contactList.getFirst().getPhone());
+
+    }
+
 
 
 }
