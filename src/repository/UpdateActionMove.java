@@ -27,7 +27,7 @@ public class UpdateActionMove implements UpdateAction {
         try {
             List<Contact> foundContacts = search.searchContactByName(contacts);
             if (foundContacts.isEmpty()) {
-                throw new NoSuchElementException("❗The are not contacts");
+                throw new NoSuchElementException("❗We cannot find the contact which you had searching");
             }
 
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
@@ -60,7 +60,7 @@ public class UpdateActionMove implements UpdateAction {
         try {
             List<Contact> foundContacts = search.searchContactBySurname(contacts);
             if (foundContacts.isEmpty()) {
-                throw new NoSuchElementException("❗The are not contacts");
+                throw new NoSuchElementException("❗We cannot find the contact which you had searching");
             }
 
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
@@ -92,7 +92,7 @@ public class UpdateActionMove implements UpdateAction {
         try {
             List<Contact> foundContacts = search.searchContactByAddress(contacts);
             if (foundContacts.isEmpty()) {
-                throw new NoSuchElementException("❗The are not contacts");
+                throw new NoSuchElementException("❗We cannot find the contact which you had searching");
             }
 
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");
@@ -125,7 +125,7 @@ public class UpdateActionMove implements UpdateAction {
         try {
             List<Contact> foundContacts = search.searchContactByPhone(contacts);
             if (foundContacts.isEmpty()) {
-                throw new NoSuchElementException("❗The are not contacts");
+                throw new NoSuchElementException("❗We cannot find the contact which you had searching");
             }
 
             System.out.print("Enter the index of the contact to update (1 to " + foundContacts.size() + "): ");

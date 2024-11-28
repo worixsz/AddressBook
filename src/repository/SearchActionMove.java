@@ -114,8 +114,6 @@ public class SearchActionMove implements SearchAction {
             } else {
                 System.out.println("❗No contact found with the phone number: " + finalFormattedPhone);
                 System.out.println("Trying to find similar contacts by phone number...");
-
-
                 String withoutCountryCode = finalFormattedPhone.replaceFirst("^\\+996\\s*", "");
                 searchByPrefix.findByPhonePrefix(contacts, withoutCountryCode);
             }
