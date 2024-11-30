@@ -36,7 +36,8 @@ public class CreateContactMove implements CreateAction {
             String phone = SC.nextLine();
             checkActionMove.checkStringForEmpty(phone);
 
-            String validNumber = checkActionMove.checkPhoneNumberForValid(phone);
+            String validNumber = checkActionMove.formatPhoneNumber(phone);
+
             Contact contact = new Contact(name, surname, address, validNumber);
             checkActionMove.validateContact(contact);
 
