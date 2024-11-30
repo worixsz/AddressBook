@@ -6,6 +6,7 @@ import service.CheckAction;
 import java.util.InputMismatchException;
 import java.util.List;
 
+
 public class CheckActionMove implements CheckAction {
 
 
@@ -15,16 +16,12 @@ public class CheckActionMove implements CheckAction {
 
     @Override
     public void showContact(List<Contact> contacts) {
-        try {
-            System.out.println("\n--- LIST OF ALL CONTACTS ---");
-            if (contacts.isEmpty()) {
-                System.out.println("❌ No contacts available.\n");
-            } else {
-                contacts.forEach(System.out::println);
-            }
-        } catch (NullPointerException e) {
-            System.err.println("❌ There are no available contacts");
 
+        if (contacts == null || contacts.isEmpty()) {
+            System.out.println("❌ No contacts available.\n");
+        } else {
+            System.out.println("\n--- LIST OF ALL CONTACTS ---");
+            contacts.forEach(System.out::println);
         }
     }
 
@@ -38,15 +35,12 @@ public class CheckActionMove implements CheckAction {
         if (!contact.getName().matches(nameRegex)) {
             throw new InputMismatchException("Invalid name format: " + contact.getName());
         }
-
         if (!contact.getSurname().matches(surnameRegex)) {
             throw new InputMismatchException("Invalid surname format: " + contact.getSurname());
         }
-
         if (!contact.getAddress().matches(addressRegex)) {
             throw new InputMismatchException("Invalid address format: " + contact.getAddress());
         }
-
         if (!contact.getPhone().matches(phoneRegex)) {
             throw new InputMismatchException("Invalid phone number format: " + contact.getPhone());
         }
@@ -68,13 +62,19 @@ public class CheckActionMove implements CheckAction {
     }
 
     @Override
-    public String checkPhoneNumberForValid(String phone) {
-        String cleanPhone = phone.replaceAll("\\D", "");
-        String formattedNumberKG = "+996 " + cleanPhone.replaceAll("(.{3})(.{3})(.{3})", "$1 $2 $3");
-        formattedNumberKG = formattedNumberKG.trim();
-        checkPhoneNumber(formattedNumberKG);
+    public String formatPhoneNumber(String phone) {
+        String formattedNumberKG = phone;
+        try {
+            String cleanPhone = phone.replaceAll("\\D", "");
+            formattedNumberKG = "+996 " + cleanPhone.replaceAll("(.{3})(.{3})(.{3})", "$1 $2 $3");
+            formattedNumberKG = formattedNumberKG.trim();
+            checkPhoneNumber(formattedNumberKG);
+            return formattedNumberKG;
+
+        } catch (IllegalArgumentException e) {
+            System.err.println("❌ TRY AGAIN.\n");
+        }
         return formattedNumberKG;
     }
-
-
 }
+

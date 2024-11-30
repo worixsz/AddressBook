@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface DeleteAction {
 
-    void deleteContactByContact(List<Contact> contacts);
+    void deleteContactByIndex(List<Contact> contacts);
 
 
 }

@@ -15,7 +15,7 @@ public class DeleteActionMove implements DeleteAction {
     }
 
     @Override
-    public void deleteContactByContact(List<Contact> contacts) {
+    public void deleteContactByIndex(List<Contact> contacts) {
         try {
             System.out.println("\n--- DELETE CONTACT ---");
 

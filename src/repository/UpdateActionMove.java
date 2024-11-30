@@ -177,7 +177,7 @@ public class UpdateActionMove implements UpdateAction {
             System.out.print("Enter the new phone number: +996 ");
             String newPhone = SC.nextLine();
             checkActionMove.checkStringForEmpty(newPhone);
-            String validNumber = checkActionMove.checkPhoneNumberForValid(newPhone);
+            String validNumber = checkActionMove.formatPhoneNumber(newPhone);
             checkActionMove.validateContact(contactToUpdate);
             contactToUpdate.setName(newName);
             contactToUpdate.setSurname(newSurname);
