@@ -32,7 +32,7 @@ public class DeleteActionMoveTest {
         String inputString = "1\n";
         System.setIn(new ByteArrayInputStream(inputString.getBytes()));
         deleteActionMove.setScanner(new Scanner(System.in));
-        deleteActionMove.deleteContactByContact(contact);
+        deleteActionMove.deleteContactByIndex(contact);
         assertEquals(0, contact.size(), "Contact should be deleted, list size should be 0 after deletion");
         assertFalse(contact.stream()
                         .anyMatch
@@ -48,7 +48,7 @@ public class DeleteActionMoveTest {
         System.setIn(new ByteArrayInputStream(inputString.getBytes()));
         deleteActionMove.setScanner(new Scanner(System.in));
 
-        deleteActionMove.deleteContactByContact(contact);
+        deleteActionMove.deleteContactByIndex(contact);
 
         assertEquals(1, contact.size(), "List size should remain the same after invalid input");
         assertTrue(contact.stream()
