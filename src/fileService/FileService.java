@@ -12,10 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class FileService {
-
-    private static final JsonParser parser = new JsonParser();
 
     private static final String tagContacts = "contacts";
 
@@ -31,18 +28,17 @@ public class FileService {
         List<Contact> contacts = new ArrayList<>();
 
         try (FileReader fileReader = new FileReader("contacts.json")) {
-            JsonObject jsonObject = (JsonObject) parser.parse(fileReader);
+            JsonObject jsonObject = JsonParser.parseReader(fileReader).getAsJsonObject();
 
-            JsonArray contactsArray = (JsonArray) jsonObject.get(tagContacts);
+            JsonArray contactsArray = jsonObject.getAsJsonArray(tagContacts);
             for (JsonElement item : contactsArray) {
-                JsonObject contactsObjects = (JsonObject) item;
-                String nameOfContact = contactsObjects.get(name).getAsString();
-                String surnameOfContact = contactsObjects.get(surname).getAsString();
-                String addressOfContact = contactsObjects.get(address).getAsString();
-                String phoneOfContact = contactsObjects.get(phone).getAsString();
+                JsonObject contactsObject = item.getAsJsonObject();
+                String nameOfContact = contactsObject.get(name).getAsString();
+                String surnameOfContact = contactsObject.get(surname).getAsString();
+                String addressOfContact = contactsObject.get(address).getAsString();
+                String phoneOfContact = contactsObject.get(phone).getAsString();
                 Contact contact = new Contact(nameOfContact, surnameOfContact, addressOfContact, phoneOfContact);
                 contacts.add(contact);
-
             }
 
         } catch (IOException e) {
@@ -50,6 +46,6 @@ public class FileService {
         }
         return contacts;
     }
-
-
 }
+
+
