@@ -1,6 +1,8 @@
 package repository;
+
 import model.Contact;
 import service.SearchActionByPrefix;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -61,8 +63,9 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
     @Override
     public void findByPhonePrefix(List<Contact> contacts, String phonePrefix) {
         try {
+
             List<Contact> filteredList = contacts.stream().filter(c -> c.getPhone().startsWith( "+996 " + phonePrefix)).toList();
-            if (filteredList.isEmpty()) {
+            if (phonePrefix.isEmpty() || !phonePrefix.matches("\\d+")) {
                 System.out.println("❗ The are not similar contacts: +996 " + phonePrefix);
             } else {
                 filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
