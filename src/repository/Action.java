@@ -1,23 +1,25 @@
 package repository;
 
+import fileService.FileService;
 import model.Contact;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Action {
 
-    static Scanner SC = new Scanner(System.in);
+    Scanner SC = new Scanner(System.in);
     private final List<Contact> contacts;
     private final UpdateActionMove actionMove;
     private final SearchActionMove searchMove;
     private final CheckActionMove checkMove;
     private final DeleteActionMove deleteActionMove;
     private final CreateContactMove createMove;
+    FileService fileService;
 
     public Action() {
-        contacts = new ArrayList<>();
+        fileService = new FileService();
+        this.contacts = fileService.read();
         actionMove = new UpdateActionMove();
         searchMove = new SearchActionMove();
         checkMove = new CheckActionMove();
@@ -44,6 +46,7 @@ public class Action {
                 switch (command) {
                     case 1:
                         createMove.createContact(contacts);
+                        fileService.write(contacts);
                         break;
                     case 2:
                         System.out.println("\n--- SEARCH CONTACT ---");
@@ -70,11 +73,13 @@ public class Action {
                                 break;
                             default:
                                 System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+                                SC.nextLine();
                                 break;
                         }
                         break;
                     case 3:
-                        deleteActionMove.deleteContactByContact(contacts);
+                        deleteActionMove.deleteContactByIndex(contacts);
+                        fileService.write(contacts);
                         break;
                     case 4:
                         checkMove.showContact(contacts);
@@ -91,18 +96,23 @@ public class Action {
                         switch (enterUpdate) {
                             case 1:
                                 actionMove.updateContactByName(contacts);
+                                fileService.write(contacts);
                                 break;
                             case 2:
                                 actionMove.updateContactBySurname(contacts);
+                                fileService.write(contacts);
                                 break;
                             case 3:
                                 actionMove.updateContactByAddress(contacts);
+                                fileService.write(contacts);
                                 break;
                             case 4:
                                 actionMove.updateContactByPhone(contacts);
+                                fileService.write(contacts);
                                 break;
                             default:
                                 System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+                                SC.nextLine();
                                 break;
                         }
                         break;
@@ -111,6 +121,7 @@ public class Action {
                         break;
                     default:
                         System.err.println("❗ Invalid command. Please select a number between 1 and 6.\n");
+                        SC.nextLine();
                         break;
                 }
             } catch (NumberFormatException e) {
