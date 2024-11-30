@@ -29,21 +29,17 @@ public class Action {
 
     public void run() {
         int command = 0;
-
         while (command != 6) {
             try {
                 printMenu();
-                command = getValidIntInput();
+                command = Integer.parseInt(SC.nextLine());
                 handleCommand(command);
             } catch (NumberFormatException e) {
-                System.err.println("❌ Invalid input. Please enter a valid number.\n");
-            } catch (Exception e) {
-                System.err.println("❌ An unexpected error occurred: " + e.getMessage());
+                System.out.print("\n❗Incorrect input,Returning to the main menu...\n");
             }
         }
-
-        closeScanner();
     }
+
 
     private void printMenu() {
         System.out.println("\n======= CONTACT MANAGEMENT SYSTEM =======");
@@ -56,15 +52,6 @@ public class Action {
         System.out.print("Choose an option: ");
     }
 
-    private int getValidIntInput() {
-        while (true) {
-            try {
-                return Integer.parseInt(SC.nextLine());
-            } catch (NumberFormatException e) {
-                System.err.println("❌ Invalid input. Please enter a valid number.");
-            }
-        }
-    }
 
     private void handleCommand(int command) {
         switch (command) {
@@ -95,70 +82,79 @@ public class Action {
     }
 
     private void searchContacts() {
-        System.out.println("\n--- SEARCH CONTACT ---");
-        System.out.println("How would you like to search the contacts?");
-        System.out.println("1. By Name");
-        System.out.println("2. By Surname");
-        System.out.println("3. By Address");
-        System.out.println("4. By Phone number");
-        System.out.print("Please enter the corresponding number (1-4): ");
+        try {
+            System.out.println("\n--- SEARCH CONTACT ---");
+            System.out.println("How would you like to search the contacts?");
+            System.out.println("1. By Name");
+            System.out.println("2. By Surname");
+            System.out.println("3. By Address");
+            System.out.println("4. By Phone number");
+            System.out.print("Please enter the corresponding number (1-4): ");
 
-        int searchChoice = getValidIntInput();
+            int searchChoice = Integer.parseInt(SC.nextLine());
 
-        switch (searchChoice) {
-            case 1:
-                searchMove.searchContactByName(contacts);
-                break;
-            case 2:
-                searchMove.searchContactBySurname(contacts);
-                break;
-            case 3:
-                searchMove.searchContactByAddress(contacts);
-                break;
-            case 4:
-                searchMove.searchContactByPhone(contacts);
-                break;
-            default:
-                System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
-                break;
+            switch (searchChoice) {
+                case 1:
+                    searchMove.searchContactByName(contacts);
+                    break;
+                case 2:
+                    searchMove.searchContactBySurname(contacts);
+                    break;
+                case 3:
+                    searchMove.searchContactByAddress(contacts);
+                    break;
+                case 4:
+                    searchMove.searchContactByPhone(contacts);
+                    break;
+                default:
+                    System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+                    break;
+            }
+        } catch (NumberFormatException e) {
+            System.out.print("\n❗Incorrect input,Returning to the main menu...\n");
+
         }
+
     }
 
     private void updateContact() {
-        System.out.println("\n--- UPDATE CONTACT ---");
-        System.out.println("How would you like to search a contact for update?");
-        System.out.println("1. By Name");
-        System.out.println("2. By Surname");
-        System.out.println("3. By Address");
-        System.out.println("4. By Phone number");
-        System.out.print("Please enter the corresponding number (1-4): ");
+        try {
+            System.out.println("\n--- UPDATE CONTACT ---");
+            System.out.println("How would you like to search a contact for update?");
+            System.out.println("1. By Name");
+            System.out.println("2. By Surname");
+            System.out.println("3. By Address");
+            System.out.println("4. By Phone number");
+            System.out.print("Please enter the corresponding number (1-4): ");
 
-        int updateChoice = getValidIntInput();
+            int updateChoice = Integer.parseInt(SC.nextLine());
 
-        switch (updateChoice) {
-            case 1:
-                actionMove.updateContactByName(contacts);
-                fileService.write(contacts);
-                break;
-            case 2:
-                actionMove.updateContactBySurname(contacts);
-                fileService.write(contacts);
-                break;
-            case 3:
-                actionMove.updateContactByAddress(contacts);
-                fileService.write(contacts);
-                break;
-            case 4:
-                actionMove.updateContactByPhone(contacts);
-                fileService.write(contacts);
-                break;
-            default:
-                System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
-                break;
+            switch (updateChoice) {
+                case 1:
+                    actionMove.updateContactByName(contacts);
+                    fileService.write(contacts);
+                    break;
+                case 2:
+                    actionMove.updateContactBySurname(contacts);
+                    fileService.write(contacts);
+                    break;
+                case 3:
+                    actionMove.updateContactByAddress(contacts);
+                    fileService.write(contacts);
+                    break;
+                case 4:
+                    actionMove.updateContactByPhone(contacts);
+                    fileService.write(contacts);
+                    break;
+                default:
+                    System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+                    break;
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.print("\n❗Incorrect input,Returning to the main menu...\n");
         }
+
     }
 
-    private void closeScanner() {
-        SC.close();
-    }
 }
