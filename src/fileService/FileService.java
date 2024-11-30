@@ -1,13 +1,11 @@
 package fileService;
 
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import model.Contact;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +43,29 @@ public class FileService {
             throw new RuntimeException(e);
         }
         return contacts;
+    }
+
+    public void write(List<Contact> contacts) {
+        JsonArray contactsArray = new JsonArray();
+
+        for (Contact contact : contacts) {
+            JsonObject contactObject = new JsonObject();
+            contactObject.add(name, new JsonPrimitive(contact.getName()));
+            contactObject.add(surname, new JsonPrimitive(contact.getSurname()));
+            contactObject.add(address, new JsonPrimitive(contact.getAddress()));
+            contactObject.add(phone, new JsonPrimitive(contact.getPhone()));
+            contactsArray.add(contactObject);
+        }
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add(tagContacts, contactsArray);
+
+        try (FileWriter fileWriter = new FileWriter("contacts.json")) {
+            Gson gson = new Gson();
+            gson.toJson(jsonObject, fileWriter);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
