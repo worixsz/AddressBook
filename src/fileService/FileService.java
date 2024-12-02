@@ -1,72 +1,58 @@
 package fileService;
 
-
-import com.google.gson.*;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import model.Contact;
 
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileService {
 
-    private static final String TAG_CONTACTS = "contacts";
+    public FileService() {
 
-    private static final String NAME = "name";
-
-    private static final String SURNAME = "surname";
-
-    private static final String address = "address";
-
-    private static final String PHONE = "phone";
+    }
 
     public List<Contact> read() {
-        List<Contact> contacts = new ArrayList<>();
-
-        try (FileReader fileReader = new FileReader("contacts.json")) {
-            JsonObject jsonObject = JsonParser.parseReader(fileReader).getAsJsonObject();
-
-            JsonArray contactsArray = jsonObject.getAsJsonArray(TAG_CONTACTS);
-            for (JsonElement item : contactsArray) {
-                JsonObject contactsObject = item.getAsJsonObject();
-                String nameOfContact = contactsObject.get(NAME).getAsString();
-                String surnameOfContact = contactsObject.get(SURNAME).getAsString();
-                String addressOfContact = contactsObject.get(address).getAsString();
-                String phoneOfContact = contactsObject.get(PHONE).getAsString();
-                Contact contact = new Contact(nameOfContact, surnameOfContact, addressOfContact, phoneOfContact);
-                contacts.add(contact);
+        try {
+            File file = new File("contacts.json");
+            if (!file.exists()) {
+                return new ArrayList<>();
             }
 
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(file);
+            JsonNode contactsNode = rootNode.get("contacts");
+
+            if (contactsNode != null && contactsNode.isArray()) {
+                return objectMapper.convertValue(
+                        contactsNode,
+                        objectMapper.getTypeFactory().constructCollectionType(List.class, Contact.class)
+                );
+            }
+
+            return new ArrayList<>();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed to read contacts from file", e);
         }
-        return contacts;
     }
+
 
     public void write(List<Contact> contacts) {
-        JsonArray contactsArray = new JsonArray();
+        try {
+            File file = new File("contacts.json");
+            ObjectMapper objectMapper = new ObjectMapper();
 
-        for (Contact contact : contacts) {
-            JsonObject contactObject = new JsonObject();
-            contactObject.add(NAME, new JsonPrimitive(contact.getName()));
-            contactObject.add(SURNAME, new JsonPrimitive(contact.getSurname()));
-            contactObject.add(address, new JsonPrimitive(contact.getAddress()));
-            contactObject.add(PHONE, new JsonPrimitive(contact.getPhone()));
-            contactsArray.add(contactObject);
-        }
+            ObjectNode rootNode = objectMapper.createObjectNode();
+            rootNode.set("contacts", objectMapper.valueToTree(contacts));
 
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.add(TAG_CONTACTS, contactsArray);
-
-        try (FileWriter fileWriter = new FileWriter("contacts.json")) {
-            Gson gson = new Gson();
-            gson.toJson(jsonObject, fileWriter);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, rootNode);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to write contacts to file", e);
         }
     }
+
 }
-
-
