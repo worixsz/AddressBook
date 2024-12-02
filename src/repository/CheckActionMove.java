@@ -80,17 +80,25 @@ public class CheckActionMove implements CheckAction {
     @Override
     public void checkForValidName(String text) {
         String nameRegex = "^[A-Z][a-zA-Z '.-]*[A-Za-z]$";
+
         if (text.trim().isEmpty()) {
             throw new InputMismatchException("The input cannot be empty.");
         } else if (!text.matches(nameRegex)) {
             throw new InputMismatchException("Invalid format of name: " + text);
-
         }
 
     }
 
     @Override
     public void checkForValidSurname(String text) {
+        String surnameRegex = "^[A-Za-z]+([ '-][A-Za-z]+)*$";
+
+        if (text.trim().isEmpty()) {
+            throw new InputMismatchException("The input cannot be empty.");
+        } else if (!text.matches(surnameRegex)) {
+            throw new InputMismatchException("Invalid format of surname: " + text);
+        }
+
 
     }
 
