@@ -84,6 +84,22 @@ public class CheckActionMoveTest {
         assertThrows(InputMismatchException.class, () -> validator.checkForValidSurname("123Smith"));
     }
 
+    @Test
+    @DisplayName("Test valid addresses")
+    void checkForValidAddress() {
+        assertDoesNotThrow(() -> validator.checkForValidAddress("123 Main St."));
+        assertDoesNotThrow(() -> validator.checkForValidAddress("Apartment"));
+        assertDoesNotThrow(() -> validator.checkForValidAddress("Some Street, Block A, City"));
+    }
+
+    @Test
+    @DisplayName("Test invalid addresses")
+    void checkForInvalidAddress() {
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidAddress(""));
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidAddress("Main@Street"));
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidAddress("123<Street>"));
+    }
+
 
 }
 
