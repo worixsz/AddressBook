@@ -16,4 +16,7 @@ public interface CheckAction {
 
     String formatPhoneNumber(String number);
 
+    String checkForValidNameAndSurname();
+
+
 }
