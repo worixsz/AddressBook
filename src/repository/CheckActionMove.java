@@ -116,6 +116,13 @@ public class CheckActionMove implements CheckAction {
     @Override
     public void checkForValidPhoneNumber(String text) {
 
+        String phoneRegex = "^([+]?\\d{1,3}[\\s\\-]?\\(?\\d{1,4}\\)?[\\s\\-]?\\d{1,4}[\\s\\-]?\\d{1,4})$";
+        if (text.trim().isEmpty()) {
+            throw new InputMismatchException("The input cannot be empty.");
+        } else if (!text.matches(phoneRegex)) {
+            throw new InputMismatchException("Invalid format of address: " + text);
+        }
+
     }
 }
 
