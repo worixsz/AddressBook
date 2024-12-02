@@ -36,7 +36,6 @@ public class CreateContactMove implements CreateAction {
             System.out.print("Enter your phone number: +996 ");
             String phone = SC.nextLine();
             checkActionMove.checkForValidPhoneNumber(phone);
-
             String validNumber = checkActionMove.formatPhoneNumber(phone);
 
             Contact contact = new Contact(name, surname, address, validNumber);
