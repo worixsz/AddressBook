@@ -62,10 +62,10 @@ public class UpdateActionMoveTest {
         fileService.write(contactList);
 
 
-        assertEquals("Michael", contactList.getFirst().getName());
-        assertEquals("Williams", contactList.getFirst().getSurname());
-        assertEquals("France 93A", contactList.getFirst().getAddress());
-        assertEquals("+996 555 555 555", contactList.getFirst().getPhone());
+        assertEquals("Michael", contactList.get(0).getName());
+        assertEquals("Williams", contactList.get(0).getSurname());
+        assertEquals("France 93A", contactList.get(0).getAddress());
+        assertEquals("+996 555 555 555", contactList.get(0).getPhone());
 
         List<Contact> readContacts = fileService.read();
 
@@ -97,17 +97,17 @@ public class UpdateActionMoveTest {
         fileService.write(contactList);
 
 
-        assertEquals(originalContact.getName(), contactList.getFirst().getName());
-        assertEquals(originalContact.getSurname(), contactList.getFirst().getSurname());
-        assertEquals(originalContact.getAddress(), contactList.getFirst().getAddress());
-        assertEquals(originalContact.getPhone(), contactList.getFirst().getPhone());
+        assertEquals(originalContact.getName(), contactList.get(0).getName());
+        assertEquals(originalContact.getSurname(), contactList.get(0).getSurname());
+        assertEquals(originalContact.getAddress(), contactList.get(0).getAddress());
+        assertEquals(originalContact.getPhone(), contactList.get(0).getPhone());
 
         List<Contact> readContacts = fileService.read();
 
-        assertEquals(originalContact.getName(), readContacts.getFirst().getName());
-        assertEquals(originalContact.getSurname(), readContacts.getFirst().getSurname());
-        assertEquals(originalContact.getAddress(), readContacts.getFirst().getAddress());
-        assertEquals(originalContact.getPhone(), readContacts.getFirst().getPhone());
+        assertEquals(originalContact.getName(), readContacts.get(0).getName());
+        assertEquals(originalContact.getSurname(), readContacts.get(0).getSurname());
+        assertEquals(originalContact.getAddress(), readContacts.get(0).getAddress());
+        assertEquals(originalContact.getPhone(), readContacts.get(0).getPhone());
 
     }
 
