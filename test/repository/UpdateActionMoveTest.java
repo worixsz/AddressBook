@@ -275,11 +275,20 @@ public class UpdateActionMoveTest {
         updateActionMove.setSearch(searchActionMove);
 
         updateActionMove.updateContactByPhone(contactList);
+        fileService.write(contactList);
 
-        assertEquals("Michael", contactList.getFirst().getName());
-        assertEquals("Williams", contactList.getFirst().getSurname());
-        assertEquals("France 93A", contactList.getFirst().getAddress());
-        assertEquals("+996 555 555 555", contactList.getFirst().getPhone());
+        assertEquals("Michael", contactList.get(0).getName());
+        assertEquals("Williams", contactList.get(0).getSurname());
+        assertEquals("France 93A", contactList.get(0).getAddress());
+        assertEquals("+996 555 555 555", contactList.get(0).getPhone());
+
+        List<Contact> foundContact = fileService.read();
+
+        assertEquals("Michael", foundContact.get(0).getName());
+        assertEquals("Williams", foundContact.get(0).getSurname());
+        assertEquals("France 93A", foundContact.get(0).getAddress());
+        assertEquals("+996 555 555 555", foundContact.get(0).getPhone());
+
     }
 
     @Test
