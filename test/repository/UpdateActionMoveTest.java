@@ -82,7 +82,7 @@ public class UpdateActionMoveTest {
     void updateInvalidContactByNameTest() {
         String simulatedInput = """
                 Aibek
-                invalidIndex
+                2
                 """;
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
         Scanner sharedScanner = new Scanner(System.in);
@@ -94,11 +94,20 @@ public class UpdateActionMoveTest {
 
         Contact originalContact = contactList.getFirst();
         updateActionMove.updateContactByName(contactList);
+        fileService.write(contactList);
+
 
         assertEquals(originalContact.getName(), contactList.getFirst().getName());
         assertEquals(originalContact.getSurname(), contactList.getFirst().getSurname());
         assertEquals(originalContact.getAddress(), contactList.getFirst().getAddress());
         assertEquals(originalContact.getPhone(), contactList.getFirst().getPhone());
+
+        List<Contact> readContacts = fileService.read();
+
+        assertEquals(originalContact.getName(), readContacts.getFirst().getName());
+        assertEquals(originalContact.getSurname(), readContacts.getFirst().getSurname());
+        assertEquals(originalContact.getAddress(), readContacts.getFirst().getAddress());
+        assertEquals(originalContact.getPhone(), readContacts.getFirst().getPhone());
 
     }
 
