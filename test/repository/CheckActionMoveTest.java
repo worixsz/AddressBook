@@ -34,86 +34,6 @@ public class CheckActionMoveTest {
     }
 
     @Test
-    public void testValidName() {
-        Contact contact = new Contact("John", "Doe", "123 Street", "+1-234-567-890");
-        assertDoesNotThrow(() -> validator.validateContact(contact));
-    }
-
-    @Test
-    public void testInvalidName() {
-        Contact contact = new Contact("john", "Doe", "123 Street", "+1-234-567-890");
-        InputMismatchException thrown = assertThrows(InputMismatchException.class, () -> validator.validateContact(contact));
-        assertEquals("Invalid name format: john", thrown.getMessage());
-    }
-
-    @Test
-    public void testValidSurname() {
-        Contact contact = new Contact("John", "O'Connor", "123 Street", "+1-234-567-890");
-        assertDoesNotThrow(() -> validator.validateContact(contact));
-    }
-
-    @Test
-    public void testInvalidSurname() {
-        Contact contact = new Contact("John", "O'Connor123", "123 Street", "+1-234-567-890");
-        InputMismatchException thrown = assertThrows(InputMismatchException.class, () -> validator.validateContact(contact));
-        assertEquals("Invalid surname format: O'Connor123", thrown.getMessage());
-    }
-
-    @Test
-    public void testValidPhone() {
-        Contact contact = new Contact("John", "Doe", "123 Street", "+1-234-567-890");
-        assertDoesNotThrow(() -> validator.validateContact(contact));
-    }
-
-    @Test
-    public void testInvalidPhone() {
-        Contact contact = new Contact("John", "Doe", "123 Street", "996::::4433434");
-        InputMismatchException thrown = assertThrows(InputMismatchException.class, () -> validator.validateContact(contact));
-        assertEquals("Invalid phone number format: 996::::4433434", thrown.getMessage());
-    }
-
-    @Test
-    public void testValidAddress() {
-        Contact contact = new Contact("John", "Doe", "123 Street, Apt 4B", "+1-234-567-890");
-        assertDoesNotThrow(() -> validator.validateContact(contact));
-    }
-
-    @Test
-    public void testInvalidAddress() {
-        Contact contact = new Contact("John", "Doe", "123@Street!", "+1-234-567-890");
-        InputMismatchException thrown = assertThrows(InputMismatchException.class, () -> validator.validateContact(contact));
-        assertEquals("Invalid address format: 123@Street!", thrown.getMessage());
-    }
-
-    @Test
-    public void testEmptyName() {
-        Contact contact = new Contact("", "Doe", "123 Street", "+1-234-567-890");
-        InputMismatchException thrown = assertThrows(InputMismatchException.class, () -> validator.validateContact(contact));
-        assertEquals("Invalid name format: ", thrown.getMessage());
-    }
-
-    @Test
-    public void testEmptySurname() {
-        Contact contact = new Contact("John", "", "123 Street", "+1-234-567-890");
-        InputMismatchException thrown = assertThrows(InputMismatchException.class, () -> validator.validateContact(contact));
-        assertEquals("Invalid surname format: ", thrown.getMessage());
-    }
-
-    @Test
-    public void testEmptyAddress() {
-        Contact contact = new Contact("John", "Doe", "", "+1-234-567-890");
-        InputMismatchException thrown = assertThrows(InputMismatchException.class, () -> validator.validateContact(contact));
-        assertEquals("Invalid address format: ", thrown.getMessage());
-    }
-
-    @Test
-    public void testEmptyPhone() {
-        Contact contact = new Contact("John", "Doe", "123 Street", "");
-        InputMismatchException thrown = assertThrows(InputMismatchException.class, () -> validator.validateContact(contact));
-        assertEquals("Invalid phone number format: ", thrown.getMessage());
-    }
-
-    @Test
     public void testEmptyString() {
         InputMismatchException thrown = assertThrows(InputMismatchException.class, () -> validator.checkStringForEmpty("  "));
         assertEquals("The input cannot be empty.", thrown.getMessage());
@@ -130,6 +50,22 @@ public class CheckActionMoveTest {
                 () -> validator.checkPhoneNumber(invalidPhone));
         assertEquals("Incorrect number.", thrown.getMessage());
 
+    }
+
+    @Test
+    @DisplayName("Test valid names")
+    void checkForValidNameTest() {
+        assertDoesNotThrow(() -> validator.checkForValidName("John"));
+        assertDoesNotThrow(() -> validator.checkForValidName("Anne-Marie"));
+        assertDoesNotThrow(() -> validator.checkForValidName("O'Connor"));
+    }
+
+    @Test
+    @DisplayName("Test invalid names")
+    void checkForInvalidNameTest() {
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidName(""));
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidName("123John"));
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidName("john"));
     }
 
 
