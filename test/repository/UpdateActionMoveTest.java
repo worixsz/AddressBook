@@ -92,7 +92,7 @@ public class UpdateActionMoveTest {
 
         updateActionMove.setSearch(searchActionMove);
 
-        Contact originalContact = contactList.getFirst();
+        Contact originalContact = contactList.get(0);
         updateActionMove.updateContactByName(contactList);
         fileService.write(contactList);
 
@@ -164,7 +164,7 @@ public class UpdateActionMoveTest {
 
         updateActionMove.setSearch(searchActionMove);
 
-        Contact originalContact = contactList.getFirst();
+        Contact originalContact = contactList.get(0);
         updateActionMove.updateContactBySurname(contactList);
         fileService.write(contactList);
 
@@ -235,7 +235,7 @@ public class UpdateActionMoveTest {
 
         updateActionMove.setSearch(searchActionMove);
 
-        Contact originalContact = contactList.getFirst();
+        Contact originalContact = contactList.get(0);
         updateActionMove.updateContactByAddress(contactList);
         fileService.write(contactList);
 
@@ -306,7 +306,7 @@ public class UpdateActionMoveTest {
 
         updateActionMove.setSearch(searchActionMove);
 
-        Contact originalContact = contactList.getFirst();
+        Contact originalContact = contactList.get(0);
         updateActionMove.updateContactByPhone(contactList);
         fileService.write(contactList);
 
