@@ -20,5 +20,7 @@ public interface CheckAction {
 
     String checkForValidAddress();
 
+    String checkForValidPhoneNumber();
+
 
 }
