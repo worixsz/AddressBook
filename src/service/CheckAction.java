@@ -16,7 +16,9 @@ public interface CheckAction {
 
     String formatPhoneNumber(String number);
 
-    void checkForValidNameAndSurname(String text);
+    void checkForValidName(String text);
+
+    void checkForValidSurname(String text);
 
     void checkForValidAddress(String text);
 
