@@ -68,6 +68,22 @@ public class CheckActionMoveTest {
         assertThrows(InputMismatchException.class, () -> validator.checkForValidName("john"));
     }
 
+    @Test
+    @DisplayName("Test valid surnames")
+    void checkForValidSurnameTest() {
+        assertDoesNotThrow(() -> validator.checkForValidSurname("Smith"));
+        assertDoesNotThrow(() -> validator.checkForValidSurname("Mc'Donald"));
+        assertDoesNotThrow(() -> validator.checkForValidSurname("O'Neil"));
+    }
+
+    @Test
+    @DisplayName("Test invalid surnames")
+    void checkForInvalidSurnameTest() {
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidSurname(""));
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidSurname("Smith@"));
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidSurname("123Smith"));
+    }
+
 
 }
 
