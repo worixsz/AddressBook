@@ -104,6 +104,12 @@ public class CheckActionMove implements CheckAction {
 
     @Override
     public void checkForValidAddress(String text) {
+        String addressRegex = "^[\\w\\s,.-]+$";
+        if (text.trim().isEmpty()) {
+            throw new InputMismatchException("The input cannot be empty.");
+        } else if (!text.matches(addressRegex)) {
+            throw new InputMismatchException("Invalid format of address: " + text);
+        }
 
     }
 
