@@ -125,14 +125,11 @@ public class CheckActionMoveTest {
 
         String validPhone = "+996 500 919 055";
         assertDoesNotThrow(() -> validator.checkPhoneNumber(validPhone));
-
-        // Номер телефона с некорректной длиной
         String invalidPhone = "+996 500 919";
         InputMismatchException thrown = assertThrows(InputMismatchException.class,
                 () -> validator.checkPhoneNumber(invalidPhone));
         assertEquals("Incorrect number.", thrown.getMessage());
 
-        // Номер с недопустимыми символами
     }
 
 
