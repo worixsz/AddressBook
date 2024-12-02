@@ -1,11 +1,14 @@
 package repository;
 
+import fileService.FileService;
 import model.Contact;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,17 +23,19 @@ public class UpdateActionMoveTest {
 
     private SearchActionMove searchActionMove;
 
+    private FileService fileService;
+
+    private File testFile;
 
     @BeforeEach
     void setUp() {
+        fileService = new FileService();
+        testFile = new File("test_contacts.json");
         updateActionMove = new UpdateActionMove();
         searchActionMove = new SearchActionMove();
-
         contactList = List.of(
                 new Contact("Aibek", "Mahronovich", "China", "+996 666 666 666")
         );
-
-
     }
 
     @Test
@@ -54,13 +59,23 @@ public class UpdateActionMoveTest {
         updateActionMove.setSearch(searchActionMove);
 
         updateActionMove.updateContactByName(contactList);
-        System.out.println(contactList);
+        fileService.write(contactList);
+
 
         assertEquals("Michael", contactList.getFirst().getName());
         assertEquals("Williams", contactList.getFirst().getSurname());
         assertEquals("France 93A", contactList.getFirst().getAddress());
         assertEquals("+996 555 555 555", contactList.getFirst().getPhone());
+
+        List<Contact> readContacts = fileService.read();
+
+        assertEquals(1, readContacts.size(), "File should contain exactly 1 contact");
+        assertEquals("Michael", readContacts.get(0).getName(), "Contact name in file should be 'Azidin'");
+        assertEquals("Williams", readContacts.get(0).getSurname(), "Contact last name in file should be 'Amankulov'");
+        assertEquals("France 93A", readContacts.get(0).getAddress(), "Contact address in file should be 'Japan'");
+        assertEquals("+996 555 555 555", readContacts.get(0).getPhone(), "Contact phone in file should be '777 777 777'");
     }
+
 
     @Test
     @DisplayName("Test for invalid input during update by 'name'")
@@ -248,5 +263,11 @@ public class UpdateActionMoveTest {
 
     }
 
+    @AfterEach
+    void tearDown() {
+        if (testFile.exists()) {
+            testFile.delete();
+        }
+    }
 
 }
