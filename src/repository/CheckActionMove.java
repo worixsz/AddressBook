@@ -78,18 +78,18 @@ public class CheckActionMove implements CheckAction {
     }
 
     @Override
-    public String checkForValidNameAndSurname() {
-        return "";
+    public void checkForValidNameAndSurname(String text) {
+
     }
 
     @Override
-    public String checkForValidAddress() {
-        return "";
+    public void checkForValidAddress(String text) {
+
     }
 
     @Override
-    public String checkForValidPhoneNumber() {
-        return "";
+    public void checkForValidPhoneNumber(String text) {
+
     }
 }
 

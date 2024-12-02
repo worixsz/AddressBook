@@ -16,11 +16,11 @@ public interface CheckAction {
 
     String formatPhoneNumber(String number);
 
-    String checkForValidNameAndSurname();
+    void checkForValidNameAndSurname(String text);
 
-    String checkForValidAddress();
+    void checkForValidAddress(String text);
 
-    String checkForValidPhoneNumber();
+    void checkForValidPhoneNumber(String text);
 
 
 }
