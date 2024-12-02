@@ -1,20 +1,30 @@
 package model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Contact {
 
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("surname")
     private String surname;
+
+    @JsonProperty("address")
     private String address;
+
+    @JsonProperty("phone")
     private String phone;
 
-    public Contact(String name, String surname, String address, String phone) {
+    public Contact
+            (@JsonProperty("name") String name, @JsonProperty("surname") String surname,
+             @JsonProperty("address") String address, @JsonProperty("phone") String phone) {
         this.name = name;
         this.surname = surname;
         this.address = address;
         this.phone = phone;
     }
 
-    public Contact() {
-    }
 
     public String getName() {
         return name;
