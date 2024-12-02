@@ -100,6 +100,22 @@ public class CheckActionMoveTest {
         assertThrows(InputMismatchException.class, () -> validator.checkForValidAddress("123<Street>"));
     }
 
+    @Test
+    @DisplayName("Test valid phone numbers")
+    void checkForValidPhoneNumberTest() {
+        assertDoesNotThrow(() -> validator.checkForValidPhoneNumber("+996 700 000 000"));
+        assertDoesNotThrow(() -> validator.checkForValidPhoneNumber("+1-800-555-5555"));
+        assertDoesNotThrow(() -> validator.checkForValidPhoneNumber("123456789"));
+    }
+
+    @Test
+    @DisplayName("Test invalid phone numbers")
+    void checkForInvalidPhoneNumberTest() {
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidPhoneNumber(""));
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidPhoneNumber("12345abc"));
+        assertThrows(InputMismatchException.class, () -> validator.checkForValidPhoneNumber("++996 700 000 000"));
+    }
+
 
 }
 
