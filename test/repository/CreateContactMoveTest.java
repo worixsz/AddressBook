@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,20 +21,16 @@ public class CreateContactMoveTest {
     private CreateContactMove createContactMove;
     private List<Contact> contacts;
     private FileService fileService;
-    private File tempFile;
+    private File testFile;
 
     @BeforeEach
     void setUp() {
+        testFile = new File("test_contacts.json");
         contacts = new ArrayList<>();
         createContactMove = new CreateContactMove();
         fileService = new FileService();
 
-        try {
-            tempFile = File.createTempFile("contacts_", ".json");
-            tempFile.deleteOnExit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Test
@@ -66,8 +63,8 @@ public class CreateContactMoveTest {
 
     @AfterEach
     void tearDown() {
-        if (tempFile.exists()) {
-            tempFile.delete();
+        if (testFile.exists()) {
+            testFile.delete();
         }
     }
 }
