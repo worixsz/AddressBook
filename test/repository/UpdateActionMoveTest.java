@@ -166,11 +166,20 @@ public class UpdateActionMoveTest {
 
         Contact originalContact = contactList.getFirst();
         updateActionMove.updateContactBySurname(contactList);
+        fileService.write(contactList);
 
-        assertEquals(originalContact.getName(), contactList.getFirst().getName());
-        assertEquals(originalContact.getSurname(), contactList.getFirst().getSurname());
-        assertEquals(originalContact.getAddress(), contactList.getFirst().getAddress());
-        assertEquals(originalContact.getPhone(), contactList.getFirst().getPhone());
+
+        assertEquals(originalContact.getName(), contactList.get(0).getName());
+        assertEquals(originalContact.getSurname(), contactList.get(0).getSurname());
+        assertEquals(originalContact.getAddress(), contactList.get(0).getAddress());
+        assertEquals(originalContact.getPhone(), contactList.get(0).getPhone());
+
+        List<Contact> foundContact = fileService.read();
+
+        assertEquals(originalContact.getName(), foundContact.get(0).getName());
+        assertEquals(originalContact.getSurname(), foundContact.get(0).getSurname());
+        assertEquals(originalContact.getAddress(), foundContact.get(0).getAddress());
+        assertEquals(originalContact.getPhone(), foundContact.get(0).getPhone());
 
     }
 
