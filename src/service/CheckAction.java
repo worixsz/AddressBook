@@ -18,5 +18,7 @@ public interface CheckAction {
 
     String checkForValidNameAndSurname();
 
+    String checkForValidAddress();
+
 
 }
