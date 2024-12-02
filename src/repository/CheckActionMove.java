@@ -25,34 +25,6 @@ public class CheckActionMove implements CheckAction {
         }
     }
 
-    @Override
-    public void validateContact(Contact contact) throws InputMismatchException {
-        String nameRegex = "^[A-Z][a-zA-Z '.-]*[A-Za-z]$";
-        String surnameRegex = "^[A-Za-z]+([ '-][A-Za-z]+)*$";
-        String phoneRegex = "^([+]?\\d{1,3}[\\s\\-]?\\(?\\d{1,4}\\)?[\\s\\-]?\\d{1,4}[\\s\\-]?\\d{1,4})$";
-        String addressRegex = "^[\\w\\s,.-]+$";
-
-        if (!contact.getName().matches(nameRegex)) {
-            throw new InputMismatchException("Invalid name format: " + contact.getName());
-        }
-        if (!contact.getSurname().matches(surnameRegex)) {
-            throw new InputMismatchException("Invalid surname format: " + contact.getSurname());
-        }
-        if (!contact.getAddress().matches(addressRegex)) {
-            throw new InputMismatchException("Invalid address format: " + contact.getAddress());
-        }
-        if (!contact.getPhone().matches(phoneRegex)) {
-            throw new InputMismatchException("Invalid phone number format: " + contact.getPhone());
-        }
-    }
-
-
-    @Override
-    public void checkStringForEmpty(String text) throws InputMismatchException {
-        if (text.trim().isEmpty()) {
-            throw new InputMismatchException("The input cannot be empty.");
-        }
-    }
 
     @Override
     public void checkPhoneNumber(String number) throws InputMismatchException {
@@ -105,6 +77,7 @@ public class CheckActionMove implements CheckAction {
     @Override
     public void checkForValidAddress(String text) {
         String addressRegex = "^[\\w\\s,.-]+$";
+
         if (text.trim().isEmpty()) {
             throw new InputMismatchException("The input cannot be empty.");
         } else if (!text.matches(addressRegex)) {
@@ -115,12 +88,12 @@ public class CheckActionMove implements CheckAction {
 
     @Override
     public void checkForValidPhoneNumber(String text) {
-
         String phoneRegex = "^([+]?\\d{1,3}[\\s\\-]?\\(?\\d{1,4}\\)?[\\s\\-]?\\d{1,4}[\\s\\-]?\\d{1,4})$";
+
         if (text.trim().isEmpty()) {
             throw new InputMismatchException("The input cannot be empty.");
         } else if (!text.matches(phoneRegex)) {
-            throw new InputMismatchException("Invalid format of address: " + text);
+            throw new InputMismatchException("Invalid format of phone number: " + text);
         }
 
     }
