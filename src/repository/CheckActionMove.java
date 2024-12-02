@@ -76,5 +76,20 @@ public class CheckActionMove implements CheckAction {
         }
         return formattedNumberKG;
     }
+
+    @Override
+    public String checkForValidNameAndSurname() {
+        return "";
+    }
+
+    @Override
+    public String checkForValidAddress() {
+        return "";
+    }
+
+    @Override
+    public String checkForValidPhoneNumber() {
+        return "";
+    }
 }
 
