@@ -12,13 +12,15 @@ public interface CheckAction {
 
     String formatPhoneNumber(String number);
 
-    void checkForValidName(String text);
+    void checkForValidName(String name);
 
-    void checkForValidSurname(String text);
+    void checkForValidSurname(String surname);
 
-    void checkForValidAddress(String text);
+    void checkForValidAddress(String address);
 
-    void checkForValidPhoneNumber(String text);
+    void checkForValidPhoneNumber(String number);
+
+    void checkStringForEmpty(String input);
 
 
 }
