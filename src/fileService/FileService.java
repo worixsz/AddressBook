@@ -12,7 +12,10 @@ import java.util.List;
 
 public class FileService {
 
+    private final ObjectMapper objectMapper;
+
     public FileService() {
+        objectMapper = new ObjectMapper();
 
     }
 
@@ -23,7 +26,6 @@ public class FileService {
                 return new ArrayList<>();
             }
 
-            ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(file);
             JsonNode contactsNode = rootNode.get("contacts");
 
@@ -44,7 +46,6 @@ public class FileService {
     public void write(List<Contact> contacts) {
         try {
             File file = new File("contacts.json");
-            ObjectMapper objectMapper = new ObjectMapper();
 
             ObjectNode rootNode = objectMapper.createObjectNode();
             rootNode.set("contacts", objectMapper.valueToTree(contacts));
