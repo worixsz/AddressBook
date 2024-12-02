@@ -164,21 +164,22 @@ public class UpdateActionMove implements UpdateAction {
         try {
             System.out.print("Enter the new name: ");
             String newName = SC.nextLine();
-            checkActionMove.checkStringForEmpty(newName);
+            checkActionMove.checkForValidName(newName);
 
             System.out.print("Enter the new surname: ");
             String newSurname = SC.nextLine();
-            checkActionMove.checkStringForEmpty(newSurname);
+            checkActionMove.checkForValidSurname(newSurname);
 
             System.out.print("Enter the new address: ");
             String newAddress = SC.nextLine();
-            checkActionMove.checkStringForEmpty(newAddress);
+            checkActionMove.checkForValidAddress(newAddress);
+
 
             System.out.print("Enter the new phone number: +996 ");
             String newPhone = SC.nextLine();
-            checkActionMove.checkStringForEmpty(newPhone);
+            checkActionMove.checkForValidPhoneNumber(newPhone);
             String validNumber = checkActionMove.formatPhoneNumber(newPhone);
-            checkActionMove.validateContact(contactToUpdate);
+
             contactToUpdate.setName(newName);
             contactToUpdate.setSurname(newSurname);
             contactToUpdate.setAddress(newAddress);

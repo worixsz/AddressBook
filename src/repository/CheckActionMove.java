@@ -25,34 +25,6 @@ public class CheckActionMove implements CheckAction {
         }
     }
 
-    @Override
-    public void validateContact(Contact contact) throws InputMismatchException {
-        String nameRegex = "^[A-Z][a-zA-Z '.-]*[A-Za-z]$";
-        String surnameRegex = "^[A-Za-z]+([ '-][A-Za-z]+)*$";
-        String phoneRegex = "^([+]?\\d{1,3}[\\s\\-]?\\(?\\d{1,4}\\)?[\\s\\-]?\\d{1,4}[\\s\\-]?\\d{1,4})$";
-        String addressRegex = "^[\\w\\s,.-]+$";
-
-        if (!contact.getName().matches(nameRegex)) {
-            throw new InputMismatchException("Invalid name format: " + contact.getName());
-        }
-        if (!contact.getSurname().matches(surnameRegex)) {
-            throw new InputMismatchException("Invalid surname format: " + contact.getSurname());
-        }
-        if (!contact.getAddress().matches(addressRegex)) {
-            throw new InputMismatchException("Invalid address format: " + contact.getAddress());
-        }
-        if (!contact.getPhone().matches(phoneRegex)) {
-            throw new InputMismatchException("Invalid phone number format: " + contact.getPhone());
-        }
-    }
-
-
-    @Override
-    public void checkStringForEmpty(String text) throws InputMismatchException {
-        if (text.trim().isEmpty()) {
-            throw new InputMismatchException("The input cannot be empty.");
-        }
-    }
 
     @Override
     public void checkPhoneNumber(String number) throws InputMismatchException {
@@ -75,6 +47,62 @@ public class CheckActionMove implements CheckAction {
             System.err.println("❌ TRY AGAIN.\n");
         }
         return formattedNumberKG;
+    }
+
+    @Override
+    public void checkForValidName(String name) {
+        String nameRegex = "^[A-Z][a-zA-Z '.-]*[A-Za-z]$";
+
+        if (name.trim().isEmpty()) {
+            throw new InputMismatchException("The input cannot be empty.");
+        } else if (!name.matches(nameRegex)) {
+            throw new InputMismatchException("Invalid format of name: " + name);
+        }
+
+    }
+
+    @Override
+    public void checkForValidSurname(String surname) {
+        String surnameRegex = "^[A-Za-z]+([ '-][A-Za-z]+)*$";
+
+        if (surname.trim().isEmpty()) {
+            throw new InputMismatchException("The input cannot be empty.");
+        } else if (!surname.matches(surnameRegex)) {
+            throw new InputMismatchException("Invalid format of surname: " + surname);
+        }
+
+
+    }
+
+    @Override
+    public void checkForValidAddress(String address) {
+        String addressRegex = "^[\\w\\s,.-]+$";
+
+        if (address.trim().isEmpty()) {
+            throw new InputMismatchException("The input cannot be empty.");
+        } else if (!address.matches(addressRegex)) {
+            throw new InputMismatchException("Invalid format of address: " + address);
+        }
+
+    }
+
+    @Override
+    public void checkForValidPhoneNumber(String number) {
+        String phoneRegex = "^([+]?\\d{1,3}[\\s\\-]?\\(?\\d{1,4}\\)?[\\s\\-]?\\d{1,4}[\\s\\-]?\\d{1,4})$";
+
+        if (number.trim().isEmpty()) {
+            throw new InputMismatchException("The input cannot be empty.");
+        } else if (!number.matches(phoneRegex)) {
+            throw new InputMismatchException("Invalid format of phone number: " + number);
+        }
+
+    }
+
+    @Override
+    public void checkStringForEmpty(String input) {
+        if (input.trim().isEmpty()) {
+            throw new InputMismatchException("The input cannot be empty.");
+        }
     }
 }
 

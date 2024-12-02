@@ -8,12 +8,19 @@ public interface CheckAction {
 
     void showContact(List<Contact> contacts);
 
-    void validateContact(Contact contact);
-
-    void checkStringForEmpty(String text);
-
     void checkPhoneNumber(String number);
 
     String formatPhoneNumber(String number);
+
+    void checkForValidName(String name);
+
+    void checkForValidSurname(String surname);
+
+    void checkForValidAddress(String address);
+
+    void checkForValidPhoneNumber(String number);
+
+    void checkStringForEmpty(String input);
+
 
 }

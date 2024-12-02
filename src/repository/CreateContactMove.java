@@ -23,23 +23,22 @@ public class CreateContactMove implements CreateAction {
         try {
             System.out.print("Enter your name: ");
             String name = SC.nextLine();
-            checkActionMove.checkStringForEmpty(name);
+            checkActionMove.checkForValidName(name);
+
             System.out.print("Enter your surname: ");
             String surname = SC.nextLine();
-            checkActionMove.checkStringForEmpty(surname);
+            checkActionMove.checkForValidSurname(surname);
 
             System.out.print("Enter your address: ");
             String address = SC.nextLine();
-            checkActionMove.checkStringForEmpty(address);
+            checkActionMove.checkForValidAddress(address);
 
             System.out.print("Enter your phone number: +996 ");
             String phone = SC.nextLine();
-            checkActionMove.checkStringForEmpty(phone);
-
+            checkActionMove.checkForValidPhoneNumber(phone);
             String validNumber = checkActionMove.formatPhoneNumber(phone);
 
             Contact contact = new Contact(name, surname, address, validNumber);
-            checkActionMove.validateContact(contact);
 
             contacts.add(contact);
             System.out.println("✅ Contact added successfully!\n");
