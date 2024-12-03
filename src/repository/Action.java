@@ -107,7 +107,7 @@ public class Action {
                     searchMove.searchContactByPhone(contacts);
                     break;
                 default:
-                    System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+                    System.err.println("❗Invalid command. Please select a number between 1 and 4.\n");
                     break;
             }
         } catch (NumberFormatException e) {
@@ -147,7 +147,7 @@ public class Action {
                     fileService.write(contacts);
                     break;
                 default:
-                    System.err.println("❗ Invalid command. Please select a number between 1 and 4.\n");
+                    System.err.println("❗Invalid command. Please select a number between 1 and 4.\n");
                     break;
             }
 
