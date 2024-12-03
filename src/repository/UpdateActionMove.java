@@ -51,6 +51,7 @@ public class UpdateActionMove implements UpdateAction {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println("❗An unexpected error occurred: " + e.getMessage());
+            System.out.println("❗Incorrect input, Returning to the main menu...\n");
             e.printStackTrace();
         }
     }
@@ -85,6 +86,7 @@ public class UpdateActionMove implements UpdateAction {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println("❗An unexpected error occurred: " + e.getMessage());
+            System.out.println("❗Incorrect input, Returning to the main menu...\n");
             e.printStackTrace();
         }
     }
@@ -118,6 +120,7 @@ public class UpdateActionMove implements UpdateAction {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println("❗An unexpected error occurred: " + e.getMessage());
+            System.out.println("❗Incorrect input, Returning to the main menu...\n");
             e.printStackTrace();
         }
     }
@@ -152,6 +155,7 @@ public class UpdateActionMove implements UpdateAction {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println("❗An unexpected error occurred: " + e.getMessage());
+            System.out.println("❗Incorrect input, Returning to the main menu...\n");
             e.printStackTrace();
         }
     }
@@ -188,7 +192,7 @@ public class UpdateActionMove implements UpdateAction {
 
         } catch (InputMismatchException e) {
             System.err.println("\n❌ Error: " + e.getMessage() + " Contact not updated.\n");
-            System.err.print("Choose an option again: \n");
+            System.out.println("❗Incorrect input, Returning to the main menu...\n");
             e.printStackTrace();
         }
     }
