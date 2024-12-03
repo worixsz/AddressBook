@@ -31,8 +31,7 @@ public class SearchActionMove implements SearchAction {
 
                 foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
             } else {
-                System.out.println("❗ No contact found with the such name: " + next);
-                System.out.println("Trying to find similar contacts by name...");
+                System.out.println("❗No contact found with the such name: " + next);
                 searchByPrefix.findByNamePrefix(contacts, next);
             }
         } catch (InputMismatchException e) {
@@ -58,7 +57,6 @@ public class SearchActionMove implements SearchAction {
                 foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
             } else {
                 System.out.println("❗No contact found with the such surname: " + next);
-                System.out.println("Trying to find similar contacts by surname...");
                 searchByPrefix.findBySurnamePrefix(contacts, next);
             }
         } catch (InputMismatchException e) {
@@ -83,7 +81,6 @@ public class SearchActionMove implements SearchAction {
                 foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
             } else {
                 System.out.println("❗No contact found with the such address: " + next);
-                System.out.println("Trying to find similar contacts by address...");
                 searchByPrefix.findByAddressPrefix(contacts, next);
             }
         } catch (InputMismatchException e) {
@@ -113,7 +110,6 @@ public class SearchActionMove implements SearchAction {
                 foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
             } else {
                 System.out.println("❗No contact found with the phone number: " + finalFormattedPhone);
-                System.out.println("Trying to find similar contacts by phone number...");
                 String withoutCountryCode = finalFormattedPhone.replaceFirst("^\\+996\\s*", "");
                 searchByPrefix.findByPhonePrefix(contacts, withoutCountryCode);
             }
