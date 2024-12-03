@@ -11,6 +11,7 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
     @Override
     public void findByNamePrefix(List<Contact> contacts, String namePrefix) {
         try {
+            System.out.println("Trying to find similar contacts by name...");
             List<Contact> filteredList = contacts.stream()
                     .filter(c -> c.getName().startsWith(namePrefix))
                     .toList();
@@ -30,6 +31,7 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
     @Override
     public void findBySurnamePrefix(List<Contact> contacts, String surnamePrefix) {
         try {
+            System.out.println("Trying to find similar contacts by surname...");
             List<Contact> filteredList = contacts.stream()
                     .filter(c -> c.getSurname().startsWith(surnamePrefix))
                     .toList();
@@ -48,6 +50,7 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
     @Override
     public void findByAddressPrefix(List<Contact> contacts, String addressPrefix) {
         try {
+            System.out.println("Trying to find similar contacts by address...");
             List<Contact> filteredList = contacts
                     .stream().filter(c -> c.getAddress().startsWith(addressPrefix))
                     .toList();
@@ -67,7 +70,7 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
     @Override
     public void findByPhonePrefix(List<Contact> contacts, String phonePrefix) {
         try {
-
+            System.out.println("Trying to find similar contacts by phone number...");
             List<Contact> filteredList = contacts
                     .stream().filter(c -> c.getPhone().startsWith("+996 " + phonePrefix))
                     .toList();
@@ -76,7 +79,6 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
             } else {
                 filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
             }
-
         } catch (NoSuchElementException e) {
             System.err.println("❗An error occurred while searching for contacts: " + e.getMessage());
             e.printStackTrace();
