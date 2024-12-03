@@ -2,6 +2,7 @@ package repository;
 
 import model.Contact;
 import service.DeleteAction;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,11 +37,12 @@ public class DeleteActionMove implements DeleteAction {
             }
 
         } catch (NumberFormatException e) {
-            System.out.println("❌ Invalid input. you will return to Main menu...");
+            System.out.print("\n❌ Incorrect input, Returning to the main menu...\n");
             e.printStackTrace();
         }
 
     }
+
     public void setScanner(Scanner scanner) {
         this.SC = scanner;
     }
