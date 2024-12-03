@@ -35,7 +35,7 @@ public class Action {
                 command = Integer.parseInt(SC.nextLine());
                 handleCommand(command);
             } catch (NumberFormatException e) {
-                System.out.print("\n❗Incorrect input,Returning to the main menu...\n");
+                System.out.print("\n❗Incorrect input, Returning to the main menu...\n");
             }
         }
     }
@@ -111,7 +111,7 @@ public class Action {
                     break;
             }
         } catch (NumberFormatException e) {
-            System.out.print("\n❗Incorrect input,Returning to the main menu...\n");
+            System.out.print("\n❗Incorrect input, Returning to the main menu...\n");
 
         }
 
@@ -152,7 +152,7 @@ public class Action {
             }
 
         } catch (NumberFormatException e) {
-            System.out.print("\n❗Incorrect input,Returning to the main menu...\n");
+            System.out.print("\n❗Incorrect input, Returning to the main menu...\n");
         }
 
     }

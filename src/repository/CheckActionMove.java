@@ -29,7 +29,7 @@ public class CheckActionMove implements CheckAction {
     @Override
     public void checkPhoneNumber(String number) throws InputMismatchException {
         if (number.length() != 16) {
-            throw new InputMismatchException("Incorrect number.");
+            throw new InputMismatchException("❗Incorrect number format to save.");
         }
     }
 
@@ -44,7 +44,7 @@ public class CheckActionMove implements CheckAction {
             return formattedNumberKG;
 
         } catch (IllegalArgumentException e) {
-            System.err.println("❌ TRY AGAIN.\n");
+            System.err.println("❌ Incorrect number format to save..\n");
         }
         return formattedNumberKG;
     }
@@ -56,7 +56,7 @@ public class CheckActionMove implements CheckAction {
         if (name.trim().isEmpty()) {
             throw new InputMismatchException("The input cannot be empty.");
         } else if (!name.matches(nameRegex)) {
-            throw new InputMismatchException("Invalid format of name: " + name);
+            throw new InputMismatchException("Incorrect format of name: " + name);
         }
 
     }
@@ -68,7 +68,7 @@ public class CheckActionMove implements CheckAction {
         if (surname.trim().isEmpty()) {
             throw new InputMismatchException("The input cannot be empty.");
         } else if (!surname.matches(surnameRegex)) {
-            throw new InputMismatchException("Invalid format of surname: " + surname);
+            throw new InputMismatchException("Incorrect format of surname: " + surname);
         }
 
 
@@ -81,7 +81,7 @@ public class CheckActionMove implements CheckAction {
         if (address.trim().isEmpty()) {
             throw new InputMismatchException("The input cannot be empty.");
         } else if (!address.matches(addressRegex)) {
-            throw new InputMismatchException("Invalid format of address: " + address);
+            throw new InputMismatchException("Incorrect format of address: " + address);
         }
 
     }
@@ -93,7 +93,7 @@ public class CheckActionMove implements CheckAction {
         if (number.trim().isEmpty()) {
             throw new InputMismatchException("The input cannot be empty.");
         } else if (!number.matches(phoneRegex)) {
-            throw new InputMismatchException("Invalid format of phone number: " + number);
+            throw new InputMismatchException("Incorrect format of phone number: " + number);
         }
 
     }
