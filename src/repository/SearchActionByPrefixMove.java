@@ -17,7 +17,7 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
             if (filteredList.isEmpty()) {
                 System.out.println("❗ The are not similar contacts: " + namePrefix);
             } else {
-                filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
+                filteredList.forEach(smContact -> System.out.println("🔍 Similar contacts: " + smContact));
             }
         } catch (NoSuchElementException e) {
             System.err.println("An error occurred while searching for contacts: " + e.getMessage());
@@ -30,7 +30,9 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
     @Override
     public void findBySurnamePrefix(List<Contact> contacts, String surnamePrefix) {
         try {
-            List<Contact> filteredList = contacts.stream().filter(c -> c.getSurname().startsWith(surnamePrefix)).toList();
+            List<Contact> filteredList = contacts.stream()
+                    .filter(c -> c.getSurname().startsWith(surnamePrefix))
+                    .toList();
             if (filteredList.isEmpty()) {
                 System.out.println("❗ The are not similar contacts: " + surnamePrefix);
             } else {
@@ -46,7 +48,9 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
     @Override
     public void findByAddressPrefix(List<Contact> contacts, String addressPrefix) {
         try {
-            List<Contact> filteredList = contacts.stream().filter(c -> c.getAddress().startsWith(addressPrefix)).toList();
+            List<Contact> filteredList = contacts
+                    .stream().filter(c -> c.getAddress().startsWith(addressPrefix))
+                    .toList();
             if (filteredList.isEmpty()) {
                 System.out.println("❗ The are not similar contacts: " + addressPrefix);
             } else {
@@ -64,11 +68,13 @@ public class SearchActionByPrefixMove implements SearchActionByPrefix {
     public void findByPhonePrefix(List<Contact> contacts, String phonePrefix) {
         try {
 
-            List<Contact> filteredList = contacts.stream().filter(c -> c.getPhone().startsWith( "+996 " + phonePrefix)).toList();
+            List<Contact> filteredList = contacts
+                    .stream().filter(c -> c.getPhone().startsWith( "+996 " + phonePrefix))
+                    .toList();
             if (phonePrefix.isEmpty() || !phonePrefix.matches("\\d+")) {
                 System.out.println("❗ The are not similar contacts: +996 " + phonePrefix);
             } else {
-                filteredList.forEach(smContact -> System.out.println("🔍 Similar contact: " + smContact));
+                filteredList.forEach(smContact -> System.out.println("🔍 Similar contacts: " + smContact));
             }
 
         } catch (NoSuchElementException e) {
