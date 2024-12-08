@@ -19,8 +19,8 @@ public class CheckActionMoveTest {
     @BeforeEach
     void setUp() {
         validator = new CheckActionMove();
-        Contact contactOne = new Contact("Azidin", "Amankulov", "123 Street", "996 777 777 777");
-        Contact contactTwo = new Contact("Aibek", "Mahronovich", "113 Street", "99 663 667 669");
+        Contact contactOne = new Contact("Azidin", "Amankulov", "123 Street", "+996 777 777 777");
+        Contact contactTwo = new Contact("Aibek", "Mahronovich", "113 Street", "+996 663 667 669");
         contactList = List.of(contactOne, contactTwo);
     }
 
@@ -43,12 +43,11 @@ public class CheckActionMoveTest {
     @Test
     public void checkPhoneNumberTest() {
 
-        String validPhone = "+996 500 919 055";
-        assertDoesNotThrow(() -> validator.checkPhoneNumber(validPhone));
-        String invalidPhone = "+996 500 919";
+        assertDoesNotThrow(() -> validator.checkPhoneNumber(contactList.get(0).getPhone()));
+        String invalidPhone = "500 344 919";
         InputMismatchException thrown = assertThrows(InputMismatchException.class,
                 () -> validator.checkPhoneNumber(invalidPhone));
-        assertEquals("Incorrect number.", thrown.getMessage());
+        assertEquals("❗Incorrect number format to save.", thrown.getMessage());
 
     }
 
