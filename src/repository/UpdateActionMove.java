@@ -188,7 +188,7 @@ public class UpdateActionMove implements UpdateAction {
             contactToUpdate.setSurname(newSurname);
             contactToUpdate.setAddress(newAddress);
             contactToUpdate.setPhone(validNumber);
-            System.out.println("✅ Contact added successfully!\n");
+            System.out.println("✅ Contact updated successfully!\n");
 
         } catch (InputMismatchException e) {
             System.err.println("\n❌ Error: " + e.getMessage() + " Contact not updated.\n");
