@@ -32,7 +32,8 @@ public class DeleteActionMove implements DeleteAction {
                     contacts.remove(index);
                     System.out.println("🗑️ Contact deleted successfully.\n");
                 } else {
-                    System.err.println("❗ Invalid index. Please enter a valid index between 1 and " + contacts.size() + ".\n");
+                    System.err.println("❗ Invalid index. " +
+                            "Please enter a valid index between 1 and " + contacts.size() + ".\n");
                 }
             }
 
