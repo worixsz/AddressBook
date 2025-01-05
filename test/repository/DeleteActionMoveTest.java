@@ -73,11 +73,10 @@ public class DeleteActionMoveTest {
         assertEquals(1, updatedContacts.size(), "File should still have 1 contact");
     }
 
-    // После тестов удаляем временный файл
     @AfterEach
     void tearDown() {
         if (testFile.exists()) {
-            testFile.delete(); // Удаляем временный файл после выполнения тестов
+            testFile.delete();
         }
     }
 }

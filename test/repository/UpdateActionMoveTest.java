@@ -69,11 +69,16 @@ public class UpdateActionMoveTest {
 
         List<Contact> readContacts = fileService.read();
 
-        assertEquals(1, readContacts.size(), "File should contain exactly 1 contact");
-        assertEquals("Michael", readContacts.get(0).getName(), "Contact name in file should be 'Azidin'");
-        assertEquals("Williams", readContacts.get(0).getSurname(), "Contact last name in file should be 'Amankulov'");
-        assertEquals("France 93A", readContacts.get(0).getAddress(), "Contact address in file should be 'Japan'");
-        assertEquals("+996 555 555 555", readContacts.get(0).getPhone(), "Contact phone in file should be '777 777 777'");
+        assertEquals(1, readContacts.size(),
+                "File should contain exactly 1 contact");
+        assertEquals("Michael", readContacts.get(0).getName(),
+                "Contact name in file should be 'Azidin'");
+        assertEquals("Williams", readContacts.get(0).getSurname(),
+                "Contact last name in file should be 'Amankulov'");
+        assertEquals("France 93A", readContacts.get(0).getAddress(),
+                "Contact address in file should be 'Japan'");
+        assertEquals("+996 555 555 555", readContacts.get(0).getPhone(),
+                "Contact phone in file should be '777 777 777'");
     }
 
 
