@@ -44,7 +44,8 @@ public class DeleteActionMoveTest {
         fileService.write(contactsFromFile);
 
 
-        assertEquals(0, contactsFromFile.size(), "Contact should be deleted, list size should be 0 after deletion");
+        assertEquals(0, contactsFromFile.size(),
+                "Contact should be deleted, list size should be 0 after deletion");
         assertFalse(contactsFromFile.stream()
                         .anyMatch(c -> c.getName().equals("Azidin")),
                 "Contact 'Azidin' should have been deleted.");
@@ -64,7 +65,8 @@ public class DeleteActionMoveTest {
         deleteActionMove.deleteContactByIndex(contactsFromFile);
         fileService.write(contactsFromFile);
 
-        assertEquals(1, contactsFromFile.size(), "List size should remain the same after invalid input");
+        assertEquals(1, contactsFromFile.size(),
+                "List size should remain the same after invalid input");
         assertTrue(contactsFromFile.stream()
                         .anyMatch(c -> c.getName().equals("Azidin")),
                 "Contact 'Azidin' should still exist in the list.");
