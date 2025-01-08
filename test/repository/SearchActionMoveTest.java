@@ -57,7 +57,8 @@ public class SearchActionMoveTest {
         System.setIn(new ByteArrayInputStream(invalidInput.getBytes()));
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsInvalid = searchActionMove.searchContactByName(contactList);
-        assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
+        assertEquals(0, foundContactsInvalid.size(),
+                "Should not find any contact for invalid input");
 
     }
 
@@ -70,7 +71,8 @@ public class SearchActionMoveTest {
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsValid = searchActionMove.searchContactBySurname(contactList);
         assertEquals(2, foundContactsValid.size(), "Should find two contact");
-        assertEquals("Mahronovich", foundContactsValid.get(1).getSurname(), "Surname should match for valid input");
+        assertEquals("Mahronovich",
+                foundContactsValid.get(1).getSurname(), "Surname should match for valid input");
 
     }
 
@@ -82,7 +84,8 @@ public class SearchActionMoveTest {
         System.setIn(new ByteArrayInputStream(invalidInput.getBytes()));
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsInvalid = searchActionMove.searchContactBySurname(contactList);
-        assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
+        assertEquals(0, foundContactsInvalid.size(),
+                "Should not find any contact for invalid input");
 
     }
 
