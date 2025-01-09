@@ -40,6 +40,7 @@ public class CreateContactMoveTest {
 
         createContactMove.setScanner(new Scanner(System.in));
 
+
         createContactMove.createContact(contacts);
 
         assertEquals(1,
