@@ -45,7 +45,8 @@ public class SearchActionMoveTest {
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsValid = searchActionMove.searchContactByName(contactList);
         assertEquals(2, foundContactsValid.size(), "Should find two contact");
-        assertEquals("Azidin", foundContactsValid.get(1).getName(), "Name should match for valid input");
+        assertEquals("Azidin",
+                foundContactsValid.get(1).getName(), "Name should match for valid input");
 
     }
 
@@ -98,7 +99,8 @@ public class SearchActionMoveTest {
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsValid = searchActionMove.searchContactByAddress(contactList);
         assertEquals(2, foundContactsValid.size(), "Should find two contact");
-        assertEquals("Japan", foundContactsValid.get(1).getAddress(), "Address should match for valid input");
+        assertEquals("Japan",
+                foundContactsValid.get(1).getAddress(), "Address should match for valid input");
 
     }
 
@@ -110,7 +112,8 @@ public class SearchActionMoveTest {
         System.setIn(new ByteArrayInputStream(invalidInput.getBytes()));
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsInvalid = searchActionMove.searchContactByAddress(contactList);
-        assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
+        assertEquals(0, foundContactsInvalid.size(),
+                "Should not find any contact for invalid input");
 
     }
 
@@ -123,7 +126,8 @@ public class SearchActionMoveTest {
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsValid = searchActionMove.searchContactByPhone(contactList);
         assertEquals(2, foundContactsValid.size(), "Should find two contact");
-        assertEquals("+996 777 777 777", foundContactsValid.get(1).getPhone(), "Address should match for valid input");
+        assertEquals("+996 777 777 777",
+                foundContactsValid.get(1).getPhone(), "Address should match for valid input");
 
     }
 
@@ -135,7 +139,8 @@ public class SearchActionMoveTest {
         System.setIn(new ByteArrayInputStream(invalidInput.getBytes()));
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsInvalid = searchActionMove.searchContactByPhone(contactList);
-        assertEquals(0, foundContactsInvalid.size(), "Should not find any contact for invalid input");
+        assertEquals(0, foundContactsInvalid.size(),
+                "Should not find any contact for invalid input");
 
     }
 

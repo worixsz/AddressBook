@@ -11,7 +11,6 @@ public class CheckActionMove implements CheckAction {
 
 
     public CheckActionMove() {
-
     }
 
     @Override
