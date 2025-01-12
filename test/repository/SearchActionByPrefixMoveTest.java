@@ -47,10 +47,13 @@ public class SearchActionByPrefixMoveTest {
                 .filter(contact -> contact.getName().startsWith(validInput))
                 .toList();
 
-        assertEquals(2, filteredContacts.size(), "Should find two contacts with the name prefix 'A'");
+        assertEquals(2, filteredContacts.size(),
+                "Should find two contacts with the name prefix 'A'");
 
-        assertTrue(filteredContacts.get(0).getName().startsWith(validInput), "First contact should start with 'A'");
-        assertTrue(filteredContacts.get(1).getName().startsWith(validInput), "Second contact should start with 'A'");
+        assertTrue(filteredContacts.get(0).getName().startsWith(validInput),
+                "First contact should start with 'A'");
+        assertTrue(filteredContacts.get(1).getName().startsWith(validInput),
+                "Second contact should start with 'A'");
 
     }
 
@@ -65,7 +68,8 @@ public class SearchActionByPrefixMoveTest {
                 .filter(contact -> contact.getName().startsWith(invalidInput))
                 .toList();
 
-        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
+        assertEquals(0, filteredContacts.size(),
+                "Should not find any contact for invalid input");
 
     }
 
@@ -80,9 +84,11 @@ public class SearchActionByPrefixMoveTest {
                 .filter(contact -> contact.getSurname().startsWith(validInput))
                 .toList();
 
-        assertEquals(1, filteredContacts.size(), "Should find one contacts with the surname prefix 'Sm'");
+        assertEquals(1, filteredContacts.size(),
+                "Should find one contacts with the surname prefix 'Sm'");
 
-        assertTrue(filteredContacts.getFirst().getSurname().startsWith(validInput), "First contact should start with 'Sm'");
+        assertTrue(filteredContacts.getFirst().getSurname().startsWith(validInput),
+                "First contact should start with 'Sm'");
 
     }
 
@@ -97,7 +103,8 @@ public class SearchActionByPrefixMoveTest {
                 .filter(contact -> contact.getSurname().startsWith(invalidInput))
                 .toList();
 
-        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
+        assertEquals(0, filteredContacts.size(),
+                "Should not find any contact for invalid input");
 
     }
 
@@ -112,8 +119,10 @@ public class SearchActionByPrefixMoveTest {
                 .filter(contact -> contact.getAddress().startsWith(validInput))
                 .toList();
 
-        assertEquals(1, filteredContacts.size(), "Should find one contacts with the address prefix 'Ge'");
-        assertTrue(filteredContacts.getFirst().getAddress().startsWith(validInput), "First contact should start with 'Ge'");
+        assertEquals(1, filteredContacts.size(),
+                "Should find one contacts with the address prefix 'Ge'");
+        assertTrue(filteredContacts.getFirst().getAddress().startsWith(validInput),
+                "First contact should start with 'Ge'");
 
     }
 
@@ -128,7 +137,8 @@ public class SearchActionByPrefixMoveTest {
                 .filter(contact -> contact.getAddress().startsWith(invalidInput))
                 .toList();
 
-        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
+        assertEquals(0, filteredContacts.size(),
+                "Should not find any contact for invalid input");
 
     }
 
@@ -144,10 +154,14 @@ public class SearchActionByPrefixMoveTest {
                 .filter(contact -> contact.getPhone().startsWith(validInput))
                 .toList();
 
-        assertEquals(3, filteredContacts.size(), "Should find three contacts with the phone prefix '996'");
-        assertTrue(filteredContacts.get(0).getPhone().startsWith(validInput), "First contact should start with '996'");
-        assertTrue(filteredContacts.get(1).getPhone().startsWith(validInput), "Second contact should start with '996'");
-        assertTrue(filteredContacts.get(2).getPhone().startsWith(validInput), "Third contact should start with '996'");
+        assertEquals(3, filteredContacts.size(),
+                "Should find three contacts with the phone prefix '996'");
+        assertTrue(filteredContacts.get(0).getPhone().startsWith(validInput),
+                "First contact should start with '996'");
+        assertTrue(filteredContacts.get(1).getPhone().startsWith(validInput),
+                "Second contact should start with '996'");
+        assertTrue(filteredContacts.get(2).getPhone().startsWith(validInput),
+                "Third contact should start with '996'");
 
     }
 
@@ -163,7 +177,8 @@ public class SearchActionByPrefixMoveTest {
                 .filter(contact -> contact.getPhone().startsWith(invalidInput))
                 .toList();
 
-        assertEquals(0, filteredContacts.size(), "Should not find any contact for invalid input");
+        assertEquals(0, filteredContacts.size(),
+                "Should not find any contact for invalid input");
 
     }
 }
