@@ -29,7 +29,8 @@ public class DeleteActionMoveTest {
         fileService = new FileService();
 
         List<Contact> contact = new ArrayList<>();
-        contact.add(new Contact("Azidin", "Amankulov", "Japan", "+996 7777 777 777"));
+        contact.add(
+                new Contact("Azidin", "Amankulov", "Japan", "+996 7777 777 777"));
         fileService.write(contact);
     }
 
