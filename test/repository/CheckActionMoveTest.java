@@ -38,7 +38,8 @@ public class CheckActionMoveTest {
     @Test
     public void testEmptyString() {
         InputMismatchException thrown =
-                assertThrows(InputMismatchException.class, () -> validator.checkStringForEmpty("  "));
+                assertThrows(InputMismatchException.class,
+                        () -> validator.checkStringForEmpty("  "));
         assertEquals("The input cannot be empty.", thrown.getMessage());
     }
 
@@ -97,9 +98,12 @@ public class CheckActionMoveTest {
     @Test
     @DisplayName("Test invalid addresses")
     void checkForInvalidAddress() {
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidAddress(""));
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidAddress("Main@Street"));
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidAddress("123<Street>"));
+        assertThrows(InputMismatchException.class,
+                () -> validator.checkForValidAddress(""));
+        assertThrows(InputMismatchException.class,
+                () -> validator.checkForValidAddress("Main@Street"));
+        assertThrows(InputMismatchException.class,
+                () -> validator.checkForValidAddress("123<Street>"));
     }
 
     @Test
@@ -113,9 +117,12 @@ public class CheckActionMoveTest {
     @Test
     @DisplayName("Test invalid phone numbers")
     void checkForInvalidPhoneNumberTest() {
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidPhoneNumber(""));
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidPhoneNumber("12345abc"));
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidPhoneNumber("++996 700 000 000"));
+        assertThrows(InputMismatchException.class,
+                () -> validator.checkForValidPhoneNumber(""));
+        assertThrows(InputMismatchException.class,
+                () -> validator.checkForValidPhoneNumber("12345abc"));
+        assertThrows(InputMismatchException.class,
+                () -> validator.checkForValidPhoneNumber("++996 700 000 000"));
     }
 
 
