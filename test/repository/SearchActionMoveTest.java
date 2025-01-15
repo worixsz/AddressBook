@@ -46,7 +46,8 @@ public class SearchActionMoveTest {
         List<Contact> foundContactsValid = searchActionMove.searchContactByName(contactList);
         assertEquals(2, foundContactsValid.size(), "Should find two contact");
         assertEquals("Azidin",
-                foundContactsValid.get(1).getName(), "Name should match for valid input");
+                foundContactsValid.get(1).getName(),
+                "Name should match for valid input");
 
     }
 
@@ -71,9 +72,11 @@ public class SearchActionMoveTest {
         System.setIn(new ByteArrayInputStream(validInput.getBytes()));
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsValid = searchActionMove.searchContactBySurname(contactList);
-        assertEquals(2, foundContactsValid.size(), "Should find two contact");
+        assertEquals(2, foundContactsValid.size(),
+                "Should find two contact");
         assertEquals("Mahronovich",
-                foundContactsValid.get(1).getSurname(), "Surname should match for valid input");
+                foundContactsValid.get(1).getSurname(),
+                "Surname should match for valid input");
 
     }
 
@@ -98,9 +101,11 @@ public class SearchActionMoveTest {
         System.setIn(new ByteArrayInputStream(validInput.getBytes()));
         searchActionMove.setScanner(new Scanner(System.in));
         List<Contact> foundContactsValid = searchActionMove.searchContactByAddress(contactList);
-        assertEquals(2, foundContactsValid.size(), "Should find two contact");
+        assertEquals(2, foundContactsValid.size(),
+                "Should find two contact");
         assertEquals("Japan",
-                foundContactsValid.get(1).getAddress(), "Address should match for valid input");
+                foundContactsValid.get(1).getAddress(),
+                "Address should match for valid input");
 
     }
 
