@@ -52,7 +52,8 @@ public class DeleteActionMoveTest {
                 "Contact 'Azidin' should have been deleted.");
 
         List<Contact> updatedContacts = fileService.read();
-        assertEquals(0, updatedContacts.size(), "File should be empty after deletion");
+        assertEquals(0, updatedContacts.size(),
+                "File should be empty after deletion");
     }
 
     @Test
@@ -73,7 +74,8 @@ public class DeleteActionMoveTest {
                 "Contact 'Azidin' should still exist in the list.");
 
         List<Contact> updatedContacts = fileService.read();
-        assertEquals(1, updatedContacts.size(), "File should still have 1 contact");
+        assertEquals(1, updatedContacts.size(),
+                "File should still have 1 contact");
     }
 
     @AfterEach

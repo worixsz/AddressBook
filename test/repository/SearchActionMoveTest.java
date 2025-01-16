@@ -132,7 +132,8 @@ public class SearchActionMoveTest {
         List<Contact> foundContactsValid = searchActionMove.searchContactByPhone(contactList);
         assertEquals(2, foundContactsValid.size(), "Should find two contact");
         assertEquals("+996 777 777 777",
-                foundContactsValid.get(1).getPhone(), "Address should match for valid input");
+                foundContactsValid.get(1).getPhone(),
+                "Address should match for valid input");
 
     }
 
