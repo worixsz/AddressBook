@@ -44,34 +44,44 @@ public class CreateContactMoveTest {
         createContactMove.createContact(contacts);
 
         assertEquals(1,
-                contacts.size(), "List size should be 1 after creating a contact");
+                contacts.size(),
+                "List size should be 1 after creating a contact");
         assertEquals(
-                "Azidin", contacts.get(0).getName(), "Contact name should be 'Azidin'");
+                "Azidin", contacts.get(0).getName(),
+                "Contact name should be 'Azidin'");
         assertEquals
 
                 ("Amankulov",
-                        contacts.get(0).getSurname(), "Contact last name should be 'Amankulov'");
+                        contacts.get(0).getSurname(),
+                        "Contact last name should be 'Amankulov'");
         assertEquals
                 ("Japan",
-                        contacts.get(0).getAddress(), "Contact address should be 'Japan'");
+                        contacts.get(0).getAddress(),
+                        "Contact address should be 'Japan'");
         assertEquals
                 ("+996 777 777 777",
-                        contacts.get(0).getPhone(), "Contact phone should be '777 777 777'");
+                        contacts.get(0).getPhone(),
+                        "Contact phone should be '777 777 777'");
 
         fileService.write(contacts);
 
         List<Contact> readContacts = fileService.read();
 
         assertEquals(1,
-                readContacts.size(), "File should contain exactly 1 contact");
+                readContacts.size(),
+                "File should contain exactly 1 contact");
         assertEquals("Azidin",
-                readContacts.get(0).getName(), "Contact name in file should be 'Azidin'");
+                readContacts.get(0).getName(),
+                "Contact name in file should be 'Azidin'");
         assertEquals("Amankulov",
-                readContacts.get(0).getSurname(), "Contact last name in file should be 'Amankulov'");
+                readContacts.get(0).getSurname(),
+                "Contact last name in file should be 'Amankulov'");
         assertEquals("Japan",
-                readContacts.get(0).getAddress(), "Contact address in file should be 'Japan'");
+                readContacts.get(0).getAddress(),
+                "Contact address in file should be 'Japan'");
         assertEquals("+996 777 777 777",
-                readContacts.get(0).getPhone(), "Contact phone in file should be '777 777 777'");
+                readContacts.get(0).getPhone(),
+                "Contact phone in file should be '777 777 777'");
     }
 
 
