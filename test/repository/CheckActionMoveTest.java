@@ -20,11 +20,9 @@ public class CheckActionMoveTest {
     void setUp() {
         validator = new CheckActionMove();
         Contact contactOne =
-                new Contact("Azidin", "Amankulov",
-                        "123 Street", "+996 777 777 777");
+                new Contact("Azidin", "Amankulov", "123 Street", "+996 777 777 777");
         Contact contactTwo =
-                new Contact("Aibek", "Mahronovich",
-                        "113 Street", "+996 663 667 669");
+                new Contact("Aibek", "Mahronovich", "113 Street", "+996 663 667 669");
         contactList = List.of(contactOne, contactTwo);
     }
 
@@ -60,41 +58,56 @@ public class CheckActionMoveTest {
     @Test
     @DisplayName("Test valid names")
     void checkForValidNameTest() {
-        assertDoesNotThrow(() -> validator.checkForValidName("John"));
-        assertDoesNotThrow(() -> validator.checkForValidName("Anne-Marie"));
-        assertDoesNotThrow(() -> validator.checkForValidName("O'Connor"));
+        assertDoesNotThrow(()
+                -> validator.checkForValidName("John"));
+        assertDoesNotThrow(()
+                -> validator.checkForValidName("Anne-Marie"));
+        assertDoesNotThrow(()
+                -> validator.checkForValidName("O'Connor"));
     }
 
     @Test
     @DisplayName("Test invalid names")
     void checkForInvalidNameTest() {
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidName(""));
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidName("123John"));
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidName("john"));
+        assertThrows(InputMismatchException.class, ()
+                -> validator.checkForValidName(""));
+        assertThrows(InputMismatchException.class, ()
+                -> validator.checkForValidName("123John"));
+        assertThrows(InputMismatchException.class, ()
+                -> validator.checkForValidName("john"));
     }
 
     @Test
     @DisplayName("Test valid surnames")
     void checkForValidSurnameTest() {
-        assertDoesNotThrow(() -> validator.checkForValidSurname("Smith"));
-        assertDoesNotThrow(() -> validator.checkForValidSurname("Mc'Donald"));
-        assertDoesNotThrow(() -> validator.checkForValidSurname("O'Neil"));
+        assertDoesNotThrow(()
+                -> validator.checkForValidSurname("Smith"));
+        assertDoesNotThrow(()
+                -> validator.checkForValidSurname("Mc'Donald"));
+        assertDoesNotThrow(()
+                -> validator.checkForValidSurname("O'Neil"));
     }
 
     @Test
     @DisplayName("Test invalid surnames")
     void checkForInvalidSurnameTest() {
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidSurname(""));
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidSurname("Smith@"));
-        assertThrows(InputMismatchException.class, () -> validator.checkForValidSurname("123Smith"));
+        assertThrows(InputMismatchException.class, ()
+                -> validator.checkForValidSurname(""));
+        assertThrows(InputMismatchException.class, ()
+                -> validator.checkForValidSurname("Smith@"));
+        assertThrows(InputMismatchException.class, ()
+                -> validator.checkForValidSurname("123Smith"));
     }
 
     @Test
     @DisplayName("Test valid addresses")
     void checkForValidAddress() {
-        assertDoesNotThrow(() -> validator.checkForValidAddress("123 Main St."));
-        assertDoesNotThrow(() -> validator.checkForValidAddress("Apartment"));
-        assertDoesNotThrow(() -> validator.checkForValidAddress("Some Street, Block A, City"));
+        assertDoesNotThrow(() ->
+                validator.checkForValidAddress("123 Main St."));
+        assertDoesNotThrow(() ->
+                validator.checkForValidAddress("Apartment"));
+        assertDoesNotThrow(() ->
+                validator.checkForValidAddress("Some Street, Block A, City"));
     }
 
     @Test
@@ -111,9 +124,12 @@ public class CheckActionMoveTest {
     @Test
     @DisplayName("Test valid phone numbers")
     void checkForValidPhoneNumberTest() {
-        assertDoesNotThrow(() -> validator.checkForValidPhoneNumber("+996 700 000 000"));
-        assertDoesNotThrow(() -> validator.checkForValidPhoneNumber("+1-800-555-5555"));
-        assertDoesNotThrow(() -> validator.checkForValidPhoneNumber("123456789"));
+        assertDoesNotThrow(() ->
+                validator.checkForValidPhoneNumber("+996 700 000 000"));
+        assertDoesNotThrow(() ->
+                validator.checkForValidPhoneNumber("+1-800-555-5555"));
+        assertDoesNotThrow(() ->
+                validator.checkForValidPhoneNumber("123456789"));
     }
 
     @Test
