@@ -20,9 +20,11 @@ public class CheckActionMoveTest {
     void setUp() {
         validator = new CheckActionMove();
         Contact contactOne =
-                new Contact("Azidin", "Amankulov", "123 Street", "+996 777 777 777");
+                new Contact("Azidin", "Amankulov",
+                        "123 Street", "+996 777 777 777");
         Contact contactTwo =
-                new Contact("Aibek", "Mahronovich", "113 Street", "+996 663 667 669");
+                new Contact("Aibek", "Mahronovich",
+                        "113 Street", "+996 663 667 669");
         contactList = List.of(contactOne, contactTwo);
     }
 
