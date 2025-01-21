@@ -111,7 +111,8 @@ public class SearchActionMove implements SearchAction {
                 foundContacts.forEach(contact -> System.out.println("🔍 Contact Found: " + contact));
             } else {
                 System.out.println("❗No contact found with the phone number: " + finalFormattedPhone);
-                String withoutCountryCode = finalFormattedPhone.replaceFirst("^\\+996\\s*", "");
+                String withoutCountryCode =
+                        finalFormattedPhone.replaceFirst("^\\+996\\s*", "");
                 searchByPrefix.findByPhonePrefix(contacts, withoutCountryCode);
             }
         } catch (InputMismatchException e) {

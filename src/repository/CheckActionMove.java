@@ -38,7 +38,8 @@ public class CheckActionMove implements CheckAction {
         try {
             String cleanPhone = phone.replaceAll("\\D", "");
             formattedNumberKG =
-                    "+996 " + cleanPhone.replaceAll("(.{3})(.{3})(.{3})", "$1 $2 $3");
+                    "+996 " + cleanPhone.replaceAll("(.{3})(.{3})(.{3})",
+                            "$1 $2 $3");
             formattedNumberKG = formattedNumberKG.trim();
             checkPhoneNumber(formattedNumberKG);
             return formattedNumberKG;
